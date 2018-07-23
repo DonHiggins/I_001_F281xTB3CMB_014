@@ -1,0 +1,33 @@
+---------------------------------------------------------
+2015_07_14
+           
+      Compile failed after adding commands to CanOpen.C:  "program will not fit into available"
+      Looking at the \Debug\TB3CM_DSP_Code.map, file, in SECTION ALLOCATION MAP I see
+
+          output                                  attributes/
+         section   page    origin      length       input sections
+         --------  ----  ----------  ----------   ----------------
+         .pinit     0    003f6000    00000000     UNINITIALIZED
+
+         .ebss      1    00000000    000010a7     FAILED TO ALLOCATE
+      
+      And in the .cmd file I see
+         .ebss               : > RAML1       PAGE = 1
+      and
+         RAML1       : origin = 0x009000, length = 0x001000     /* on-chip RAM block L1 */
+
+      CONCLUSION: evidently by adding to the CanOpen command table, I pushed the .ebss section past
+      the 0x1000 words available in physical memory there.
+      
+      PLAN A: rather than learn the intricasies of how to place different RAM into different
+      sections and then into different parts of physical memory . . . I'm going to try and direct
+      .ebss into the RAMH0 section : origin = 0x3F8000, length = 0x002000.  Currently only the
+      .esysmem is targeted for RAMH0, but it doesn't appear to use any space.  So for Plan A, I'm
+      just going to switch .esysmem > RAML1, and .ebss > RAMH0.
+      
+      Before fiddling with .cmd file, I will save it as F2812_2012_07_14_001.cmd_x
+      I added the "_x" suffix to the file type, because CCS tried to pull it in  and link with it.
+      
+      PLAN A RESULTS:  Appears to have built successfully.
+---------------------------------------------------------
+           

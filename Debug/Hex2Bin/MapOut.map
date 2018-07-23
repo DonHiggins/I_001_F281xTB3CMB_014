@@ -1,0 +1,35 @@
+********************************************************************************
+TMS320C2000 Hex Converter                                                 v6.1.0
+********************************************************************************
+
+INPUT FILE NAME: <TB3CM_DSP_Code.out>
+OUTPUT FORMAT:   Intel
+
+PHYSICAL MEMORY PARAMETERS
+   Default data width   :  16
+   Default memory width :   8 (LS-->MS)
+   Default output width :   8
+
+BOOT LOADER PARAMETERS
+   Table Type:		  SERIAL PORT (SCI 8 bit Mode)
+   Entry Point:		  0x003f263b
+
+
+OUTPUT TRANSLATION MAP
+--------------------------------------------------------------------------------
+00000000..003fffff  Page=0  Memory Width=8  ROM Width=8
+--------------------------------------------------------------------------------
+   OUTPUT FILES: TB3CM_DSP_Code.Hex [b0..b7]
+
+   CONTENTS: 00000000..00006b5f   BOOT TABLE
+                           .cinit : dest=003f67a6  size=000005b8  width=00000002
+                            .text : dest=003f0000  size=00002803  width=00000002
+                        codestart : dest=003f7ff6  size=00000002  width=00000002
+                         ramfuncs : dest=003ec000  size=00000017  width=00000002
+                          .econst : dest=003f6000  size=000007a6  width=00000002
+                          .switch : dest=003f6d5e  size=00000018  width=00000002
+
+--------------------------------------------------------------------------------
+00000000..003fffff  Page=1  Memory Width=8  ROM Width=8  "*DEFAULT PAGE 1*"
+--------------------------------------------------------------------------------
+   NO CONTENTS

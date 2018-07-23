@@ -1,0 +1,396 @@
+- - - - - S P E E D - D I A L   C O M M A N D S - - - - - - - - - - - - - - - - - - 
+S0    -- OoaD to RS232
+S1    -- Set DSP lines to FPGA to allow JTAG Programming
+S2    -- Turn on DSP external Bus
+S3    -- Toggle DSP LED mode
+S4    -- Toggle CPLD LEDs
+S5    -- FPGA LEDs
+S6    -- START: FPGA read/write via both busses
+S7    -- REPORT ON: FPGA read/write via both busses
+S8    -- STOP: FPGA read/write via both busses
+S9    -- Is FPGA Talking?
+s10   -- Watchdog Reset
+
+
+
+- - - - -  L E D s - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+s3 -- (Speed Dial command) Toggle DSP LED mode
+
+C1000:ddddCr                   -- What LED Dispaly pattern to follow for DSP LED's
+  timer0_setLedPattern            0 - F = display this value in LED's
+                                  1001  = display incrementing count
+								  1003  = SLOW_HEARTBEAT
+                                  otherwise = Toggle LED's each T0Timer interrupt Task. 
+
+C1002:ddddCr                   -- timer0_LedErrMsg()
+                                  blink, on & off, a fixed # of times, pause, repeat
+                                                                      
+- - - - -  M I S C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+C1003Cr                        -- Display the DSP build date-timestamp on RS232
+
+T1004:9600-N-8-1               -- Set RS232 speed, parity, bits, stop-bits.
+C1005Cr                        -- Report baud rate, char  size, parity & stop bits on RS232
+
+C1006Cr                        -- Report to RS232: are CPLD Addresses set for TB3IOMA or B
+
+C1007Cr                        -- Report pg_loopCount: how many loops we waited to see
+                                  power-good signals from TB3IOMC.
+C1011:000xCr                   -- Read ADC input channel x and report voltage on RS232
+C1012:000xCr                   -- Add ADC input channel x and report on multiple channels
+C1013                          -- repeat previously configured ADC test
+C1014                          -- Read all 16 adc channels and report
+
+C1020:ddddCr                   -- Testing Task Mgr. Scheduling Algorithms
+                                  0xFFFF -- clear all tasks
+                                  0x0001 -- Set task 1 Priority & task 2 Round Robin
+                                            result: only task 1 runs
+                                  0x0002 -- set task 2 Round Robin & task 3 Priority
+                                            result: task 2 & 3 run
+                                  0x0003 -- set task 2 Round Robin, task 3 Priority, task 4 Round Robin
+                                            result: task 2, 3 & 4 run
+                                  0x0004 -- set task 2 Round Robin, task 3 Pri. task 5 Pri.
+                                            result: task 2, 3 & 5 run
+                                            
+C1030                          -- Read GPIOA 0 & 2, and report to RS232
+                                  // Note: TB3CMA Protos were blue-wired connecting
+                                      	//  GPIOA0 == PG_1V2_I/O, and
+                                      	//  GPIOA2 == PG_1V9_2
+                                      	// in other words, I was connecting "power good" signals
+                                      	// from on-board power supplies -- one on TB3CM and one
+                                      	// accross the inter-module connector on TB3IOM.
+                                      	// At the time this was strictly a test of whether the signals
+                                      	// properly drove the DSP GPIO ports.
+                                      	// As of TB3CMB, those GPIO pins are repurposed, to read
+                                      	// F_DONE_x signals from FPGA's.
+
+C1031                          -- Read Power-Good signals from IO and PM as 4 bits
+                                        1 = PG_IO_1A
+                                        2 = PG_IO_2A
+                                        4 = PG_PM_1A
+                                        8 = PG_PM_2A
+
+C1040                          -- Read CAN Address Dip Switches and report to RS232
+                                            
+- - - - - E X T E R N A L   B U S  T E S T - - - - - - - - - - - - - - - - - - - - -
+
+C2000Cr                        -- Run Xintf Initialization code   
+  xintf_InitXintf()
+
+
+
+C2001:ddddCr                   -- Address Hi Word
+  xintf_setTestData2001
+  default 0x0008
+
+C2002:ddddCr                   -- Address Low Word
+  xintf_setTestData2002
+  default 0x1234
+
+C2003:ddddCr                   -- Data to Write
+  xintf_setTestData2003
+  default 0x4321
+
+C2010:ddddCr                   -- Write Data Once
+C2011Cr                        -- Read Data Once, report to RS232
+
+C2012Cr                        -- Turn off CPLD and FPGA LED actions based on T0 Timer
+                                  This removes that activity from the parallel bus, so you
+                                  can scope other bus activity.
+
+C2004:ddddCr                   -- What test to run.  All repeated each T0TIMER Interrupt
+  xintf_setTestSelection2004      0 = Turned Off
+  default 0x0000                  1 = Write data to Address on every T0Timer Interrupt Task
+                                        Useful address: 0x09,xxxx activates ~CS_FPGA_1
+                                        Useful address: 0x0A,xxxx activates ~CS_FPGA_2
+                                  2 = Write followed by read @ addr xor 0x7,FFFF to test address lines
+                                  3 = Write data to an external address then invert the data and write it again
+                                  4 = Turn on / off CPLD_LED_1, Read or write data to CPLD Address
+                                      1 R or W access outside of target address range, followed by
+                                      3 consecutive R or W accesses to the target range, followed by
+                                      1 R or W access outside of target address range
+                                  5 = Toggle CPLD_LED_1 (same as (4) above)
+                                      (In past, used alternate address from (4) above, back when
+                                      TB3CMA and TB3IOMA supported 2 buses and 2 address schemes
+                                      for testing purposes.)                                                                   
+                                  6 = Pulse all 4 CPLD test points, writing to addresses
+                                      0x08,0000 , 0x0C,0100, 0x08,0200, 0x0C,0300
+									  Sometimes CPLD code assigns other signals to the test points,
+									  in which case you may not observe pulses when writing to
+									  the above addresses. Consult CPLD code.
+									  As of 7/7/2016 I have modified CPLD code
+									  so that it xor's the pulses into whatever other signal they
+									  are displaying.
+                                  7 = Read data from Address (set in c2001:dddd & c2002:dddd )
+								      on every T0Timer Interrupt Task
+                                  8 = display counter in CPLD LED's 0 & 1
+                                  9 = Each T0Timer Interrupt toggle 2 LEDs on / off in sync
+                                      CPLD LED's 0, & 1
+                                  A = Turn off all CPLD LED's
+                                  B = Turn on / off CPLD_LED_0, Read or write data to CPLD Address
+                                      see (4) above.
+                                  C = Turn on/off both CPLD_LED_0 and 1 at TB3IOMBA CPLD Addresses
+                                      this is specifically for A-B-ing A and B rev TB3IOM without
+                                      having to change DSP firmware.
+
+C2005:ddddCr                   -- Specific CPLD / FPGA actions (TB3IOMB) -- performed 1 time only
+                                  0 = Turn off CPLD_LED_0, (on in TB3IOMC)
+                                  1 = Turn on CPLD_LED_0,  (off in TB3IOMC)
+                                  2 = Turn off CPLD_LED_1, (on in TB3IOMC)
+                                  3 = Turn on CPLD_LED_1,  (off in TB3IOMC)
+                                  4 = Turn off F_PROG_2, 
+                                  5 = Turn on F_PROG_2, 
+                                  6 = Turn ~FPGA1_RESET LOW, 
+                                  7 = Turn ~FPGA1_RESET HI, 
+                                  8 = Turn ~FPGA2_RESET LOW, 
+                                  9 = Turn ~FPGA2_RESET HI, 
+                                  A = Turn off FPGA2_LED_0, 
+                                  B = Turn on FPGA2_LED_0, 
+                                  C = Turn on FPGA1_LED_0,1 to value => 00 
+                                  D = Turn on FPGA1_LED_0,1 to value => 01 
+                                  E = Turn on FPGA1_LED_0,1 to value => 10 
+                                  F = Turn on FPGA1_LED_0,1 to value => 11 
+								 10 = Turn on testpoint_0,
+								 11 = Turn off testpoint_0,
+								 12 = Turn on testpoint_1,
+								 13 = Turn off testpoint_1,
+								 14 = Turn on testpoint_2,
+								 15 = Turn off testpoint_2,
+								 16 = Turn on testpoint_3,
+								 17 = Turn off testpoint_3,
+
+C2010:ddddCr                   -- Write data to previously determined external address
+C2011Cr                        -- Read from previously determined external address
+                                    and display on RS232
+C2012Cr                        -- Turn off CPLD and FPGA LED actions based on T0 Timer
+                                  This removes that activity from the parallel bus, so you
+                                  can scope other bus activity.
+
+- - - - - E X T.   R A M   T E S T - - - - - - - - - - -  - - - - - -
+C2020:ddddCr                   -- Launch Test of External RAM chip, TB3CMB
+                                  Exercise various methods of symbolically accessing
+                                  external ram:  via #define, via linker-generated symbols,
+                                  and via compiler/linker sections.  Use debugger to
+                                  observe & evaluate results.
+C2020:0001Cr                   -- Write values to all locations in ext Ram address space,
+                                  read back and report result to RS232. 
+
+
+- - - - - F P G A   T E S T - - - - - - - - - - - - - - - - - - - - -
+
+C2100:ddddCr                   -- Test Various GPIO lines and features  *** FOR TB3IOMB ***
+                                  1 = Init GPIO B14 as an output (used for F_INIT, FPGA Programming)
+                                  2 = Set GPIO B14 F_INIT HI
+                                  3 = Set GPIO B14 F_INIT LOW
+                                  4 = Init GPIO B14 as an input (used for F_INIT, FPGA Programming)
+
+                                  11 = Init GPIO F9 as an output (used for F_PROG, FPGA Programming)
+                                  12 = Set GPIO F9 F_PROG HI
+                                  13 = Set GPIO F9 F_PROG LOW
+                                  14 = Init GPIO F9 as an input (used for F_PROG, FPGA Programming)
+
+C2100:0020Cr                      20 = set GPIO-B14-F_INIT & GPIO-F9-F_PROG as outputs, HI
+                                       This puts FPGA ready for JTAG programming.
+
+C2101:ddddCr                   -- Test Various GPIO lines and features *** FOR TB3IOMC *** FPGA2
+                                  FPGA1 on IO Module
+                                  1 = Init GPIO B12 as an output (used for F_INIT, FPGA Programming)
+                                  2 = Set GPIO B12 F_INIT HI
+                                  3 = Set GPIO B12 F_INIT LOW
+                                  4 = Init GPIO B12 as an input (used for F_INIT, FPGA Programming)
+                                  11 = Init GPIO F8 as an output (used for F_PROG, FPGA Programming)
+                                  12 = Set GPIO F8 F_PROG HI
+                                  13 = Set GPIO F8 F_PROG LOW
+                                  14 = Init GPIO F8 as an input (used for F_PROG, FPGA Programming)
+C2101:0020Cr		              20 = set GPIO-B12-F_INIT & GPIO-F8-F_PROG as outputs, HI
+                                       This puts FPGA1 ready for JTAG programming.
+C2101:0030Cr		              30 = set ~FPGA1_RESET LOW
+C2101:0031Cr		              31 = set ~FPGA1_RESET HI
+
+C2102:ddddCr                   -- Test Various GPIO lines and features *** FOR TB3IOMC *** FPGA2
+                                  FPGA2 on IO Module
+                                  1 = Init GPIO B13 as an output (used for F_INIT, FPGA Programming)
+                                  2 = Set GPIO B13 F_INIT HI
+                                  3 = Set GPIO B13 F_INIT LOW
+                                  4 = Init GPIO B13 as an input (used for F_INIT, FPGA Programming)
+                                  11 = Init GPIO F9 as an output (used for F_PROG, FPGA Programming)
+                                  12 = Set GPIO F9 F_PROG HI
+                                  13 = Set GPIO F9 F_PROG LOW
+                                  14 = Init GPIO F9 as an input (used for F_PROG, FPGA Programming)
+C2102:ddddCr		              20 = set GPIO-B13-F_INIT & GPIO-F9-F_PROG as outputs, HI
+                                       This puts FPGA1 ready for JTAG programming.
+
+									   
+C3003:ddddCr                   -- Data to Write
+  fpgaT_setTestData3003           for "write data to Stored_Value" tests
+  default 0x0001
+                                 
+C3004:ddddCr                   -- What test to run.  All repeated each T0TIMER Interrupt
+  fpgaT_setTestSelection3004      0 = Turned Off
+  default 0x0000                  1 = Write 0x0000 to 0x09,0004, config FPGA to LED_DIRECTLY_FROM_DSP mode
+                                      then immediately write to 0x0800FB; // CPLD_TP_0 (eg NOT ~CS_FPGA_1)
+                                  2 = Write 0x0001 to 0x09,0004, config FPGA to LED_FROM_COUNT_CLK mode
+                                  3 = Write 0x0002 to 0x09,0004, config FPGA to LED_FROM_COUNT_WR_STORERD_VAL_1 mode
+                                  4 = Write data from C3003:ddddCr to display in LED's
+                                      Must have used (1) above to configure LED use.
+                                  0x4000  Periodically read count clock FPGA1
+                                  0x4001  Periodically read count clock FPGA2 TB3IOMB
+                                  0x5000  (Obsolete in TB3IOMC)Read/Write Stored Values 1 & 2, test all 65536,
+                                          exercises both data buses on FPGA1 TB3IOMA
+                                          (this runs continually, reporting to RS232)
+                                  0x5001  (Obsolete in TB3IOMC)Read/Write Stored Values 1 & 2, test all 65536,
+                                          like 0x5000, but this uses both FPGA1 and FPGA2 on TB3IOMB
+                                          (this runs continually, reporting to RS232)
+
+
+
+
+S5    -- FPGA LEDs -- For testing FPGA1 LED's -- toggle between counter-mode and off.
+										  
+C3005:ddddCr   via CS_FPGA_1      -- What test to run once, (NOT repeated each T0TIMER Interrupt)
+                                  *** THESE TESTS WERE USEFUL TESTING BUS PERFORMANCE FOR TB3IOMA ***
+								  *** NOT IMMEDIATELY CLEAR HOW THEY RELATE TO TB3IOMC ***
+                                  0x0100 - 3 = write this value to 0x090005 "WRITE_LED_DIRECTLY", eg:
+								     0x0100       display 00 binary in FPGA1 LED's
+								     0x0101       display 01 binary in FPGA1 LED's
+								     0x0102       display 10 binary in FPGA1 LED's
+								     0x0103       display 11 binary in FPGA1 LED's
+                                  0x1100 - 3 = write this value to 0x090004 "WRITE_LED_FUNCTION"
+                                               LED_DIRECTLY_FROM_DSP            = 2'b00;
+                                               LED_FROM_COUNT_CLK               = 2'b01;
+                                               LED_FROM_COUNT_WR_STORERD_VAL_1  = 2'b10;
+                                               note 3 is actually a bogus value, lets see what FPGA does
+                                  0x1105     = Turn all 4 LED's off
+                                  0x1106     = LED's display count clock
+                                  0x2100 - 4 = Read simple data from FPGA
+                                               0x2100:        READ_0x0000  = 8'h000B;
+                                               0x2101:        READ_0xFFFF  = 8'h000C;
+                                               0x2102:        READ_0xA5A5  = 8'h000D;
+                                               0x2103:        READ_0x5A5A  = 8'h000E;
+                                               0x2104:        READ_BUS_ID  = 8'h000F;
+                                  0x3100       Write data (3003:dddd) to stored value 1
+                                  0x3101       Write data (3003:dddd) to stored value 2
+                                  0x3102       Read stored value 1
+                                  0x3103       Read stored value 2
+                                  0x3104       Read stored value 1 xor 2
+                                  0x3110       Is FPGA Talking -- R/W, report to RS232
+                                  0x4100       Reset count clock
+                                  0x5001       Command immediate report on RW Stored Val test C3004:5000
+                                  0x5002       Command immediate error test  on RW Stored Val test C3004:5000
+
+C3005:ddddCr  CS_FPGA_2 TB3IOMA   -- What test to run once, (NOT repeated each T0TIMER Interrupt)
+                                  0x2200 - 4 = Read simple data from FPGA
+                                               0x2200:        READ_0x0000  = 8'h000B;
+                                               0x2201:        READ_0xFFFF  = 8'h000C;
+                                               0x2202:        READ_0xA5A5  = 8'h000D;
+                                               0x2203:        READ_0x5A5A  = 8'h000E;
+                                               0x2204:        READ_BUS_ID  = 8'h000F;
+                                  0x3200       Write data (3003:dddd) to stored value 1
+                                  0x3201       Write data (3003:dddd) to stored value 2
+                                  0x3202       Read stored value 1
+                                  0x3203       Read stored value 2
+                                  0x3204       Read stored value 1 xor 2
+                                  0x4200       Reset count clock
+
+C3005:ddddCr   FPGA2 TB3IOMB    -- What test to run once, (NOT repeated each T0TIMER Interrupt)
+                                  0x2300 - 4 = Read simple data from FPGA
+                                               0x2300:        READ_0x0000  = 8'h000B;
+                                               0x2301:        READ_0xFFFF  = 8'h000C;
+                                               0x2302:        READ_0xA5A5  = 8'h000D;
+                                               0x2303:        READ_0x5A5A  = 8'h000E;
+                                               0x2304:        READ_BUS_ID  = 8'h000F;
+                                  0x3300       Write data (3003:dddd) to stored value 1
+                                  0x3301       Write data (3003:dddd) to stored value 2
+                                  0x3302       Read stored value 1
+                                  0x3303       Read stored value 2
+                                  0x3304       Read stored value 1 xor 2
+                                  0x4300       Reset count clock
+
+C3010:ddddCr   FPGA1 TB3IOMC    -- set Timer0 Pattern for FPGA1 LEDs
+C3020:ddddCr   FPGA2 TB3IOMC    -- set Timer0 Pattern for FPGA2 LEDs
+
+	LED_FPGA_PATTERN_DIRECT_0						=  0x0000,  //value from 0-F writes pattern directly in LED's
+	LED_FPGA_PATTERN_DIRECT							=  0x000F,  //  directly to LED's
+	LED_FPGA_PATTERN_COUNT_CLOCK					=  0x0010,  //bits[28:25] counts up at 0.89 sec
+	LED_FPGA_FROM_COUNT_WR_STORERD_VAL_1			=  0x0011,  //display values from FPGA test
+	LED_FPGA_PATTERN_INTERNAL_SLOW_HEARTBEAT		=  0x0012,  //heartbeat generated within FPGA
+	LED_FPGA_PATTERN_DSP_SLOW_HEARTBEAT				=  0x0013,  //heartbeat sync'd with DSP
+	LED_FPGA_PATTERN_DISABLED						=  0x2003
+
+
+C3011:ddddCr   FPGA1 TB3IOMC    -- write LED FUNCTION to FPGA1
+C3021:ddddCr   FPGA2 TB3IOMC    -- write LED FUNCTION to FPGA2
+		LED_DIRECTLY_FROM_DSP            = 2'b00;
+		LED_FROM_COUNT_CLK               = 2'b01; // bits[28:25] counts up at 0.89 sec
+		LED_FROM_COUNT_WR_STORERD_VAL_1  = 2'b10;
+		LED_SLOW_HEARTBEAT               = 2'b11;
+
+C3012:ddddCr   FPGA1 TB3IOMC    -- write DIRECT LED DATA to FPGA1 for function=LED_DIRECTLY_FROM_DSP
+C3022:ddddCr   FPGA2 TB3IOMC    -- write DIRECT LED DATA to FPGA2 for function=LED_DIRECTLY_FROM_DSP
+
+
+- - - - - S P I   F L A S H   T E S T  - - - - - - - - - - - - - - - - - - - - -
+
+C4000:ddddCr                   -- Test Various SPI/FLASH features
+                                  0 = Deselect All SPI Devices
+                                  1 = Select FLASH on SPI (activates chip select for Flash selected in c4006:dddd below) 
+                                  2 = Read SPI/Flash Status
+                                  3 = Read RDID Identification
+								      for M25P40: SPI Flash - RDID  0x0020 2013
+									  Manuf.ID=0x20, Mem.Type=0x20, Mem.Capacity=0x13
+                                  4 = WREN set Write Enable, also de-assert ~WriteProtect line
+                                  5 = Bulk Erase
+                                  6 = init address and buffer for testing
+                                  7 = assert ~WriteProtect lines to both FLASH chips
+								  
+C4001:ddddCr                   -- Set HI  word of Address for Flash Read / write
+C4002:ddddCr                   -- Set LOW word of Address for Flash Read / write
+C4003:ddddCr                   -- Read # of bytes from Flash (Rs232 Display)
+C4004:ddddCr                   -- Write # of bytes from Flash (Rs232 Display)
+C4005:ddddCr                   -- Initialize frwRWBuff for testing, 
+                                  start w/ frwRWBuff[0]=dddd, increment by 0x0101
+C4006:ddddCr                   -- Select which FLASH: 1=FLASH_1, 2=FLASH_2 (1 on powerup) (0=no flash selected)
+
+- - - - - I2C and EVTimer4   T E S T - - - - - - - - - - - - - - - - - - - - -
+
+C4101:ddddCr                   -- Turn on EVTimer4, period 0xdddd, dummy task, use timer prescale 128
+                                  here, 1 unit of period yields 1.7uSec, 
+                                  period is 0-based, (period = 0x0000 -> 1 time unit),
+                                  (period = 0x0001 -> 2 time units, etc)
+                                  dummy task toggles LED's each period.
+C4102:ddddCr                   -- Turn off EVTimer4, dddd not used
+C4103:ddddCr                   -- Turn on EVTimer4, period 0xdddd, dummy task, use timer prescale 1
+                                  here, 1 unit of period yields 0.0133 uSec, 
+                                  period is 0-based, (period = 0x0000 -> 1 time unit),
+                                  (period = 0x0001 -> 2 time units, etc)
+                                  dummy task toggles LED's each period.
+                                  NOTE: running EV4 Timer interrupt at speeds faster than
+                                   290kHz (3.4uSec) disrupts diagnstic RS232 communications.
+
+C4200:ddddCr                   -- read from I2C EEProm, at address = dddd,
+                                  read 8 bytes and display on RS232.
+C4201:xxddCr                   -- write 8 bytes to I2C EEProm, starting at address xx
+                                  first byte value is 0xdd, subsequent bytes increase by + 0x11                                                                    
+C4202:dddd                     -- Set / Reset I2C_EE_WP (write protect)line from CPLD
+    	                          dddd == 0 -> set WP to 0 (write-enable),
+    	                          dddd != 0 -> set WP to 1 (write-protect)
+C4203:xxxxCr                   -- read entire contents of I2CEEProm ans dump to RS232                                   
+C4204:ddddCr                   -- write 1 byte at a given address
+    	                          Write 1 byte in I2cEEProm
+    	                          dddd = 0xWXYZ
+    	                          write data 0xYZ at address 0xWX
+C4205:ddddCr                   -- read 1 byte at a given address
+    	                          dddd = 0xWXzz
+    	                          read data at address 0xWX, 0xzz- don't care
+C4206:ddddCr                   -- read 2 bytes starting at a given address
+    	                          dddd = 0xWXzz
+    	                          read data starting at address 0xWX, 0xzz- don't care
+C4207:ddddCr                   -- Select one of 3 I2C EEProms
+                                  dddd = 0 -- none selected
+                                  dddd = 1 -- TB3CM
+                                  dddd = 2 -- TB3IOM
+                                  dddd = 3 -- TB3PM
+
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  
+  

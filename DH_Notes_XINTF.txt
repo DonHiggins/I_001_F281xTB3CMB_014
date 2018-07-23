@@ -1,0 +1,28 @@
+XINTF
+
+1. play with the programmable wait states
+
+You specify the set-up/hold and access wait states for each XINTF zone by
+configuring the associated XTIMINGx registers.
+
+2. Understand clocking issues
+
+The access timing is based
+on an internal clock called XTIMCLK. XTIMCLK can be set to the same rate
+as the SYSCLKOUT (which is the CPU clock)
+ or to one-half of SYSCLKOUT. The rate of XTIMCLK applies
+to all of the XINTF zones. XINTF bus cycles begin on the rising edge of
+XCLKOUT and all timings and events are generated with respect to the rising
+edge of XTIMCLK.
+
+SYSCLKOUT (CPU clock) -> XTIMCLK -> XCLKOUT
+
+Use XTIMCLK bit in the XINTFCNF2 register to set XTIMCLK = 1/2 SYSCLKOUT
+the CLKMODE bit in the XINTFCNF2 refister to set XCLKOUT = 1/2 XTIMCLK
+
+3. Write Buffering
+
+By default, write access buffering is disabled. In most cases, to improve performance
+of the XINTF, you should enable write buffering. Up to three writes to
+the XINTF can be buffered without stalling the CPU. The write buffer depth is
+configured in the XINTCNF2 register.

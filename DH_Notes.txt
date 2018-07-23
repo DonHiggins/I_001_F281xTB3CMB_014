@@ -1,0 +1,1176 @@
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+I_001_F281xTB3CMB_013-- RUN ON TB3CMB/TB3IOMD & E
+
+1) 3/16/2018   -- Version 03.01.05
+                  New version to start coding for LimitCheck
+
+2) 6/15/2018   -- Closing the book on the Limit Check function, for now.
+                  It works.  I have 2 Excel Clients that exercise it, one built
+                  to test the new TS3 code as I was developping it, and a second
+                  written specifically to test the Classic Test Station limit check
+                  capability when I was working on that 10 years ago.
+                  I'm satisfied that I have achieved a high degree of compatibility.
+                  I have limit check working with all I/O Module inputs, but yet
+                  to do Power Module inputs.  Additionally these are a few
+                  visible stub routines to be fleshed out when we have the Power Module.
+
+3) 7/02/2018   -- Adding CAN commands to exercise low-level FPGA & CPLD Bi-Dir Bus tests.
+                  In preparation for TB3PMA.
+                  Added CAN commands to read Fpga3 Timestamp & Rev
+   7/23/2018   -- Completed DSP code for Bi-Dir Bus tests.  Exercise CPLD and FPGA
+                  LED's. Read FPGA time stamps. Perform write/read tests, writing
+                  values into FPGA registers and reading them back.
+               -- Version 03.01.06
+               
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+I_001_F281xTB3CMB_012-- RUN ON TB3CMB/TB3IOMC
+
+1) 9/14/2017   -- Version 03.01.02
+                  In this version, main program code loads
+                  into FLASH sectors FLASHC through FLASHJ, allowing it to
+                  use all available flash, asside from what is reserved for the 
+                  bootloader. This will work with bootloader J_001_TB3CMB_BootLd_005
+                  This change affected F2812.cmd linker command file and also
+                  {proj folder}\Debug\HexMcs\to_hex_Mcs.cmd file of commands
+                  for hex2000, in creating a ".mcs" format output file
+                  for use by the bootloader.
+                  
+2) 9/25/2017   -- Add rs232 comint commands to turn CPLD testpoints 0-3 on and off 
+
+3) 10/2/2017   -- Version 03.01.03
+                  Mod AnlgIn.C for TB3IOMD, 
+                  Initialize AD7175, so that 4th input channel, Ain3, 
+                  is single-ended, referenced to REF-, rather than differential, 
+                  referenced to Ain4, as for TB3IOMC. 
+                                   
+4) 2/6/2018    -- Version 03.01.04
+                  Mod AnlgIn.C for Classic-Compatible command,
+                  For TB3IOMC it applied different scaling for 2 A-to-D converters.
+                  And yet another scaling for Anlg_in_8.
+                  For TB3IOMD we still use 2 different scalings for 2 different A-to-D converters,
+                  but Anlg_in_8 is scaled the same as 7,6, & 5
+                   
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+I_001_F281xTB3CMB_011-- RUN ON TB3CMB/TB3IOMC
+
+1) 08/24/2017   -- created this project from I_001_F281xTB3CMB_011, leapfrogging
+                   I_001_F281xTB3CMB_010, which had some problems.
+                   
+                   First thing I'm going to do is monkey with the CCS properties
+                   to see if I can get it to use its own /Debug folder to hold
+                   it's .obj files, rather than putting them in:
+                      C:\tidcs\c28\DSP281x\v120\DSP281x_examples\sci_loopback_interrupts\Debug
+                   Yes, I got that to work OK.
+
+                   Now I'm back looking at this to make it fit and run in flash
+                   segments FLASHC - FLASHJ, so I can try to get the bootloader to load it
+                   as an .mcs file
+                   
+                   Version 01.02.01 -- 08/24/2017
+
+2) 08/30/2017   -- Version 03.01.01 -- 08/30/2017
+                   This version links into Flash sectors FLASHC, D, E & F
+                   It can be downloadded and installed by the CAN bootloader
+                   J_101_TB3CMB_BootLd_004
+
+6) 9/14/2017   -- I will roll both main program and bootloader to new versions
+                  and tweak the design so that main program code loads
+                  into FLASH sectors FLASHC through FLASHJ, allowing it to
+                  use all available flash, asside from what is reserved for the 
+                  bootloader.
+                   
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+I_001_F281xTB3CMB_010 -- RUN ON TB3CMB/TB3IOMC
+
+1) 08/04/2017   -- Version 01.01.86
+                   Starting to work on the DSP Bootloader.
+                   
+                   Noticed that our .out and .map files are named "Example_281xSci_FFDLB_int.out"
+                   This probably happened when we had a CCS problem 5/3/17 and had to create a new
+                   CCS workspace. I'm going to try to get it set up so they are named
+                   "TB3CM_DSP_Code.out" and .map. This was a convention adopted when I was 
+                   working with the serial interface interaction with the boot ROM, ie: ability
+                   to boot the DSP via the serial interface. 
+
+2) 08/07/2017   -- Playing with the linker via the cmd file.
+                   For starters, we already have a "_DSP28x_usDelay:" routine, writtem in assembler, 
+                   in DSP281x_usDelay.asm, designed to load in Flash and run in RAM.
+                   Initially, it loads in it's own Flash section FLASHJ and runs at RAMLO, 0x8000.
+                   And this works. Saving original CMD file in F2812_CMD_2017_08_07
+                   Lets try loading it along with all the other FLASH code, and see if we can
+                   still copy it to ram and get it to run.
+                   And the answer is yes it loads into Flash, copies fine into RAM, and
+                   executes in RAM, and CCS allows us to place breakpoints to catch it 
+                   executing in RAM.
+                   
+                   So far, I've added only 2 small mods: (1) I added code to zero-out some of RAML0
+                   before copying "_DSP28x_usDelay:" code into it -- not to enhance functionality, but 
+                   to make it more visible when copying code into it.
+                   (2) altered the .cmd file so that "_DSP28x_usDelay:" is originally loaded into FLASHC
+                   segment along with all of our other regular program code (.text) rather than in it's own
+                   separate FLASHJ segment -- this was to verify that I don't have to isolate code, 
+                   loading in a separate segment if it is destined to run in RAM.  
+                   And both of these mods worked fine.
+                   
+                   At this point, I'm going to create a new CCS workspace, with minimal code, to
+                   start working with the TI flash-burning algorithms . . .  
+                   
+3) 08/23/2017   -- . . . And that has been  J_001_TB3CMB_BootLd_002 - 004.  
+                   In J_001_TB3CMB_BootLd_002 - 004 I succeeded in downloading file
+                   TB3CM_BootLoad.Mcs and successfully burning it into segments
+                   FLASHA and FLASHB, at address 0x3F4000, length 0x4000.
+                   
+                   Now I'm back looking at this to make it fit and run in flash
+                   segments FLASHC - FLASHJ, so I can try to get the bootloader to load it
+                   as an .mcs file.
+
+4) 08/24/2017   -- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+                   Evidentally, for quite some time, all these CCS projects have been
+                   writing .obj files to folder:
+                      C:\tidcs\c28\DSP281x\v120\DSP281x_examples\sci_loopback_interrupts\Debug
+                   rather than to, for example, 
+                      R:\ti_CCS5c_workspaces\I_001_F281xTB3CMB_010\Debug
+                   I should probably get that fixed.   
+                  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+                   
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+I_001_F281xTB3CMB_009 -- RUN ON TB3CMB/TB3IOMC
+
+1) 06/19/2017   -- Version 01.01.83 
+
+2) 06/20/2017   -- Add CAN commands to read back some settings that were write-only in Classic test station.
+                   0x2001 & 2 Dig & Diff Out Function
+                   0x2003 Dig Out Rail V
+                   0x2004 Dig Out Mode
+                   0x2005 Dig Out State
+                   0x2006 Diff Out Enable & State
+   06/22/2017   -- Got all of those implemented and tested ok.
+
+2) 07/21/2017   -- Version 01.01.84
+                   Broke LED.c,.h out of Timer0.c
+                   After initialization, have DSP, CPLD, and FPGA's display synchronized
+                   slow heartbeat in LED's.
+
+3) 07/25/2017   -- Start work on "fast" algorithm for receiving FPGA program from PC
+                   and writing it into FLASH.
+   07/28/2017   -- "fast" algorithm for receiving FPGA program from PC
+                   and writing it into FLASH Appears to work OK
+                   Version 01.01.85 
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+I_001_F281xTB3CMB_008 -- RUN ON TB3CMB/TB3IOMC
+
+1) 05/03/2017   -- Version 01.01.80
+                   Experienced a problem with Code Composer Studio, 
+                   Rolled to new project I_001_F281xTB3CMB_008 from I_001_F281xTB3CMB_006
+                   In new workspace: R:\ti_CCS5c_workspaces                    
+
+2) 06/01/2017   -- Add CAN commands to read Encoder measurements from Digital Input Machines
+
+3) 06/08/2017   -- Version 01.01.81
+                   Digital Input Machines is largely working.
+                   Need to demonstrate EncI period measurement.
+                   Also need to add CAN commands compatible with Classic Test Statement.
+                   Also Need to complete documentation of CAN commands.
+   06/12/2017   -- Have all the Enc and PWM dig-in-machines code in place and working.
+                   Still need to document it.
+                   
+   06/14/2017   -- Version 01.01.82
+                   Added code to return static "pretty" values responding to Halls Input commands.
+                   Remember TS3 has no requirement to actually do measurements on Hall inputs.
+
+   06/19/2017   -- Version 01.01.82 (6/14/2017)
+                   Code supporting Digital Input Machines works.  Roll to a new project.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+I_001_F281xTB3CMB_006 -- RUN ON TB3CMB/TB3IOMC
+
+1) 01/27/2017   -- Version 01.01.76
+                   I want to try and play with I/O module rs232 via TXD2/RXD2
+
+2) 02/01/2017   -- Version 01.01.77 
+                   SCI2 serial function working pretty well  (I/O module rs232 via TXD2/RXD2) 
+                   
+3) 02/07/2017   -- Added Digital_Out Halls emulator, inc classic & native-32 interfaces 
+
+4) 04/05/2017   -- Version 01.01.78
+                   Starting on digital input machines -- measuring frequency and duty cycle.
+                   Assigned FPGA Bus addresses for Enc & PWM Reads and Writes.
+   04/19/2017   -- Version 01.01.79
+                   Have assignments of which Digital Input goes to which digital machine input.
+                   PWM input measurements appear to be working.
+                   
+ TO DO             Machines are to be implemented in FPGA. In DSP we must do CAN commands and some
+                   numerical scaling for compatibility with classic NTSTSYS test station.
+                   Also need CAN interface for 32-bit "native" interface to FPGA digital input machines.
+                   4/13/2017 -- DH -- Maybe the best approach is to start the FPGA machines, 
+                   followed by native interface in DSP.
+
+                   Remember internal loopback mux allows us to loop digital outputs back to
+                   "A & B" banks of digital inputs to loop output machines to input machines. 
+                   
+5) 05/03/2017   -- Experienced a problem with Code Composer Studio, 
+                   Rolled to new project I_001_F281xTB3CMB_008
+                   In new workspace: R:\ti_CCS5c_workspaces                    
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+I_001_F281xTB3CMB_005 -- RUN ON TB3CMB/TB3IOMC
+
+1) 11/23/2016   -- starting into Resolver work.
+                   Version 01.01.72
+                   Added Resolver.C & H                   
+2) 12/06/2016   -- Changed Timer0 period from 0.1 sec to 0.002 sec for resolver
+
+3) 12/14/2016   -- Added SSEnc.c & .h
+
+4) 12/15/2016   -- Resolver simulator is working, compatible w/ Classic Test Station
+                   Sin Encoder simulator is working: 
+                   Digital portion of SSEnc handles a drive Phase Detect operation (position read)
+                   Analog portion of SSEnc performs similar functions to Classic resolver sim.
+                   Version 01.01.73
+
+5) 12/16/2016   -- Upgrade Dig Out PWM generator machine in FPGA1 from 16-bit to 32-bit.
+
+6) 01/05/2017   -- Add 32-bit Encoder Output x2. Version 01.01.74
+
+7) 01/11/2017   -- Basic Enc1 and Enc2 appear to be working.
+                   Starting work on the stop-enc-after-N-counts feature.
+
+8) 01/19/2017   -- Enc1 and Enc2 appear to be working with the stop-enc-after-N-counts feature.
+                   I'm adding a little code here to avoid changing encoder parameters
+                   when encoder Manual_Stop = 0.  It appears to work well.
+                   
+9) 01/24/2017   -- Enc1 and Enc2 are working well.
+				   Also added Classic Compatible interface for Encoder commands.
+                   Version 01.01.75
+                   
+9) 01/27/2017   -- Classic Compatible commands to set Analog Output Voltages and 
+                   Digital Input Comparator voltages, store both Classic DAC values
+                   and Native DAC values so that PC can read them back later if desired.
+                   
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+I_001_F281xTB3CMB_004 -- RUN ON TB3CMB/TB3IOMC
+
+1)  9/02/2016   -- V01.01.69
+
+2)  9/07/2016   -- added CAN Open table entries to retrieve Anlg_In Calibration offsets.
+
+3)  9/08/2016   -- added CAN Open table entries for Digital Output comparator
+                   voltage thresholds compatible with Classic Test Station, NTSTSYS.
+                   Modified reading of 16 digital input 1/0 states: inverted
+                   value from FPGA to be comparible with Classic Test Station, NTSTSYS.
+
+4)  9/13/2016   -- Compatible Classic Test Station, NTSTSYS: Analog Outputs at 0x200B.01 to .08.
+                   Relocated Native scaling Analog Outputs and other Native Scale DAC
+                   Access to can INDEX 0x2053.
+
+6)  9/14/2016   -- Adjust algorithm to derive native DAC counts from classic Analog Out commands.
+                   V01.01.70
+
+7) 11/2/2016    -- Linker says program .text exceeds what is configured in the .cmd file.
+                   So I edited the .cmd file, combining flash regions FLASHC and FLASHD
+                   into a new "FLASHC", qwhere .text is allocated.
+                   Also used pragma in LOG.H, .C modules to locate log table
+                   into external RAM chip space.
+
+8) 11/15/2016   -- I'm satisfied with 2 out of 3 mechanisms for accessing I2CEEProm
+                   from the PC (1) r/w entire 256-byte contents via "CANFile", and
+                   (2) r/w 1 byte at a time.  Neither mechanism is "simple and straightforward"
+                   at least not from the point of view of the PC end.  To increase
+                   my satisfaction with (1) & (2) I added the CanOpen.doc file to
+                   my code composer studio project -- yes, CCS supports Word files --
+                   and I have some documentation to cover the subject.
+
+9) 11/15/2016   -- Add 1 more mechanism for accessing I2CEEProm: 32-byte r/w
+                   using non-expedited SDO directly w/out using "CANFile."
+
+10) 11/23/2016  -- Got I2CEEProm 32-byte read/write working
+                   Documented CAN interface to I2CEEProm to my satisfaction in 
+                   CanOpen.DOC, Word file included in CCS project.
+                   Wrapping this version up, creating next project before
+                   starting into Resolver work.
+                   Version 01.01.71                   
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+I_001_F281xTB3CMB_003 -- RUN ON TB3CMB/TB3IOMC
+
+1)  7/28/2016   -- Change main() to automatically load both FPGA1 & FPGA2 from Flash.
+                   V01.01.66
+                   WE HAVE A PROBLEM: it loads FPGAs OK under emulator but reports error #2
+                   when booting without emulator (#2 LED_ERROR_BAD_FLASH_BLOCK_0000 : Bad hash in header block,
+                   but it loads FPGAs just fine on CAN command.
+                   *Added a mod to wait in main() until we see Power_Good signals from I/O module,
+                      but that didn't do it. 
+                   *Added some throw-away SPI access of the Flash -- read-status before
+                      trying to load FPGAs, but that didn't help
+                   *Added a delay before loading FPGA's, and that worked !
+                      0.5 Sec didn't help, but 3.0 Sec worked like a charm.
+                      I wonder why?
+ 
+     8/01/2016  -- * Try disabling the RS232 dump of the Speed-dial menu, see if
+                   that allows the FPGA load succeed w/out a delay.
+                   DID NOT WORK: removed the RS232 output speed-dial menu, and 
+                   removed the delay before starting the FPGA Load task, and it
+                   failed to Load the FPGA's -- gives error #2.
+                   
+                   * In main(c) initialization code, I moved the external interface
+                   initialization to happen earlier. DID NOT ALLOW loading FPGA
+                   with no delay.
+                   
+                   *Turned back on speed-dial menu, shortened delay to 2 sec, DID
+                   NOT load FPGA's. (???)
+                   
+                   TEMP CLOSURE -- tried a lot of things and never really figured 
+                   out cause of FPGA LOAD FAILURE. May try more later.  Right now
+                   I delay 2 Sec before starting FPGA load, and I do dump Speed-Dial
+                   menu to RS232 (for some reason it is slow to display. Go figure.)
+                                     
+                   Thoughts to try?
+                   1) Have a start-up task that manages start-up activities such as
+                      dumping the speed-dial menu to RS232 and loading the FPGAs,
+                      and even setting up default LED displazys.  It could even
+                      retry on failure for loading FPGAs.
+                   2) Maybe we should use round-robin tasking on the FPGA Load and 
+                      Speed-dial menu display.
+                   3) Need to bring speed-dial up to date. Some things hark back
+                      to TB3IOMA.                
+
+   8/10/2016 --   Added support to Switch_App.v to control 4 new switches that select input into
+                  24-bit AD7175 A-to-D converter, Analog Input B1.  Four choices are (1) standard
+                  analog input scaling +/-12.5V pin input to 0-to-5V ADC input, (2) Bare input from Pin
+                  (w/2k resistor & protection diodes), (3)Gnd, (4)+2.5V Ref.					
+
+   8/17/2016 --   Created a startup task in main.c, as an attempt to organize
+                  startup tasks and do them one at a time.
+                  This was related to my quest to find out why I need a delay before 
+                  loading FPGA's from FLASH.
+                  I also took a lot of TaskMgr Set commands, and made them 
+                  round-robbin, rather than strict priority.
+                  I didn't find the smoking gun that makes me need to delay loading
+                  FPGA's from Flash.
+                  
+   8/19/2016 --   Created a startup task to configure the AD7175 a-to-d converter
+                  in continuous-read mode.
+                  
+   8/22/2016 --   V01.01.67
+                  Startup task in main.c configures AD7175 A-to-D converter to read
+                  data in continuous conversion mode.
+                  Startup task in main.c performs calibration on all 8 Analog Inputs.
+
+   8/26/2016 --   V01.01.67
+                  Created event-logging utility for diagnostic purposes -- drop macro lines
+                  into code to store timestamped parameters in circular buffer in memory.
+                  Host can read info back via CAN to display it for examination.
+  
+   9/01/2016 --   V01.01.67
+                  Regarding calibration offsets for Analog Inputs:
+                  Previously, for all 8 inputs, we summed a number of readings then
+                  right shifted to divide. For A1,2,3,4 we stored the resulting 
+                  offset value as is, for B1,2,3,4 we subtracted from 0 ans stored the
+                  negative value. Later we subtracted offsets to calculate A1,2,3,4, 
+                  but added offsets to calculate B1,2,3,4.
+                  Changing that to store all offsets as is (without subtracting from 0)
+                  so that later when we calculate calibrated outputs, we can subtract offset
+                  for all Analog Inputs, both A,1,2,3,4, and also B,1,2,3,4.
+
+   9/02/2016 --   V01.01.68
+                  Analog inputs are working, including CAN requests scaled
+                  to be compatible with NTSTSYS and legacy PC software.
+                  REMEMBER (Anlg_In B4 in TB3IOMC -- doesn't work so well --
+                  the design tried out a precision funnel amplifier which 
+                  turns out to be too low impedence to work well for us.
+                  
+                  Saving this and rolling to a new project.
+                   
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+I_001_F281xTB3CMB_002 -- FIRST CODE RUN ON TB3CMB
+
+1) 5/31/2016   -- Modified GpioUtil.C & I2CEE.C regarding reassignment of DSP
+                  IO pins for I2CEEProm circuits between TB3CMA and B. V01.01.63
+                  Added #defines in GpioUtil.h to compile for either RevA or RevB:
+                 // #define TB3CMA_GPIO
+                 // #define TB3CMB_GPIO
+
+2) 6/01/2016   -- CAN uses switch pack for network ID. V01.01.64
+
+3) 6/03/2016   -- Modify FlashRW.c to observe #defines in GpioUtil.h selecting
+                  whether to compile for IO pin assignments for TB3CMA or B
+                  for control lines used in programming FPGAs from FLASH.
+                  V01.01.65
+                  
+4) 6/30/2016   -- Adding CAN commands to test Single Read/Write to AD7175
+
+5) 7/18/2016   -- Upgrade speed-dial command s5 to exercise LEDs for both FPGAs.
+
+6) 7/28/2016   -- Rolling to next version, where I will change main() to automatically
+                  load both FPGA1 & FPGA2 from Flash.                 
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+I_001_F281xTB3CMB_001 -- LAST CODE RUN ON TB3CMA + TB3IOMB
+
+1) 4/7/2016   -- Starting Code for new control board rev TB3CMB, V01.01.057.
+				 (But all this was run on TB3CMA + TB3IOMB hardware)
+                 Added ExtRam.H and .C, modified F2812.cmd to define Ext Ram Addresses
+
+2) 4/20/2016 -- R/W I2CEEProms on each of 3 modules via CAN V01.01.059
+
+3) 4/21/2016 -- Read DIP Switches to determine CAN address V01.01.060
+
+4) 4/22/2016 -- Read Power-Good signals from IO and PM modules
+
+5) 4/26/2016 -- Use a blue-wired prototype to test Interrupt XINT1 which uses 
+                a DSP pin that was used for i2cee_data in TB3CMA V01.01.061.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_017_F281xDigOut_011
+
+1) 10/13/2015 -- Adding Offset calibration for Analog Input circuits. V01.01.054.
+				 Added AnlgIn.C & .H modules, for calibration tasks.
+2) 10/14/2015 -- Adding CAN messages to read calibrated Analog Input values. V01.01.056.
+
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_017_F281xDigOut_010
+
+1) 09/03/2015 -- Adding Interrupt handling to support SSE (Sinusoidal Encoder) interface
+                 Dubbing this feature "F2Int", as in FPGA # 2 interrupt support
+                 as the initial plan is to support an interrupt line from FPGA2 to the DSP.
+                 v01.01.46
+
+2) 09/30/2015 -- Adding features to support SSE (Sinusoidal Encoder) interface
+				 CRC-5 Calculation 
+				 Parameter to specify # of Position Bits
+				 Parameter to Specify Position
+
+3) 10/01/2015 -- Respond to Drive request for # of bits in position using the parameter we
+                 received from the host.
+                 Respond to Drive request for position using parameters from the drive:
+                   eg: position, # of bits in position, alarm-bit.
+                   
+4) 10/02/2015 -- V01.01.053
+                 testing SSEnc, EnDat 2.1 phase detect functions after debugging               
+
+5) 10/13/2015 -- SSEnc functions work well for phase 3 detect packets.  We support
+                 user-settable #-of-bits, and position.
+                 We generate our own CRC_5 in DSP code.
+                 Going to save this version and roll a new version for further work.
+                 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_017_F281xDigOut_009
+
+1) 07/30/2015 -- Copied from _008 testing gitHub
+                 modified DH_Notes & version and timestamped before saving to repository.
+                 v01.01.42
+2) 08/13/2015 -- Adding CAN commands for Testing SSE (Sinusoidal Encoder) interface
+                 v01.01.44
+                 
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_017_F281xDigOut_008
+
+1) 07/30/2015 -- Copied from _003 testing gitHub
+                 modified DH_Notes & version and timestamped before saving to repository.
+                 v01.01.41
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_017_F281xDigOut_003
+
+1) 04/23/2015 -- Had problem setting up project H_017_F281xDigOut_002, so skipped on to _003
+                 Adding CAN command to retrieve DSP timestamp and Rev info.
+
+2) 04/29/2015 -- Add CAN commands to select auto/manual ADC capture 
+3) 04/30/2015 -- Add CAN to read Differential Inputs
+4) 05/01/2015 -- Add CAN Differential Outputs
+5) 05/22/2015 -- v01.01.37 Add support for 2nd bank of 4 Anlg_in, incl. filter clock for MAX297
+6) 07/14/2015 -- v01.01.38 Add CanOpen commands for single Ended Digital Out
+7) 07/21/2015 -- v01.01.39 Add CanOpen for PWM Freq & Duty Cycle for digital Outs. 
+                 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_017_F281xDigOut_001
+
+1) 03/09/2015 -- Support FPGA development for Digital Outputs.
+                 
+2) 03/11/2015 -- Add CAN commands for Digital Output Rail Voltages
+
+3) 3/16/2015  -- Why does FPGA2 LED turn ON when we complete configuration of FPGA1?
+                 Not 100% sure, but FPGA2 thinks it also has been configured.
+                 Solution:  hold F_PROG_2 LOW durring configuration of FPGA1.
+                 Note: we can't really program FPGA2 before FPGA1, since we need
+                 FPGA1 working in order to read INIT and DONE lines for FPGA2.
+                 
+3) 3/19/2015  -- Add CAN commands to read/write FPGA to open/close switches for
+                 io_pins, self_test, loop_back and short_integrator.
+                 
+4) 4/22/2015  -- Add commands to write to 16 DACs -- Analog Out + internal uses
+                 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_016_F281xFlash_001
+
+1) 02/17/2015 -- Exercising Flash memories on TB3IOMB.
+                 Extended spi_disableAllSpiDevices( ) to include all SPI on TB3IOMB.
+                 Added CAN & RS232 commands to specify which of 2 FLASH chips to access.
+                 As of 2/19/2015 reading and writing both Flash chips OK.
+
+2) 02/25/2015 -- Found bug in CanOpen support for FlashRW -- we were using a 32-bit
+                 write to update 16-bit values, resulting in spurious over-write of 
+                 adjacent variable.  Showed up as bad value in frwWhichFlashChip.
+
+3) 02/27/2015 -- In FlashRW, when loading FPGA from Flash, rather than directly accessing
+                 individual PROG INIT and DONE lines, call a routine which considers
+                 which FPGA is being loaded (whichFlash -- same thing) and then does the
+                 appropriate operation on the appropriate control line. Note that
+                 FPGA2's prog and init lines come from the CPLD and FPGA1, (as temp measure)
+                 rather than coming directly from the DSP via the intermodule connector.
+                 
+4) 03/05/2015 -- Add code to test and exercise FPGA2.
+                 As of 3/9/2015 both FPGA's appear to be working ok, loading from flash
+                 on power up. I've run the test writing and reading to stored values in
+                 FPGA, interleaved between 2 FPGAs, and it works without error over extended time.
+  
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_016_F281xCPLD_001
+
+1) 11/04/2014 -- Preparing for TB3IOMB.  
+                 Round up all CPLD references.
+                 Create an enum to identify all CPLD addresses with a mnemonic.
+                 Have one central service that returns addresses based on enum mnemonic.
+                 Provide to change the mapping from mnemonics to addresses when we
+                 change revs of the I/O module.
+
+2) 11/06/2014 -- Developped a new scheme for managing CPLD and FPGA addresses.
+                 CPLD.H has an enum with mnemonics for each address.
+                 macros for #CPLD_XINTF_ADDR(x) and CPLD_FPGA_XINTF_ADDR(x,y)
+                 convert mnemonic into a (Uint16 *) pointer.
+                 
+3) 11/06/2014 -- In testing new scheme for CPLD addresses, I discovered
+                 the I2C_EEProm test commands weren't working.  I solved
+                 it by adding EALLOW / EDIS bracketing to any GPxDIR register
+                 access in the I2CEE.C code.  I have no idea how it ever worked
+                 before without it.                
+
+4) 2/6/2016   -- Debugging CPLD.
+                 Changed "#define TB3IOMA 0" to compile with CPLD addresses for 
+                 TBIOMB, after initial testing failed to allow CPLD to blink CPLD_LED_1,
+                 via command "C2004:0004". Then changed it back 2/9/2016 
+                 Got CPLD working, it was a problem w/ CPLD tools that failed to
+                 report an error when I assigned an output signal to a N/C pin.
+                 Had to search CPLD intermediate result files for "error."                                 
+                 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_015_F281xTimer_001
+
+1) 10/29/2014 -- Change Timer0 to 0.1 sec period, and adjust tasks using original 0.5 sec.
+                 Create Time Service to launch tasks after a variable delay.
+                 Integrate that service with recent RS232 tasks needing delay features.
+                 Consider adding round-robin feature to task manager.
+                 
+2) 10/30/2014 -- Did in fact change timer0 to 0.1 sec period.
+                 Did provide a 5x feature to run existing timed tasks at 0.5 sec.
+                 Added taskMgr_setTaskWithDelay( ) a task manager feature introducing
+                 a delay before a task is launched.
+                 Went back and modified Autobaud and BREAK tasks in rs232.c to
+                 use the new delayed task launch feature.
+
+3) 10/31/2014 -- Add Task Manager capability to provide either Priority or Round-robin
+                 task scheduling.  Works satisfactorily. N
+                 ow we have 3 ways to set a task:
+                 taskMgr_setTask(task_number) -- priority tasking
+				 taskMgr_setTaskWithDelay(task_number, delayInSecTenths) -- priority
+				 taskMgr_setTaskRoundRobin(task_number, delayInSecTenths) -- Round Robin
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_014_F281xRS232_001
+
+1) 10/22/2014 -- Add features to change Baud Rate, Parity, etc.
+                 Add Autobaud feature.
+                 
+2) 10/24/2014 -- completed command to change Baud, Parity, Char, Stop
+                 
+                 eg:  T1004:115200-E-7-1                
+                 
+                 Added infrastructure for command w/ text-string param,
+                 also added routines to work with Decimal-Ascii,
+                 also added command to report currently configured 
+                 baud, parity, chars, stop: 
+                 
+                 eg: C1005Cr
+                 
+3) 10/28/2014 -- Recognizing receipt of BREAK signal. 
+                 We launch Autobaud task as result of BREAK.
+                 REMEMBER: you have to typa 'A' or 'a'
+                 
+                 Added TS3 Diagnostic Portal header display on RS232.
+                 
+                 Added HELP command.               
+
+4) 10/29/2014 -- fixed a problem with CPLD LED display.  Since we use LED.0
+                 as the FPGA ~RESET line, we must avoid turning it on and off
+                 as a general LED.  I changed several routines that had affected
+                 "all 4 LED's" so now they affect only LED's 1,2 & 3.                
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_013_F281xADC_002
+
+1) 10/17/2014 -- Organize ADC functions so they can be easily called.
+                 Add Comint commands to demonstrate the ADC functions.
+                 
+2) 10/17/2014 -- Successfully added one comint command to read one ADC Input voltage
+                 and report it on RS232.
+                 C1011:000x where x is 0-F representing one of 16 ADC input channels.
+                 
+                 Need some work to actually report in volts.
+                 Added a Bin-to-Decimal-Ascii routine, but it can probably be improved.
+                 Figured out a numerical method to convert ADC input values to mV.
+                 Have yet to implement it.
+                                 
+3) 10/21/2014 -- Added routine to HexUtil to convert bin to Ascii-Decimal, and an
+                 additional routine to do that with leading-zero suppression.
+                 So now we have test command C1011:000x to read ADC channel x
+                 and report voltage in milivolts.
+                 
+4) 10/22/2014 -- ADC works mostly:
+                 C1011:000x resets, initializes adc, and reads one voltage, displays on RS232
+                 C1012:000x reset, init, add additional input channel, display all over rs232
+                 C1003  (no, reset/init) re-read configured channels and display all via rs232
+                 C1014  init, reset, read and display all 16 channels
+                 
+                 PROBLEM -- minor, see comments near top of ADC.C. 
+                 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_013_F281xADC_001
+
+1) 10/15/2014 -- Add basic ADC functions -- read various analog voltages into ADC
+                 pins for DSP's internal A to D Converter.
+                 
+                 Added ADC.C and ADC.H files.
+                 Copied routines from example Example_281xAdcSeqModeTest.c
+                 into ADC.C.
+                 Also copied InitAdc( ) function from DSP281x_Adc.c
+                 into ADC.C.
+                 Copied in file DSP281x_usDelay.asm.  It has a function
+                 to implement micro-second delays, invoked in
+                 some example ADC routines.
+                 Also copied in DSP281x_Examples.h which appears to have
+                 defines used in micro-second delay routine.
+                 
+                 Implemented copying Ramfuncs from FLASH into RAM
+                 at start of main( ), because micro-second delay routine
+                 resides in Ramfuncts section and expects to run from RAM.
+                 
+1) 10/17/2014 -- Success with basic ADC functioning.
+                 Configured sequencer for cascaded mode: 16 channels, not (8 x 2)
+                 Triggered ADC conversion from software.
+                 Read 4 ADC input voltages in 1 pass.
+                 Verified numerical results correspond with actual voltages.
+                 
+                 Added command C1010Cr to call routine to do conversion.
+                 Will probably change this in next project version xADC_002
+                  
+                 
+                 
+                 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_012_F281xFLASH_006
+
+1) 10/10/2014 -- Project is in R:\ti_CCS5_workspaces\H_011_F281xFLASH_006.
+                I'm working with C2Prog, programming DSP FLASH over RS232.
+                
+                I noticed that in the previous version, H_011_F281xFLASH_005,
+                the .out and .map files are named with names from some example proprojects I
+                worked with a long time ago, eg Example_281xSci_FFDLB_int.out.
+                I want to change those names to something sensible,
+                probably something generic, and not related to a specific
+                project version.  Maybe something like TB3CM_DSP_Code.out, etc
+                
+                Now I just need to find out why my project has files
+                   Example_281xSci_FFDLB_int.gel
+                   Example_281xSci_FFDLB_int.pjt
+                and get them removed or renamed to something reasonable.
+                For the time being I moved them into a subfolder,
+                and the project still appears to build and debug OK.
+                
+2) 10/13/2014   I was successful loading program to FLASH with C2Prog
+                After building the code, I have a .BAT file:
+                in R:\ti_CCS5_workspaces\H_012_F281xFLASH_006\Debug\HexC2Prog\to_HexC2Prog.Bat
+                which creates a fresh TB3CM_DSP_Code.HEX file in the same folder.
+                1) reboot TB3CMA, shorting jumper to coe up in SCI Boot mode
+                2) Launch C2Prog application program, set following parameters:
+                   Target: 2812
+                   30MHz
+                   Code Security (leave ****)
+                   Smart Sector Selection (check)
+                   Com4
+                3) click the PROGRAM button.  It opens up textbox to report status,
+                   ignore request to reboot target into sci mode
+                   it took me about 28 seconds to program.   
+
+3) 10/13/2014   I raised some questions about the .CMD linker command file, particularly
+                about code that LOADS to FLASH and then runs out of RAM.
+                (A) I have one function InitFlash() that loads rto FLASH and is supposed to
+                run from RAM.  I don't think it is ever copied to RAM, and I don't think it
+                is ever called.
+                (B) there are other functions in DSP281x_SysCtrl, that appear to be located
+                subject to a PRAGMA to put them in a "Ramfuncs" section.  For some reason they
+                appear to load to FLASH and run from FLASH.  Not sure why.
+                
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_012_F281xFLASH_005
+
+1) 9/11/2014 -- Project is in R:\ti_CCS5_workspaces\H_011_F281xFLASH_005
+                I'm working on an automatic edit to insert compile timestamp
+                and maybe version information into the program.
+                
+                That seems to work, we have a VBS script in the folder with
+                the source files -- TS3_DSP_Timestamp.vbs.  For now I use windows
+                explorer to locate the folder and manually run the VBS script
+                by double-clicking it in Windows Explorer.
+                Maybe some day I can discover how to do it automatically
+                when the programs are built.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_012_F281xFLASH_003
+
+1) 9/9/2014 -- Move off of C:\ti_CCS5_workspaces drive to R:\ti_CCS5_workspaces,
+               aka. X:\Digital_Test_Station_TB3\DSP_Program\ti_CCS5_workspaces
+               aka. Y:\New_Test_Board\Firmware\DSP\Main_Processor\Documentation\ . . .
+                      \Engineering\Digital_Test_Station_TB3\DSP_Program\ti_CCS5_workspaces
+
+2) 9/9/2014 -- added timestamp.c & .h modules.  Intention is to have automatic edit of
+               timestamp.c to insert compilation date/time to help in identifying program version.
+                      
+3) 9/11/2014 -- PROBLEM -- evidently it did NOT put the project into R:\ti_CCS5_workspaces\<proj name>
+               as I intended, but just directly into R:\ti_CCS5_workspaces.  I'm going to try
+               to fix this in H_011_F281xFLASH_004.
+               
+               -- Had problems copying project to H_011_F281xFLASH_004.  Recursive copy.
+               I had to interrupt it.
+               
+               I've tried again copying to H_011_F281xFLASH_005, and I've gone back and removed
+               all the files for projects H_011_F281xFLASH_003 & 4.                   
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_012_F281xFLASH_002
+
+1) 8/11/2014 -- Starting work on Programming FPGA from FLASH.
+                Add a simple CAN command to start the programming process.
+                Have a background task to do the actual work.
+ 
+2) 8/14/2014 -- Successful in loading FPGA from FLASH.
+                Adding code to use a RESET signal from CPLD. 
+                RESET is active when DSP first completes loading its program.
+                Actually RESET is asserted when DSP first starts loading FPGA.
+                After FPGA program is loaded and FPGA starts operating under its program,
+                the active RESET directs FPGA to execute default initializations.
+                DSP de-asserts RESET shortly after completing FPGA program load.
+                
+3) 8/18/2014 -- DSP loads FPGA on power-up.
+                DSP monitors FPGA load process for problems and uses
+                blinking LED pattern as diagnostic in case of error.                
+               
+               
+               
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_011_F281xI2C_EEprom_002
+
+1) 5/9/2014 -- I2C EEProm work complete in H_011_F281xI2C_EEprom_001, below.
+               Copied to new project "_002" for whatever development comes next.
+               
+               May not have done anything in project H_011_F281xI2C_EEprom_002 -- DH 8/11/2014
+               
+               
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_011_F281xI2C_EEprom_001
+
+1) 5/8/2014 -- Develop an I2C interface to an EEProm on TB3IOMA
+               Clock and data lines are connected to GPIO pins on the DSP.
+               I'm thinking of using a timer interrupt to run a bit-bang process.
+               
+2) 5/9/2014 -- So far I've got rudimentary control to turn on  / off the EVTimer
+               with an interrupt where we can set the period as
+               (1/75MHz) * period * preascle
+               where period is 1 to 65535
+               and prescale is 1, 2, 4, 8,  ... 128
+               I was thinking of using this to bit-bang the I2C interface.
+               I need to see how we are doing the SPI, possibly waiting on it anyway.
+               Anyway I have RS232 Commands C4101:ddddCr turns it on, C4102:ddddCr off.
+               and it toggles the LEDs when its on.
+               Remember it takes 2 interrupt periods to turn LEDs of, then on.
+               
+               NOTE: Simple EV4Timer ISR, with small switch/case takes 1.8uSec
+               to run, so if we try to run the timer faster than that, we shut
+               down all background activity like COMINT & RS232.
+               For now, I just won't try to run it that fast. -- DH 
+                             
+3) 5/29/2014 -- I2C EEProm is working: Read/Write Single-Byte/Multiple-Bytes.
+                Several Comint commands to exercise features over RS232.                             
+        
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_010_F281xFLASH_001
+
+1) 4/4/2014 -- Starting on job of Programming the FLASH
+                Download data to load into FLASH
+                Want to be able to read back contents of Flash
+                
+2) 5/1/2014 -- Have a lot of working Flash / Spi code
+               Using CAN commands to receive MCS file and write it into Flash.
+               Also have CAN commands to read data from Flash, format as MCS, and Send to PC.
+               
+3) 5/8/2014 -- Wrapping up Flash / SPI code for the time being
+               This F/W works in conjunction with an Excel Client, "TS3_CAN_Test.xls"
+               to send an receive MCS format files to and from the Flash Memory.
+               I have determined that I need 1 4-mBit flash chip for each Spartan-6 FPGA.
+               I have left open the possibility of using some flash space, for example
+               the first 256 bytes (1 page) or more, to store "directory" info about
+               the FPGA Load file in the Flash -- 
+                  Offset of first byte of fpga load file in Flash
+                  Length of fpga load file
+                  filename & version information, date, etc                             
+        
+                
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_009_F281xCAN_007
+
+1) 1/31/2014 -- !!! CAN Multi-Packet WORKS in both directions !!!
+                and it is compatible with NTSTSYS DSP2407 CAN_Main.c
+        
+2) 1/31/2014 -- I'm going to complete the DummyFileXfer as a template for
+                other applications that need multi-packet CAN.
+                
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_009_F281xCAN_006
+
+1) 1/27/2014 -- Breaking out Multi-packet applications into new module CanFile.c  
+
+2) 1/29/2014 -- Got Multipacket "from host" compatible with DSP2407 CAN_Main.c, 
+                as evidenced by successfully having Excel macro send from PC to Test Station RS232 app,
+                and also successfully sending to prototype.
+                Added "DummyFileXfer" app (module CanFile.C) to test multi-packet functionality.
+
+3) 1/30/2014 -- coded multi packet "to host" -- in process of debugging & testing compatibility.
+
+4) 1/31/2014 -- !!! Multi-Packet WORKS in both directions !!!
+                and it is compatible with NTSTSYS DAP2407 CAN_Main.c
+                Meaning -- I have an Excel Client to do multi-packet CAN on the PC
+                and it works with this and also with the RS232 feature in the clasic test station.                
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_009_F281xCAN_005
+
+1) 1/8/2014 -- Ran into a linker problem in _005.  Rolled what I have into
+            a new version _005 before making any changes to linker files.            
+
+2) 1/8/2014 -- I'm in the middle of working on multi-packet uploads.
+
+3) 1/27/2014 -- I got a multi-packet upload to work -- first cut.  
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_009_F281xCAN_004
+
+1) 1/3/2014 -- Add explicit error codes for different types of CanOpen failures, and
+            then start working on multi-packet uploads and downloads.
+            
+2) 1/8/2014 -- Ran into a linker problem.  I'm going to roll what I have into
+            a new version _005 before making any changes to linker files            
+
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_009_F281xCAN_003
+
+1) 12/18/2013 -- adding CAN "NonExpeditedSDO" capability to handle multi-
+           packet upload and download.  My intention is to use this
+           for downloading the FPGA program from the PC to load into
+           the SPI Flash, and thence to load into the FPGA at powerup.
+           First thing is to get the "NonExpeditedSDO" working
+
+2) 12/19/2013 -- decided I need clearer definition of bit fields in
+           MboxA, first 16-bit word in 4x16-bit message data.  In CanOpen
+           this word is used for command spec, toggle bit, expedite flag, etc.
+           So I added struct defs in CanComm.H for union CANOPENMBOXA. 
+           
+3) 1/3/2014 -- Still DON'T have multi-packet upload & download,
+           but I did just complete some CanOpen functions to use index.subindex
+           to retrieve parameters from a table, including a data pointer and function pointers,
+           and to act on the parameters to perform a task and transmit a response.
+           
+           I'm going to roll a new project, and then 
+           Add explicit error codes for different types of failures, and
+           then start working on multi-packet uploads and downloads.         
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_009_F281xCAN_002
+
+1)11/26/2013 Dealing w/ DSP erata notice recommending double read and writes 
+         to/from mailbox RAM.
+         Original code was largely from either Martin's Aimco6 project, or
+         from TI sample 2812 project, neither of which dealt with the issue.
+         I'm comparing it with code from CCR300xxx control boards, which
+         does appear to address the issue.
+         
+         11/27/2013-12/9/2013 added WorkAround.asm to my project (from series 300)
+         Modified numerous accesses to CAN hardware registers to use "canDoublexxxx"
+         assembly routines.  I think I have got all accesses to registers
+         MSGCTRL, MSGID, LAM, MOTO, MOTS, MDL, MDH that might occur when
+         bus-contention problems could occur -- eg. all accesses except 
+         for initial configuratio0n when the CAN device is shut down.
+         CAN SDO communications do appear to be working properly.
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_009_F281xCAN_001
+
+1)11/14/2013 Adding CAN communications.
+2)11/26/3013 Works for Single Packed SDO
+    tested with Waveform_Generator_Test_TS3_CAN.xls
+    in X:\Digital_Test_Station_TB3\Prototypes\CAN
+    implements 3 simple SDO commands.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_008_F281xCmdInt_TskMgr_008
+
+10/9/2013
+
+1. Adding "speed-dial" to command interpreter.  Invoke most popular
+   commands with fewer key strokes:
+   
+S0    -- OoaD to RS232
+S1    -- Set DSP lines to FPGA to allow JTAG Programming
+S2    -- Turn on DSP external Bus
+S3    -- Toggle DSP LED mode
+S4    -- Toggle CPLD LEDs
+S5    -- FPGA LEDs
+S6    -- START: FPGA read/write via both busses
+S7    -- REPORT ON: FPGA read/write via both busses
+S8    -- STOP: FPGA read/write via both busses
+S9    -- Is FPGA Talking?
+s10   -- Watchdog Reset
+
+That's about all I did before letting the code sit for a month while I worked
+on a document about analog circuits on the test station.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+H_008_F281xCmdInt_TskMgr_007
+
+9/27/2013
+1. Continuing to test FPGA functionality, have already seen LED's lit !
+2. Adding Rs232Out.c module, to provide a starting point for a place for
+   tasks to output messages from RS232.
+3. FpgaTest module successfully performs simple reads from FPGA and displays
+   results by transmitting formatted test strings out Rs232Out.
+4. Wrote my own string routine, modified version of standard strcpy( )
+      char* strU_strcpy(char* dest,const char* source)
+   This one returns pointer to null at end of resulting string, which
+   can be used as dest for subsequent call when stringing things together
+5. Developped FPGA test that writes to, then reads back from two "stored_val_n"
+   registers in the FPGA.  Extended this test so it loops thru 2^16 "seed"
+   values, writing and reading back full range of 16-bit values to these
+   two "stored_val_n" registers.  Extended further to access both virtual
+   FPGA's via separate data busses.  Testing reports to RS232, and appears
+   successfull -- able to write and read FPGA via both data busses.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_008_F281xCmdInt_TskMgr_006
+
+9/19/2013
+1. Setting off to test FPGA functionality
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_008_F281xCmdInt_TskMgr_005
+
+1. Added Xintf files and Comint command 0x2000 to call xintf_InitXintf();
+   Commands 0x2001-4 send data used in external bus test routine which
+   runs periodically from Timer0 task.
+   
+As of end of day 8/2/2013
+1. Looks like f/w is working so far . . .
+   C2000cr to initialize Xintf -- do check thru this and make sure it's not doing anything funny
+        it says it is just initializing it to all the default values anyway.
+   C2004:0001Cr starts the Timer0-based Xintf Test routine, writing repeatedly
+        to DSP address 0x08,005A
+   HARDWARE PROBLEM -- when I insert the jumper to supply 3.3V to the Bus Driver chip
+        furthest to the right -- passes control signals like write-enable -- then
+        the DSP's reset line stays low.  -- solved by changing pull-up R on ~DSP_RESET.
+        
+As of 9/19/2013
+1. I have added numerous commands, available over RS232, to facilitate
+   test and debug.  Refer to DH_Notes_Commands.txt file. This includes commands
+   to configure and set GPIO lines to interface with the FPGA, particularly
+   F_INIT and F_PROG.
+2. SUCCESS: I was finally successful in using the Xilinx JTAG to program the
+   FPGA.  (Haven't tested the FPGA at all yet, that's in the next version of this.)
+   Found when I configured GPIO F_INIT (B14) and F_PROG (F9) as outputs and
+   set them HIGH, then I could successfully use iMPACT and JTAG to program the FPGA.
+3. The CPLD appears to be working well. Numerous test routines in Xintf.c, triggered
+   from RS232 / Comint demonstrate CPLD function.
+
+to-do:
+   New command to cause WDOG to reset the DSP.  We need to make sure DSP
+   can pull-down the ~DSP_RESET line with the new pull-up.
+   
+   
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_008_F281xCmdInt_TskMgr_004
+
+so-far:
+1. RS232, TaskMgr, and Comint seem to be working ok, also Timer0 routine
+   displaying LED's via GPIO.
+2. Extended Comint to also  handle form C####:####Cr, 4 chars hex cmd + 4 chrs hex data
+3. Added first tasks kicked off by comint commands: C1000:xxxxCr changes
+   LED flash patterns for xxxx values: 0x1001, 0x0 -> 0xF, <all other values>.
+4. Renamed "Comint" to "Command" in Rs232 in preparation for creating a separate
+   Comint.C & .H modules, reflecting "Command-decoding" vs "command interpreter".
+
+to-do:
+4. Started a practice of supplying an Accessor "_set" routine where rs232_Comint
+   can set a value that is otherwise "private" to the Timer0 modules.
+   Consider other places to use that -- I'm thinking of the command and data values
+   used by the rs232-command-ACK routine, but there are probably other candidates
+   as well.
+5. Need to generalize mechanism to kick off tasks from Comint.
+   Maybe break comint out of the rs232.c and put in its own module.   
+
+AND IT IS HIGH TIME TO TEST MORE HARDWARE !!!!!!!!!!!!
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_008_F281xCmdInt_TskMgr_003
+
+so-far:
+1. RS232, TaskMgr, and Comint seem to be working ok.
+2. added timer0.c & .h modules and GpioUtil.C & .h.
+3. In GpioUtil.c I have a couple of gpio_example... routines at bottom of
+   module.  See where they are used, and if they belong in GpioUtils, or Timer
+   and if they are correctly named and documented. -- DONE
+4. I have multiple timer0_init routines -- can they be combined?
+
+to-do:
+5. Append to Comint to also  handle form C####:####Cr, 4 chars hex cmd + 4 chrs hex data
+5. Start developping test routines, like putting an address on external bus.
+   for starters these could be activated via Hyperterm as C####Cr.
+   Lets create a new HwTest.c & .H module.
+   Lets do a test to blink som LED's.
+   I guess that means adding a timer interrupt too.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+H_008_F281xCmdInt_TskMgr_002
+
+so-far:
+1. Split out TaskMgr modules, and implemented Comint functions
+within RS232 module -- respond to messages of format:
+    'C' XXXX Cr
+2. Added HexUtil.c & .h modules, initially called by RS232 Comint routines.
+3. Experimented with strcpy() routine for writing contents of a quoted text
+   string into a RAM buffer (strcpy((char*)Dest,"Fill with this"). This
+   required adding #includes for <StdIO.H> and <String.h>.  I checked the
+   .map files afterwards and I couldn't see any penalty in RAM or FLASH.
+   And with memcpy((char*)(dest),(char*)(source),count))
+
+to-do:
+8.  Should have Comint_Ack check availibility of RS232 Tx before transmitting?
+    But what should it do if the tx is busy???
+9. CAN ???
+10. Start developping test routines, like putting an address on external bus.
+    for starters these could be activated via Hyperterm as C####Cr.
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+H_008_F281xCmdInt_TskMgr_001
+
+goals:
+Reorganize into separate modules supporting RS232, Command Interpreter
+and Task Manager.
+
+resources:
+Interrupt driven RS232 using FIFOS.
+
+1. Split Main module into "Main", "RS232", and "Comint"
+
+so-far:
+1. Successful in splitting RS232 and Comint functions off into RS232.c and RS232.h.
+2. Learned a "Lesson" in defining bit-fields, re struct RS232_STATUS.
+3. Successful in splitting Task Manager into it's own modules.
+4. Want to put task vectors initialization next to definition of task numbers. -- Not Possible
+5. In taskMgr_runBkgndTasks() add code to check whole word for task bits
+   and don't waste time bit-shifting if the whole word is 0x0000. -- Done
+to-do:
+6. Procede to split the comint out of the RS232, into its own module, or maybe not
+7. Re-vamp the comint functionality to recognize commands in a general way
+   and respond to different commands.
+8.  Should have Comint_Ack check availibility of RS232 Tx before transmitting
+9. Reogranize hex utils.
+10. lets find a better way to put tect into TxBuf[]
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+H_007_F281xSci_FIFO_Interrupts_001
+
+goals:
+1) run it from FLASH -- Done
+
+2) lift some SCI code from F28027_STICK_scia_FFDLB_int_004
+   -- Successful in runing POMH program with Hyperterm on PC COM4 9600-N-8-1
+   
+Next:
+Reorganze it as a command interpreter and Task-Manager.
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+H_006_F281xSci_FIFO_Interrupts_001
+
+Intention is a FLASH based program that sends and receives over SCI
+Using FIFOS and Interrupts.
+
+Created 7/18/2013 - - - - -
+On Menu line: Project // Import Legacy CCSV3.3 Project
+
+C:\TI_SPRCO97_C281x_Header_n_Peripherals_Ex\tidcs\c28\DSP281x
+\v120\DSP281x_examples\sci_loopback_interrupts\Example_281xSci_FFDLB_int.pjt
+
+copy projects into the workspace
+
+In Properties
+  Build/C2000 Compiler/Include Options -- get rid of xdais ref
+  
+-- built ok -----
+Loads into RAM
+Walking through code I see it exercises both SCI A & B
+I've gone back and commented out references to SCIB.
+Initially we have loopback turned on, Later I want to turn that off;
+
+-- At end of day 7/18/2013 ----------------
+It does appear to run in loopback mode with Tx & Rx interrupts,
+receiving pretty much what we transmitted -- though I didn't look too closely.
+Tomorrow I want to set it to 9600 Baud and communicate with a PC / Hyperterm.
+And maybe do it in FLASH if necessary.
+
+-- 7/19/2013 ------------------------------
+1. Studied baud rate settings in SCI reference guide, and annotated our source file
+where it sets baud rate.  Original setting was for 100,000 baud.  I changed it
+to use 9600.  This also required me to change the way the sci FIFO init routines set
+the baud rate.  The virtual Baud Rate Register is a 16-bit register, but to set it
+you have to write to two 8-bit registers SCIHBAUD and SCILBAUD.  If the baud rate is
+high enough, like 100k, the SCIHBAUD register is 0x00, but for a lower baud rate
+like 9600, you have to write non-zero values to both SCIHBAUD & SCILBAUD.  I made
+the adjustment in the init for sciA, if you want to see the old way, I didn't change
+the init for sciB.
+
+2. Turned off the Loopback for sciA.
+
+At end of day, it builds, but gives me warnings where I set the SCIHBAUD & SCILBAUD
+registers.
+
+I Still haven't installed Driveware 7.1 on my lab PC -- but I want to do that as it
+may install the proper USB driver for the USB chip used on TB3CMA (Maybe, I Hope.)
+Then I need to test my firmware with Hyperterm.
+
+-- 7/22/2013 ------------------------------
+1. Installed DriveWare 7.1.  Supposedly it installs drivers for USB.
+
+2. I get some Hyperterm reception (garbage chars) on COM4.
+
+3. Looks like TI's construct for computing SCI_PRD =(LSPCLK_FREQ/(SCI_BAUD_RATE*8))-1
+may be mathematically correct but has problems implemented in #defines.  So I
+hardcoded the baud rate register values for 9600 BD.
+

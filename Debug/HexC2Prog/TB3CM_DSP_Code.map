@@ -1,0 +1,1245 @@
+******************************************************************************
+             TMS320C2000 Linker PC v6.1.0                      
+******************************************************************************
+>> Linked Wed Oct 15 13:28:46 2014
+
+OUTPUT FILE NAME:   <TB3CM_DSP_Code.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 003f26a8
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+PAGE 0:
+  ZONE0                 00002000   00002000  00000000  00002000  RWIX
+  ZONE1                 00004000   00002000  00000000  00002000  RWIX
+  RAML0                 00008000   00001000  0000001b  00000fe5  RWIX
+  ZONE2                 00080000   00080000  00000000  00080000  RWIX
+  ZONE6                 00100000   00080000  00000000  00080000  RWIX
+  OTP                   003d7800   00000800  00000000  00000800  RWIX
+  FLASHJ                003d8000   00002000  00000000  00002000  RWIX
+  FLASHI                003da000   00002000  00000000  00002000  RWIX
+  FLASHH                003dc000   00004000  00000000  00004000  RWIX
+  FLASHG                003e0000   00004000  00000000  00004000  RWIX
+  FLASHF                003e4000   00004000  00000000  00004000  RWIX
+  FLASHE                003e8000   00004000  00000000  00004000  RWIX
+  FLASHD                003ec000   00004000  0000001b  00003fe5  RWIX
+  FLASHC                003f0000   00004000  00002870  00001790  RWIX
+  FLASHA                003f6000   00001f80  00000d76  0000120a  RWIX
+  CSM_RSVD              003f7f80   00000076  00000000  00000076  RWIX
+  BEGIN                 003f7ff6   00000002  00000002  00000000  RWIX
+  CSM_PWL               003f7ff8   00000008  00000000  00000008  RWIX
+  ROM                   003ff000   00000fc0  00000000  00000fc0  RWIX
+  RESET                 003fffc0   00000002  00000000  00000002  RWIX
+  VECTORS               003fffc2   0000003e  00000000  0000003e  RWIX
+
+PAGE 1:
+  RAMM0                 00000000   00000400  00000400  00000000  RWIX
+  RAMM1                 00000400   00000400  00000000  00000400  RWIX
+  DEV_EMU               00000880   00000180  000000d0  000000b0  RWIX
+  FLASH_REGS            00000a80   00000060  00000008  00000058  RWIX
+  CSM                   00000ae0   00000010  00000010  00000000  RWIX
+  XINTF                 00000b20   00000020  00000020  00000000  RWIX
+  CPU_TIMER0            00000c00   00000008  00000008  00000000  RWIX
+  CPU_TIMER1            00000c08   00000008  00000008  00000000  RWIX
+  CPU_TIMER2            00000c10   00000008  00000008  00000000  RWIX
+  PIE_CTRL              00000ce0   00000020  0000001a  00000006  RWIX
+  PIE_VECT              00000d00   00000100  00000100  00000000  RWIX
+  ECANA                 00006000   00000040  00000034  0000000c  RWIX
+  ECANA_LAM             00006040   00000040  00000040  00000000  RWIX
+  ECANA_MOTS            00006080   00000040  00000040  00000000  RWIX
+  ECANA_MOTO            000060c0   00000040  00000040  00000000  RWIX
+  ECANA_MBOX            00006100   00000100  00000100  00000000  RWIX
+  SYSTEM                00007010   00000020  00000020  00000000  RWIX
+  SPIA                  00007040   00000010  00000010  00000000  RWIX
+  SCIA                  00007050   00000010  00000010  00000000  RWIX
+  XINTRUPT              00007070   00000010  00000010  00000000  RWIX
+  GPIOMUX               000070c0   00000020  00000020  00000000  RWIX
+  GPIODAT               000070e0   00000020  00000020  00000000  RWIX
+  ADC                   00007100   00000020  0000001a  00000006  RWIX
+  EVA                   00007400   00000040  00000032  0000000e  RWIX
+  EVB                   00007500   00000040  00000032  0000000e  RWIX
+  SCIB                  00007750   00000010  00000010  00000000  RWIX
+  MCBSPA                00007800   00000040  00000025  0000001b  RWIX
+  RAML1                 00009000   00001000  00000a23  000005dd  RWIX
+  FLASHB                003f4000   00002000  00000000  00002000  RWIX
+  CSM_PWL               003f7ff8   00000008  00000008  00000000  RWIX
+  RAMH0                 003f8000   00002000  00000000  00002000  RWIX
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.pinit     0    003f6000    00000000     UNINITIALIZED
+
+ramfuncs   0    003ec000    0000001b     RUN ADDR = 00008000
+                  003ec000    00000017     DSP281x_SysCtrl.obj (ramfuncs)
+                  003ec017    00000004     DSP281x_usDelay.obj (ramfuncs)
+
+.text      0    003f0000    00002870     
+                  003f0000    00000546     FlashRW.obj (.text)
+                  003f0546    000004b0     FpgaTest.obj (.text)
+                  003f09f6    000004a5     I2CEE.obj (.text)
+                  003f0e9b    00000333     Comint.obj (.text)
+                  003f11ce    00000324     CanOpen.obj (.text)
+                  003f14f2    00000280     CanComm.obj (.text)
+                  003f1772    000001f2     Xintf.obj (.text)
+                  003f1964    00000161     CanFile.obj (.text)
+                  003f1ac5    0000015f     RS232.obj (.text)
+                  003f1c24    0000014f     DSP281x_DefaultIsr.obj (.text:retain)
+                  003f1d73    0000013f     SPI.obj (.text)
+                  003f1eb2    0000010c     Timer0.obj (.text)
+                  003f1fbe    000000e3     Rs232Out.obj (.text)
+                  003f20a1    000000c2     GpioUtil.obj (.text)
+                  003f2163    000000ac     McsParse.obj (.text)
+                  003f220f    000000a0     HexUtil.obj (.text)
+                  003f22af    00000088     RS232.obj (.text:retain)
+                  003f2337    00000086     DSP281x_ECan.obj (.text)
+                  003f23bd    00000086     TaskMgr.obj (.text)
+                  003f2443    00000082     DSP281x_SysCtrl.obj (.text)
+                  003f24c5    0000006b     ADC.obj (.text)
+                  003f2530    0000006b     WorkAround.obj (.text)
+                  003f259b    00000061     EVTimer4.obj (.text)
+                  003f25fc    0000005a     rts2800_ml.lib : fs_mpy.obj (.text)
+                  003f2656    00000052     Main.obj (.text)
+                  003f26a8    00000044     rts2800_ml.lib : boot.obj (.text)
+                  003f26ec    00000043     TimeStamp.obj (.text)
+                  003f272f    00000029     EVTimer4.obj (.text:retain)
+                  003f2758    00000029     rts2800_ml.lib : fs_tol.obj (.text)
+                  003f2781    00000028     DSP281x_PieCtrl.obj (.text)
+                  003f27a9    00000021     rts2800_ml.lib : memcpy_ff.obj (.text)
+                  003f27ca    00000020     DSP281x_PieVect.obj (.text)
+                  003f27ea    0000001e     Timer0.obj (.text:retain)
+                  003f2808    00000019     rts2800_ml.lib : args_main.obj (.text)
+                  003f2821    00000019                    : exit.obj (.text)
+                  003f283a    00000016     StrUtil.obj (.text)
+                  003f2850    0000000f     access32.obj (.text)
+                  003f285f    00000009     rts2800_ml.lib : _lock.obj (.text)
+                  003f2868    00000008     DSP281x_CodeStartBranch.obj (.text)
+
+.econst    0    003f6000    000007a6     
+                  003f6000    0000027f     Comint.obj (.econst:.string)
+                  003f627f    00000001     --HOLE-- [fill = 0]
+                  003f6280    0000019d     FpgaTest.obj (.econst:.string)
+                  003f641d    00000001     --HOLE-- [fill = 0]
+                  003f641e    00000100     DSP281x_PieVect.obj (.econst)
+                  003f651e    000000a2     FlashRW.obj (.econst:.string)
+                  003f65c0    0000009a     I2CEE.obj (.econst:.string)
+                  003f665a    00000064     CanFile.obj (.econst:.string)
+                  003f66be    0000004c     RS232.obj (.econst:.string)
+                  003f670a    00000047     TimeStamp.obj (.econst:.string)
+                  003f6751    00000001     --HOLE-- [fill = 0]
+                  003f6752    00000036     TaskMgr.obj (.econst:_task_vectors)
+                  003f6788    0000001e     Rs232Out.obj (.econst:.string)
+
+.cinit     0    003f67a6    000005b8     
+                  003f67a6    00000577     CanOpen.obj (.cinit)
+                  003f6d1d    0000000f     TimeStamp.obj (.cinit)
+                  003f6d2c    0000000a     rts2800_ml.lib : _lock.obj (.cinit)
+                  003f6d36    0000000a                    : exit.obj (.cinit)
+                  003f6d40    00000008     EVTimer4.obj (.cinit)
+                  003f6d48    00000008     Rs232Out.obj (.cinit)
+                  003f6d50    00000004     Comint.obj (.cinit)
+                  003f6d54    00000004     FlashRW.obj (.cinit)
+                  003f6d58    00000004     TaskMgr.obj (.cinit)
+                  003f6d5c    00000002     --HOLE-- [fill = 0]
+
+.switch    0    003f6d5e    00000018     
+                  003f6d5e    00000018     Comint.obj (.switch:_comint_DisplaySpeedDialList)
+
+codestart 
+*          0    003f7ff6    00000002     
+                  003f7ff6    00000002     DSP281x_CodeStartBranch.obj (codestart)
+
+.reset     0    003fffc0    00000002     DSECT
+                  003fffc0    00000002     rts2800_ml.lib : boot.obj (.reset)
+
+vectors    0    003fffc2    00000000     DSECT
+
+.stack     1    00000000    00000400     UNINITIALIZED
+                  00000000    00000400     --HOLE--
+
+DevEmuRegsFile 
+*          1    00000880    000000d0     UNINITIALIZED
+                  00000880    000000d0     DSP281x_GlobalVariableDefs.obj (DevEmuRegsFile)
+
+FlashRegsFile 
+*          1    00000a80    00000008     UNINITIALIZED
+                  00000a80    00000008     DSP281x_GlobalVariableDefs.obj (FlashRegsFile)
+
+CsmRegsFile 
+*          1    00000ae0    00000010     UNINITIALIZED
+                  00000ae0    00000010     DSP281x_GlobalVariableDefs.obj (CsmRegsFile)
+
+XintfRegsFile 
+*          1    00000b20    00000020     UNINITIALIZED
+                  00000b20    00000020     DSP281x_GlobalVariableDefs.obj (XintfRegsFile)
+
+CpuTimer0RegsFile 
+*          1    00000c00    00000008     UNINITIALIZED
+                  00000c00    00000008     DSP281x_GlobalVariableDefs.obj (CpuTimer0RegsFile)
+
+CpuTimer1RegsFile 
+*          1    00000c08    00000008     UNINITIALIZED
+                  00000c08    00000008     DSP281x_GlobalVariableDefs.obj (CpuTimer1RegsFile)
+
+CpuTimer2RegsFile 
+*          1    00000c10    00000008     UNINITIALIZED
+                  00000c10    00000008     DSP281x_GlobalVariableDefs.obj (CpuTimer2RegsFile)
+
+PieCtrlRegsFile 
+*          1    00000ce0    0000001a     UNINITIALIZED
+                  00000ce0    0000001a     DSP281x_GlobalVariableDefs.obj (PieCtrlRegsFile)
+
+PieVectTableFile 
+*          1    00000d00    00000100     UNINITIALIZED
+                  00000d00    00000100     DSP281x_GlobalVariableDefs.obj (PieVectTableFile)
+
+ECanaRegsFile 
+*          1    00006000    00000034     UNINITIALIZED
+                  00006000    00000034     DSP281x_GlobalVariableDefs.obj (ECanaRegsFile)
+
+ECanaLAMRegsFile 
+*          1    00006040    00000040     UNINITIALIZED
+                  00006040    00000040     DSP281x_GlobalVariableDefs.obj (ECanaLAMRegsFile)
+
+ECanaMOTSRegsFile 
+*          1    00006080    00000040     UNINITIALIZED
+                  00006080    00000040     DSP281x_GlobalVariableDefs.obj (ECanaMOTSRegsFile)
+
+ECanaMOTORegsFile 
+*          1    000060c0    00000040     UNINITIALIZED
+                  000060c0    00000040     DSP281x_GlobalVariableDefs.obj (ECanaMOTORegsFile)
+
+ECanaMboxesFile 
+*          1    00006100    00000100     UNINITIALIZED
+                  00006100    00000100     DSP281x_GlobalVariableDefs.obj (ECanaMboxesFile)
+
+SysCtrlRegsFile 
+*          1    00007010    00000020     UNINITIALIZED
+                  00007010    00000020     DSP281x_GlobalVariableDefs.obj (SysCtrlRegsFile)
+
+SpiaRegsFile 
+*          1    00007040    00000010     UNINITIALIZED
+                  00007040    00000010     DSP281x_GlobalVariableDefs.obj (SpiaRegsFile)
+
+SciaRegsFile 
+*          1    00007050    00000010     UNINITIALIZED
+                  00007050    00000010     DSP281x_GlobalVariableDefs.obj (SciaRegsFile)
+
+XIntruptRegsFile 
+*          1    00007070    00000010     UNINITIALIZED
+                  00007070    00000010     DSP281x_GlobalVariableDefs.obj (XIntruptRegsFile)
+
+GpioMuxRegsFile 
+*          1    000070c0    00000020     UNINITIALIZED
+                  000070c0    00000020     DSP281x_GlobalVariableDefs.obj (GpioMuxRegsFile)
+
+GpioDataRegsFile 
+*          1    000070e0    00000020     UNINITIALIZED
+                  000070e0    00000020     DSP281x_GlobalVariableDefs.obj (GpioDataRegsFile)
+
+AdcRegsFile 
+*          1    00007100    0000001a     UNINITIALIZED
+                  00007100    0000001a     DSP281x_GlobalVariableDefs.obj (AdcRegsFile)
+
+EvaRegsFile 
+*          1    00007400    00000032     UNINITIALIZED
+                  00007400    00000032     DSP281x_GlobalVariableDefs.obj (EvaRegsFile)
+
+EvbRegsFile 
+*          1    00007500    00000032     UNINITIALIZED
+                  00007500    00000032     DSP281x_GlobalVariableDefs.obj (EvbRegsFile)
+
+ScibRegsFile 
+*          1    00007750    00000010     UNINITIALIZED
+                  00007750    00000010     DSP281x_GlobalVariableDefs.obj (ScibRegsFile)
+
+McbspaRegsFile 
+*          1    00007800    00000025     UNINITIALIZED
+                  00007800    00000025     DSP281x_GlobalVariableDefs.obj (McbspaRegsFile)
+
+.ebss      1    00009000    00000a23     UNINITIALIZED
+                  00009000    00000580     CanOpen.obj (.ebss)
+                  00009580    00000180     Rs232Out.obj (.ebss)
+                  00009700    00000140     CanFile.obj (.ebss)
+                  00009840    00000110     RS232.obj (.ebss)
+                  00009950    0000001c     Timer0.obj (.ebss)
+                  0000996c    00000010     ADC.obj (.ebss)
+                  0000997c    00000004     TaskMgr.obj (.ebss)
+                  00009980    00000080     FlashRW.obj (.ebss)
+                  00009a00    00000009     FpgaTest.obj (.ebss)
+                  00009a09    00000001     Comint.obj (.ebss)
+                  00009a0a    00000006     TimeStamp.obj (.ebss)
+                  00009a10    00000005     Xintf.obj (.ebss)
+                  00009a15    00000001     I2CEE.obj (.ebss)
+                  00009a16    00000004     rts2800_ml.lib : _lock.obj (.ebss)
+                  00009a1a    00000004                    : exit.obj (.ebss)
+                  00009a1e    00000002     CanComm.obj (.ebss)
+                  00009a20    00000002     EVTimer4.obj (.ebss)
+                  00009a22    00000001     Main.obj (.ebss)
+
+CsmPwlFile 
+*          1    003f7ff8    00000008     UNINITIALIZED
+                  003f7ff8    00000008     DSP281x_GlobalVariableDefs.obj (CsmPwlFile)
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address    name
+--------   ----
+003f0000   .text
+003f2821   C$$EXIT
+003f25fc   FS$$MPY
+003f2758   FS$$TOL
+003f1c97   _ADCINT_ISR
+00007100   _AdcRegs
+003f1cdd   _CAPINT1_ISR
+003f1ce2   _CAPINT2_ISR
+003f1ce7   _CAPINT3_ISR
+003f1d23   _CAPINT4_ISR
+003f1d28   _CAPINT5_ISR
+003f1d2d   _CAPINT6_ISR
+003f1ca6   _CMP1INT_ISR
+003f1cab   _CMP2INT_ISR
+003f1cb0   _CMP3INT_ISR
+003f1cec   _CMP4INT_ISR
+003f1cf1   _CMP5INT_ISR
+003f1cf6   _CMP6INT_ISR
+003f2545   _CanDoubleClear
+003f2530   _CanDoubleRead
+003f2558   _CanDoubleSet
+003f253a   _CanDoubleWrite
+003f1f25   _ConfigCpuTimer
+00009964   _CpuTimer0
+00000c00   _CpuTimer0Regs
+00009954   _CpuTimer1
+00000c08   _CpuTimer1Regs
+0000995c   _CpuTimer2
+00000c10   _CpuTimer2Regs
+003f7ff8   _CsmPwl
+00000ae0   _CsmRegs
+003f2494   _CsmUnlock
+003f1c2e   _DATALOG_ISR
+00008017   _DSP28x_usDelay
+00000880   _DevEmuRegs
+003f2455   _DisableDog
+003f1d5a   _ECAN0INTA_ISR
+003f1d5f   _ECAN1INTA_ISR
+00006040   _ECanaLAMRegs
+000060c0   _ECanaMOTORegs
+00006080   _ECanaMOTSRegs
+00006100   _ECanaMboxes
+00006000   _ECanaRegs
+003f1d64   _EMPTY_ISR
+003f1c38   _EMUINT_ISR
+003f27a0   _EnableInterrupts
+00007400   _EvaRegs
+00007500   _EvbRegs
+00000a80   _FlashRegs
+000070e0   _GpioDataRegs
+000070c0   _GpioMuxRegs
+003f20dc   _GpioU_FpgaProgHI
+003f20d7   _GpioU_SpiDisableEEPromOnTB3CM
+003f20c7   _GpioU_SpiInit
+003f20a1   _GpioU_defaultInit
+003f20f4   _GpioU_initGpiosAllZero
+003f2108   _GpioU_ioTest2100
+003f20bd   _GpioU_rs232Init
+003f20e8   _GpioU_timer0Init
+003f2103   _Gpio_example3C
+003f1c42   _ILLEGAL_ISR
+003f1c24   _INT13_ISR
+003f1c29   _INT14_ISR
+003f24c5   _InitAdc
+003f1eec   _InitCpuTimers
+003f2337   _InitECan
+00008000   _InitFlash
+003f247a   _InitPeripheralClocks
+003f2781   _InitPieCtrl
+003f27ca   _InitPieVectTable
+003f245d   _InitPll
+003f1d73   _InitSpi
+003f2443   _InitSysCtrl
+0000997c   _JustForDebug
+003f244b   _KickDog
+003f1d3c   _MRINTA_ISR
+003f1d41   _MXINTA_ISR
+00007800   _McbspaRegs
+003f1c3d   _NMI_ISR
+003f1c83   _PDPINTA_ISR
+003f1c88   _PDPINTB_ISR
+003f1d69   _PIE_RESERVED
+00000ce0   _PieCtrlRegs
+00000d00   _PieVectTable
+003f641e   _PieVectTableInit
+003f1c33   _RTOSINT_ISR
+003ec01b   _RamfuncsLoadEnd
+003ec000   _RamfuncsLoadStart
+00008000   _RamfuncsRunStart
+00009845   _Rs232Status
+003f1d46   _SCIRXINTA_ISR
+003f1d50   _SCIRXINTB_ISR
+003f1d4b   _SCITXINTA_ISR
+003f1d55   _SCITXINTB_ISR
+003f1d32   _SPIRXINTA_ISR
+003f1d37   _SPITXINTA_ISR
+0000996c   _SampleTable
+00007050   _SciaRegs
+00007750   _ScibRegs
+003f1dba   _SelectSpiFlash
+00007040   _SpiaRegs
+00007010   _SysCtrlRegs
+003f1cba   _T1CINT_ISR
+003f1cc4   _T1OFINT_ISR
+003f1cb5   _T1PINT_ISR
+003f1cbf   _T1UFINT_ISR
+003f1cce   _T2CINT_ISR
+003f1cd8   _T2OFINT_ISR
+003f1cc9   _T2PINT_ISR
+003f1cd3   _T2UFINT_ISR
+003f1d00   _T3CINT_ISR
+003f1d0a   _T3OFINT_ISR
+003f1cfb   _T3PINT_ISR
+003f1d05   _T3UFINT_ISR
+003f1d14   _T4CINT_ISR
+003f1d1e   _T4OFINT_ISR
+003f1d0f   _T4PINT_ISR
+003f1d19   _T4UFINT_ISR
+003f1c9c   _TINT0_ISR
+003f1b1e   _TurnOnTx
+003f1c74   _USER10_ISR
+003f1c79   _USER11_ISR
+003f1c7e   _USER12_ISR
+003f1c47   _USER1_ISR
+003f1c4c   _USER2_ISR
+003f1c51   _USER3_ISR
+003f1c56   _USER4_ISR
+003f1c5b   _USER5_ISR
+003f1c60   _USER6_ISR
+003f1c65   _USER7_ISR
+003f1c6a   _USER8_ISR
+003f1c6f   _USER9_ISR
+003f1ca1   _WAKEINT_ISR
+003f1c8d   _XINT1_ISR
+003f1c92   _XINT2_ISR
+00007070   _XIntruptRegs
+003f1de4   _Xfr8bitSpiCmd
+00000b20   _XintfRegs
+003f2569   _XmitCanTimestamp
+00000400   __STACK_END
+00000400   __STACK_SIZE
+00000001   __TI_args_main
+ffffffff   ___binit__
+ffffffff   ___c_args__
+003f67a6   ___cinit__
+003f2870   ___etext__
+003f27a9   ___memcpy_ff
+ffffffff   ___pinit__
+003f0000   ___text__
+003f2808   __args_main
+00009a1a   __cleanup_ptr
+00009a1c   __dtors_ptr
+00009a18   __lock
+003f2867   __nop
+003f2863   __register_lock
+003f285f   __register_unlock
+00000000   __stack
+00009a16   __unlock
+003f2821   _abort
+003f24f1   _adc_example_from_main
+003f24d9   _adc_init
+003f2519   _adc_test_usDelay
+0000998e   _bitStreamLength
+00009990   _bitStreamOffset
+003f26a8   _c_int00
+003f15e8   _canC_configMbxForReceive
+003f1588   _canC_configMbxForTransmit
+003f14f2   _canC_initComm
+003f150c   _canC_mailboxInitialization
+003f165f   _canC_pollRecv
+003f16e6   _canC_transmitMessage
+00009700   _canF_diagOnOff
+003f1964   _canF_recvDummyFile
+003f198b   _canF_sendDummyFile
+003f11f4   _canO_HandleCanOpenMessage
+003f14ec   _canO_givesErrForTesting
+003f1327   _canO_multiPktRecv2nd3rdEtc
+003f12e1   _canO_multiPktRecvFirst
+003f1422   _canO_multiPktSend2nd3rdEtc
+003f13ee   _canO_multiPktSendFirst
+003f14d0   _canO_recv16Bits
+003f14ab   _canO_recv32Bits
+003f14dd   _canO_send16Bits
+003f14be   _canO_send32Bits
+00009002   _canTestData0x98765432
+00009000   _canTestData16
+00009a1f   _canTestData16_01
+00009a1e   _canTestData16_02
+00009440   _can_index
+00009581   _circ_buf_next_in
+00009580   _circ_buf_next_out
+003f2859   _clearbits32
+003f113e   _comint_DisplaySpeedDialList
+003f0e9b   _comint_comint
+003f100f   _comint_comintSpeedDial
+00009846   _commandAckCommandCode
+00009843   _commandAckDataWord
+00009844   _commandAckDataWordReceived
+003f11ce   _copyDataToMultiPacketBuf
+003f1a6a   _diagRs232CanRecvMsg
+003f039b   _diagRs232FlashRWBuff
+003f0c8a   _diagRs232I2ceeRead
+003f0cf8   _diagRs232I2ceeWrite8
+003f036d   _diagRs232readFlashRDID
+003f0331   _diagRs232readFlashStatusReg
+003f19d8   _diagRs232recvMultiPacket
+003f19bc   _diagRs232sendDummyFile
+003f1eaf   _diag_SelectSpiFlash
+00009a09   _dsdl_index
+00009740   _dummyFileBuf
+00009702   _dummyFileBufInCharCount
+00009701   _dummyFileBufOutCharCount
+00009703   _dummyFileBufOutPacketSize
+003f1b2a   _error
+003f25f5   _evtimer4_enable_int
+00009a21   _evtimer4_ext_req_to_turn_off
+003f25e6   _evtimer4_initConfig_n_Start
+003f25e7   _evtimer4_initConfig_n_Start_disabled
+003f272f   _evtimer4_isr
+00009a20   _evtimer4_state
+003f25dd   _evtimer4_store_int_vectors_in_PIE
+003f259b   _evtimer4_turn_off
+003f25a0   _evtimer4_turn_on
+003f2823   _exit
+000099c0   _flashRWBuff
+00009986   _flashRWBuffFillIndex
+00009a00   _fpgaT_3004_5000_count
+00009a08   _fpgaT_3004_5000_errors
+00009a04   _fpgaT_3004_5000_immediate_err_test
+00009a03   _fpgaT_3004_5000_immediate_report
+00009a01   _fpgaT_3004_5000_passes
+003f0554   _fpgaT_getledStatus
+003f0558   _fpgaT_initTest
+003f0565   _fpgaT_init_3004_5000_Test
+00009a05   _fpgaT_ledStatus
+003f0546   _fpgaT_setTestData3003
+003f054d   _fpgaT_setTestSelection3004
+003f0771   _fpgaT_test3005
+00009a07   _fpgaT_testData3003
+00009a06   _fpgaT_testSelection3004
+003f056d   _fpgaT_testUnderTimer0
+00009a02   _fpgaT_testUnderTimer0_count
+00009992   _frwDiagFlashAddr
+00009994   _frwFlashAddr
+00009983   _frwFlashTaskState
+003f0134   _frw_MiscFlashTasks
+003f0000   _frw_SpiFlashInit
+003f0005   _frw_SpiFlashTask
+003f0202   _frw_bulkEraseFlashRecv
+003f01f2   _frw_bulkEraseFlashSend
+00009980   _frw_bulkEraseToken
+003f0522   _frw_diagDisplFlashPage
+003f04bc   _frw_diagFlashTasks
+003f021b   _frw_mcsFileRecvData
+003f01c5   _frw_mcsFileRecvStatus
+003f028a   _frw_mcsFileSendData
+003f018e   _frw_readFlashRDID
+003f017d   _frw_readFlashStatusReg
+003f01a4   _frw_releasePowerdownRES
+003f0324   _frw_startLoadFpgaFromFlash
+003f01b5   _frw_startMcsFileRecv
+003f03f4   _frw_test4000
+003f0450   _frw_test4001
+003f0457   _frw_test4002
+003f045e   _frw_test4003
+003f047d   _frw_test4004
+003f04a9   _frw_test4005
+003f228b   _hexUtil_binTo2HexAsciiChars
+003f226a   _hexUtil_binTo4HexAsciiChars
+003f220f   _hexUtil_hexCharToBin
+003f221b   _hexUtil_hexCharsToBin
+003f223f   _hexUtil_isValidAsciiHexDigits
+00009a15   _i2ceeDiagAddr
+003f09f6   _i2cee_Init
+003f0a07   _i2cee_delay
+003f0d25   _i2cee_diag4203Task
+003f0b05   _i2cee_read
+003f0a9d   _i2cee_read1Byte
+003f0c32   _i2cee_read1Byte_SAVE
+003f0d79   _i2cee_test4200
+003f0d8a   _i2cee_test4201
+003f0dbb   _i2cee_test4203
+003f0dd8   _i2cee_test4204
+003f0e15   _i2cee_test4205
+003f0e58   _i2cee_test4206
+003f0b60   _i2cee_write
+003f0a16   _i2cee_write1Byte
+003f0bc3   _i2cee_write1Byte_SAVE
+003f0bb4   _i2cee_writeProtect
+00009a22   _idle_loop_count
+000091a0   _index_2000
+00009190   _index_2001
+00009198   _index_2002
+00009180   _index_2003
+00009188   _index_2004
+000091c8   _index_2005
+000091b8   _index_2006
+000091c0   _index_2007
+000091a8   _index_2008
+00009158   _index_2009
+00009148   _index_200A
+00009150   _index_200B
+00009138   _index_200C
+00009140   _index_200D
+000091b0   _index_200E
+00009170   _index_200F
+00009178   _index_2010
+00009160   _index_2011
+00009168   _index_2012
+00009230   _index_2013
+00009238   _index_2014
+00009228   _index_2015
+00009218   _index_2016
+00009220   _index_2017
+00009260   _index_2018
+00009250   _index_2019
+00009240   _index_201A
+00009248   _index_201B
+000091f0   _index_201C
+000091e0   _index_201D
+000091e8   _index_201E
+000091d0   _index_201F
+000091d8   _index_2020
+00009258   _index_2021
+00009208   _index_2022
+00009210   _index_2023
+000091f8   _index_2024
+00009200   _index_2025
+00009070   _index_2026
+00009060   _index_2027
+00009068   _index_2028
+00009050   _index_2029
+00009058   _index_202A
+00009098   _index_202B
+00009088   _index_202C
+00009090   _index_202D
+00009078   _index_202E
+00009024   _index_202F
+00009014   _index_2030
+0000901c   _index_2031
+00009004   _index_2032
+0000900c   _index_2033
+00009080   _index_2034
+00009040   _index_2035
+00009048   _index_2036
+0000902c   _index_2037
+00009034   _index_2038
+00009108   _index_2039
+000090f8   _index_203A
+00009100   _index_203B
+000090e8   _index_203C
+000090f0   _index_203D
+00009130   _index_203E
+00009120   _index_203F
+00009128   _index_2040
+00009110   _index_2041
+000090c0   _index_2042
+000090b0   _index_2043
+000090b8   _index_2044
+000090a0   _index_2045
+000090a8   _index_2046
+00009118   _index_2047
+000090d8   _index_2048
+00009290   _index_2049
+000092c0   _index_204A
+00009280   _index_204B
+00009300   _index_204C
+000090e0   _index_204D
+000090c8   _index_204E
+000090d0   _index_204F
+0000997d   _just_checking
+003f2656   _main
+00009988   _mcsFileRecvAddrExtension
+00009987   _mcsFileRecvError
+00009981   _mcsFileRecvInProgress
+0000998a   _mcsFileRecvParseStatus
+00009989   _mcsFileRecvStatus
+00009982   _mcsFileSendByteAddr
+0000998c   _mcsFileSendByteCount
+003f2163   _mcsParseReceivedData
+00009984   _miscFlashTaskOperation
+00009985   _miscFlashTaskState
+00009380   _multi_packet_buf
+003f204f   _r232Out_Command_Ack
+003f2081   _r232Out_Command_Nak
+00009582   _r232Out_Tx_buf
+003f2009   _r232Out_circBufOutput
+00009600   _r232Out_circular_buf
+003f1fbe   _r232Out_outChars
+003f2040   _r232Out_transmit_status_busy
+000095c0   _r232Out_util_buf
+00009900   _rdata
+00009841   _rdataIndex
+003f2850   _read32
+003f1b30   _rs232_BgTaskInit
+003f1c20   _rs232_BgTask_TxDone
+003f1bf1   _rs232_BgTask_ooad
+003f1c07   _rs232_BgTask_ts3StartUp
+003f1b2c   _rs232_Init
+003f1b31   _rs232_commandDecode
+003f1af3   _rs232_enable_PIE_int
+003f1aff   _rs232_scia_fifo_init
+003f1be4   _rs232_setCommandAck
+003f1ae7   _rs232_store_int_vectors_in_PIE
+003f1ada   _rs232_transmit_characters
+003f1ac5   _rs232_transmit_status_busy
+003f1acf   _rs232_txFifo_Busy
+003f1d6e   _rsvd_ISR
+003f22f0   _sciaRxFifoIsr
+003f22af   _sciaTxFifoIsr
+00009848   _sdata
+00009842   _sdataCount
+00009840   _sdataIndex
+00009268   _sdo_multi_segment_control_block
+003f2854   _setbits32
+003f1e3c   _spi_BulkEraseFlash
+003f1e7c   _spi_ClockFlashToFpga
+003f1e6b   _spi_ClockFlashToFpgaStart
+003f1e45   _spi_ReadFlash
+003f1e1f   _spi_ReadSpiFlashRDID
+003f1dff   _spi_ReadSpiFlashStatus
+003f1e0c   _spi_ReleasePowerdownRES
+003f1e33   _spi_SetFlashWriteEnable
+003f1e8c   _spi_WriteFlash
+003f1da6   _spi_disableAllSpiDevices
+003f283a   _strU_strcpy
+0000997e   _taskFlags
+003f23f8   _taskMgr_firstSetTaskFlag
+003f23bd   _taskMgr_init
+003f23e3   _taskMgr_nulTask
+003f23e7   _taskMgr_runBkgndTasks
+003f23cf   _taskMgr_setTask
+003f242d   _taskMgr_wDogReset
+003f6752   _task_vectors
+003f1ebd   _timer0_LedErrMsg
+003f1eb9   _timer0_getLedPattern
+003f1f5e   _timer0_init4Leds
+003f1ed0   _timer0_initConfig_n_Start
+003f1ee5   _timer0_init_03
+003f27ea   _timer0_isr
+00009952   _timer0_ledCount
+00009950   _timer0_ledErrCount
+00009951   _timer0_ledPattern
+003f1eb2   _timer0_setLedPattern
+003f1ec7   _timer0_store_int_vectors_in_PIE
+003f1f69   _timer0_task
+003f1fb4   _timer0_task_init
+003f1f59   _timer0_toggle4Leds
+00009a0a   _ts_dateStamp
+003f26ec   _ts_displayBuildDateTimestamp
+00009a0c   _ts_timeStamp
+00009880   _txBuf
+00009a0e   _version
+003f2852   _write32
+003f1dd9   _xfer_16
+003f1772   _xintf_InitXintf
+003f1806   _xintf_getTestSelection2004
+003f180a   _xintf_initTest
+003f17ea   _xintf_setTestData2001
+003f17f1   _xintf_setTestData2002
+003f17f8   _xintf_setTestData2003
+003f17ff   _xintf_setTestSelection2004
+00009a14   _xintf_testData2001
+00009a12   _xintf_testData2002
+00009a10   _xintf_testData2003
+00009a11   _xintf_testSelection2004
+003f1816   _xintf_testUnderTimer0
+00009a13   _xintf_testUnderTimer0_count
+ffffffff   binit
+003f67a6   cinit
+003f2870   etext
+ffffffff   pinit
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address    name
+--------   ----
+00000000   __stack
+00000001   __TI_args_main
+00000400   __STACK_END
+00000400   __STACK_SIZE
+00000880   _DevEmuRegs
+00000a80   _FlashRegs
+00000ae0   _CsmRegs
+00000b20   _XintfRegs
+00000c00   _CpuTimer0Regs
+00000c08   _CpuTimer1Regs
+00000c10   _CpuTimer2Regs
+00000ce0   _PieCtrlRegs
+00000d00   _PieVectTable
+00006000   _ECanaRegs
+00006040   _ECanaLAMRegs
+00006080   _ECanaMOTSRegs
+000060c0   _ECanaMOTORegs
+00006100   _ECanaMboxes
+00007010   _SysCtrlRegs
+00007040   _SpiaRegs
+00007050   _SciaRegs
+00007070   _XIntruptRegs
+000070c0   _GpioMuxRegs
+000070e0   _GpioDataRegs
+00007100   _AdcRegs
+00007400   _EvaRegs
+00007500   _EvbRegs
+00007750   _ScibRegs
+00007800   _McbspaRegs
+00008000   _InitFlash
+00008000   _RamfuncsRunStart
+00008017   _DSP28x_usDelay
+00009000   _canTestData16
+00009002   _canTestData0x98765432
+00009004   _index_2032
+0000900c   _index_2033
+00009014   _index_2030
+0000901c   _index_2031
+00009024   _index_202F
+0000902c   _index_2037
+00009034   _index_2038
+00009040   _index_2035
+00009048   _index_2036
+00009050   _index_2029
+00009058   _index_202A
+00009060   _index_2027
+00009068   _index_2028
+00009070   _index_2026
+00009078   _index_202E
+00009080   _index_2034
+00009088   _index_202C
+00009090   _index_202D
+00009098   _index_202B
+000090a0   _index_2045
+000090a8   _index_2046
+000090b0   _index_2043
+000090b8   _index_2044
+000090c0   _index_2042
+000090c8   _index_204E
+000090d0   _index_204F
+000090d8   _index_2048
+000090e0   _index_204D
+000090e8   _index_203C
+000090f0   _index_203D
+000090f8   _index_203A
+00009100   _index_203B
+00009108   _index_2039
+00009110   _index_2041
+00009118   _index_2047
+00009120   _index_203F
+00009128   _index_2040
+00009130   _index_203E
+00009138   _index_200C
+00009140   _index_200D
+00009148   _index_200A
+00009150   _index_200B
+00009158   _index_2009
+00009160   _index_2011
+00009168   _index_2012
+00009170   _index_200F
+00009178   _index_2010
+00009180   _index_2003
+00009188   _index_2004
+00009190   _index_2001
+00009198   _index_2002
+000091a0   _index_2000
+000091a8   _index_2008
+000091b0   _index_200E
+000091b8   _index_2006
+000091c0   _index_2007
+000091c8   _index_2005
+000091d0   _index_201F
+000091d8   _index_2020
+000091e0   _index_201D
+000091e8   _index_201E
+000091f0   _index_201C
+000091f8   _index_2024
+00009200   _index_2025
+00009208   _index_2022
+00009210   _index_2023
+00009218   _index_2016
+00009220   _index_2017
+00009228   _index_2015
+00009230   _index_2013
+00009238   _index_2014
+00009240   _index_201A
+00009248   _index_201B
+00009250   _index_2019
+00009258   _index_2021
+00009260   _index_2018
+00009268   _sdo_multi_segment_control_block
+00009280   _index_204B
+00009290   _index_2049
+000092c0   _index_204A
+00009300   _index_204C
+00009380   _multi_packet_buf
+00009440   _can_index
+00009580   _circ_buf_next_out
+00009581   _circ_buf_next_in
+00009582   _r232Out_Tx_buf
+000095c0   _r232Out_util_buf
+00009600   _r232Out_circular_buf
+00009700   _canF_diagOnOff
+00009701   _dummyFileBufOutCharCount
+00009702   _dummyFileBufInCharCount
+00009703   _dummyFileBufOutPacketSize
+00009740   _dummyFileBuf
+00009840   _sdataIndex
+00009841   _rdataIndex
+00009842   _sdataCount
+00009843   _commandAckDataWord
+00009844   _commandAckDataWordReceived
+00009845   _Rs232Status
+00009846   _commandAckCommandCode
+00009848   _sdata
+00009880   _txBuf
+00009900   _rdata
+00009950   _timer0_ledErrCount
+00009951   _timer0_ledPattern
+00009952   _timer0_ledCount
+00009954   _CpuTimer1
+0000995c   _CpuTimer2
+00009964   _CpuTimer0
+0000996c   _SampleTable
+0000997c   _JustForDebug
+0000997d   _just_checking
+0000997e   _taskFlags
+00009980   _frw_bulkEraseToken
+00009981   _mcsFileRecvInProgress
+00009982   _mcsFileSendByteAddr
+00009983   _frwFlashTaskState
+00009984   _miscFlashTaskOperation
+00009985   _miscFlashTaskState
+00009986   _flashRWBuffFillIndex
+00009987   _mcsFileRecvError
+00009988   _mcsFileRecvAddrExtension
+00009989   _mcsFileRecvStatus
+0000998a   _mcsFileRecvParseStatus
+0000998c   _mcsFileSendByteCount
+0000998e   _bitStreamLength
+00009990   _bitStreamOffset
+00009992   _frwDiagFlashAddr
+00009994   _frwFlashAddr
+000099c0   _flashRWBuff
+00009a00   _fpgaT_3004_5000_count
+00009a01   _fpgaT_3004_5000_passes
+00009a02   _fpgaT_testUnderTimer0_count
+00009a03   _fpgaT_3004_5000_immediate_report
+00009a04   _fpgaT_3004_5000_immediate_err_test
+00009a05   _fpgaT_ledStatus
+00009a06   _fpgaT_testSelection3004
+00009a07   _fpgaT_testData3003
+00009a08   _fpgaT_3004_5000_errors
+00009a09   _dsdl_index
+00009a0a   _ts_dateStamp
+00009a0c   _ts_timeStamp
+00009a0e   _version
+00009a10   _xintf_testData2003
+00009a11   _xintf_testSelection2004
+00009a12   _xintf_testData2002
+00009a13   _xintf_testUnderTimer0_count
+00009a14   _xintf_testData2001
+00009a15   _i2ceeDiagAddr
+00009a16   __unlock
+00009a18   __lock
+00009a1a   __cleanup_ptr
+00009a1c   __dtors_ptr
+00009a1e   _canTestData16_02
+00009a1f   _canTestData16_01
+00009a20   _evtimer4_state
+00009a21   _evtimer4_ext_req_to_turn_off
+00009a22   _idle_loop_count
+003ec000   _RamfuncsLoadStart
+003ec01b   _RamfuncsLoadEnd
+003f0000   .text
+003f0000   ___text__
+003f0000   _frw_SpiFlashInit
+003f0005   _frw_SpiFlashTask
+003f0134   _frw_MiscFlashTasks
+003f017d   _frw_readFlashStatusReg
+003f018e   _frw_readFlashRDID
+003f01a4   _frw_releasePowerdownRES
+003f01b5   _frw_startMcsFileRecv
+003f01c5   _frw_mcsFileRecvStatus
+003f01f2   _frw_bulkEraseFlashSend
+003f0202   _frw_bulkEraseFlashRecv
+003f021b   _frw_mcsFileRecvData
+003f028a   _frw_mcsFileSendData
+003f0324   _frw_startLoadFpgaFromFlash
+003f0331   _diagRs232readFlashStatusReg
+003f036d   _diagRs232readFlashRDID
+003f039b   _diagRs232FlashRWBuff
+003f03f4   _frw_test4000
+003f0450   _frw_test4001
+003f0457   _frw_test4002
+003f045e   _frw_test4003
+003f047d   _frw_test4004
+003f04a9   _frw_test4005
+003f04bc   _frw_diagFlashTasks
+003f0522   _frw_diagDisplFlashPage
+003f0546   _fpgaT_setTestData3003
+003f054d   _fpgaT_setTestSelection3004
+003f0554   _fpgaT_getledStatus
+003f0558   _fpgaT_initTest
+003f0565   _fpgaT_init_3004_5000_Test
+003f056d   _fpgaT_testUnderTimer0
+003f0771   _fpgaT_test3005
+003f09f6   _i2cee_Init
+003f0a07   _i2cee_delay
+003f0a16   _i2cee_write1Byte
+003f0a9d   _i2cee_read1Byte
+003f0b05   _i2cee_read
+003f0b60   _i2cee_write
+003f0bb4   _i2cee_writeProtect
+003f0bc3   _i2cee_write1Byte_SAVE
+003f0c32   _i2cee_read1Byte_SAVE
+003f0c8a   _diagRs232I2ceeRead
+003f0cf8   _diagRs232I2ceeWrite8
+003f0d25   _i2cee_diag4203Task
+003f0d79   _i2cee_test4200
+003f0d8a   _i2cee_test4201
+003f0dbb   _i2cee_test4203
+003f0dd8   _i2cee_test4204
+003f0e15   _i2cee_test4205
+003f0e58   _i2cee_test4206
+003f0e9b   _comint_comint
+003f100f   _comint_comintSpeedDial
+003f113e   _comint_DisplaySpeedDialList
+003f11ce   _copyDataToMultiPacketBuf
+003f11f4   _canO_HandleCanOpenMessage
+003f12e1   _canO_multiPktRecvFirst
+003f1327   _canO_multiPktRecv2nd3rdEtc
+003f13ee   _canO_multiPktSendFirst
+003f1422   _canO_multiPktSend2nd3rdEtc
+003f14ab   _canO_recv32Bits
+003f14be   _canO_send32Bits
+003f14d0   _canO_recv16Bits
+003f14dd   _canO_send16Bits
+003f14ec   _canO_givesErrForTesting
+003f14f2   _canC_initComm
+003f150c   _canC_mailboxInitialization
+003f1588   _canC_configMbxForTransmit
+003f15e8   _canC_configMbxForReceive
+003f165f   _canC_pollRecv
+003f16e6   _canC_transmitMessage
+003f1772   _xintf_InitXintf
+003f17ea   _xintf_setTestData2001
+003f17f1   _xintf_setTestData2002
+003f17f8   _xintf_setTestData2003
+003f17ff   _xintf_setTestSelection2004
+003f1806   _xintf_getTestSelection2004
+003f180a   _xintf_initTest
+003f1816   _xintf_testUnderTimer0
+003f1964   _canF_recvDummyFile
+003f198b   _canF_sendDummyFile
+003f19bc   _diagRs232sendDummyFile
+003f19d8   _diagRs232recvMultiPacket
+003f1a6a   _diagRs232CanRecvMsg
+003f1ac5   _rs232_transmit_status_busy
+003f1acf   _rs232_txFifo_Busy
+003f1ada   _rs232_transmit_characters
+003f1ae7   _rs232_store_int_vectors_in_PIE
+003f1af3   _rs232_enable_PIE_int
+003f1aff   _rs232_scia_fifo_init
+003f1b1e   _TurnOnTx
+003f1b2a   _error
+003f1b2c   _rs232_Init
+003f1b30   _rs232_BgTaskInit
+003f1b31   _rs232_commandDecode
+003f1be4   _rs232_setCommandAck
+003f1bf1   _rs232_BgTask_ooad
+003f1c07   _rs232_BgTask_ts3StartUp
+003f1c20   _rs232_BgTask_TxDone
+003f1c24   _INT13_ISR
+003f1c29   _INT14_ISR
+003f1c2e   _DATALOG_ISR
+003f1c33   _RTOSINT_ISR
+003f1c38   _EMUINT_ISR
+003f1c3d   _NMI_ISR
+003f1c42   _ILLEGAL_ISR
+003f1c47   _USER1_ISR
+003f1c4c   _USER2_ISR
+003f1c51   _USER3_ISR
+003f1c56   _USER4_ISR
+003f1c5b   _USER5_ISR
+003f1c60   _USER6_ISR
+003f1c65   _USER7_ISR
+003f1c6a   _USER8_ISR
+003f1c6f   _USER9_ISR
+003f1c74   _USER10_ISR
+003f1c79   _USER11_ISR
+003f1c7e   _USER12_ISR
+003f1c83   _PDPINTA_ISR
+003f1c88   _PDPINTB_ISR
+003f1c8d   _XINT1_ISR
+003f1c92   _XINT2_ISR
+003f1c97   _ADCINT_ISR
+003f1c9c   _TINT0_ISR
+003f1ca1   _WAKEINT_ISR
+003f1ca6   _CMP1INT_ISR
+003f1cab   _CMP2INT_ISR
+003f1cb0   _CMP3INT_ISR
+003f1cb5   _T1PINT_ISR
+003f1cba   _T1CINT_ISR
+003f1cbf   _T1UFINT_ISR
+003f1cc4   _T1OFINT_ISR
+003f1cc9   _T2PINT_ISR
+003f1cce   _T2CINT_ISR
+003f1cd3   _T2UFINT_ISR
+003f1cd8   _T2OFINT_ISR
+003f1cdd   _CAPINT1_ISR
+003f1ce2   _CAPINT2_ISR
+003f1ce7   _CAPINT3_ISR
+003f1cec   _CMP4INT_ISR
+003f1cf1   _CMP5INT_ISR
+003f1cf6   _CMP6INT_ISR
+003f1cfb   _T3PINT_ISR
+003f1d00   _T3CINT_ISR
+003f1d05   _T3UFINT_ISR
+003f1d0a   _T3OFINT_ISR
+003f1d0f   _T4PINT_ISR
+003f1d14   _T4CINT_ISR
+003f1d19   _T4UFINT_ISR
+003f1d1e   _T4OFINT_ISR
+003f1d23   _CAPINT4_ISR
+003f1d28   _CAPINT5_ISR
+003f1d2d   _CAPINT6_ISR
+003f1d32   _SPIRXINTA_ISR
+003f1d37   _SPITXINTA_ISR
+003f1d3c   _MRINTA_ISR
+003f1d41   _MXINTA_ISR
+003f1d46   _SCIRXINTA_ISR
+003f1d4b   _SCITXINTA_ISR
+003f1d50   _SCIRXINTB_ISR
+003f1d55   _SCITXINTB_ISR
+003f1d5a   _ECAN0INTA_ISR
+003f1d5f   _ECAN1INTA_ISR
+003f1d64   _EMPTY_ISR
+003f1d69   _PIE_RESERVED
+003f1d6e   _rsvd_ISR
+003f1d73   _InitSpi
+003f1da6   _spi_disableAllSpiDevices
+003f1dba   _SelectSpiFlash
+003f1dd9   _xfer_16
+003f1de4   _Xfr8bitSpiCmd
+003f1dff   _spi_ReadSpiFlashStatus
+003f1e0c   _spi_ReleasePowerdownRES
+003f1e1f   _spi_ReadSpiFlashRDID
+003f1e33   _spi_SetFlashWriteEnable
+003f1e3c   _spi_BulkEraseFlash
+003f1e45   _spi_ReadFlash
+003f1e6b   _spi_ClockFlashToFpgaStart
+003f1e7c   _spi_ClockFlashToFpga
+003f1e8c   _spi_WriteFlash
+003f1eaf   _diag_SelectSpiFlash
+003f1eb2   _timer0_setLedPattern
+003f1eb9   _timer0_getLedPattern
+003f1ebd   _timer0_LedErrMsg
+003f1ec7   _timer0_store_int_vectors_in_PIE
+003f1ed0   _timer0_initConfig_n_Start
+003f1ee5   _timer0_init_03
+003f1eec   _InitCpuTimers
+003f1f25   _ConfigCpuTimer
+003f1f59   _timer0_toggle4Leds
+003f1f5e   _timer0_init4Leds
+003f1f69   _timer0_task
+003f1fb4   _timer0_task_init
+003f1fbe   _r232Out_outChars
+003f2009   _r232Out_circBufOutput
+003f2040   _r232Out_transmit_status_busy
+003f204f   _r232Out_Command_Ack
+003f2081   _r232Out_Command_Nak
+003f20a1   _GpioU_defaultInit
+003f20bd   _GpioU_rs232Init
+003f20c7   _GpioU_SpiInit
+003f20d7   _GpioU_SpiDisableEEPromOnTB3CM
+003f20dc   _GpioU_FpgaProgHI
+003f20e8   _GpioU_timer0Init
+003f20f4   _GpioU_initGpiosAllZero
+003f2103   _Gpio_example3C
+003f2108   _GpioU_ioTest2100
+003f2163   _mcsParseReceivedData
+003f220f   _hexUtil_hexCharToBin
+003f221b   _hexUtil_hexCharsToBin
+003f223f   _hexUtil_isValidAsciiHexDigits
+003f226a   _hexUtil_binTo4HexAsciiChars
+003f228b   _hexUtil_binTo2HexAsciiChars
+003f22af   _sciaTxFifoIsr
+003f22f0   _sciaRxFifoIsr
+003f2337   _InitECan
+003f23bd   _taskMgr_init
+003f23cf   _taskMgr_setTask
+003f23e3   _taskMgr_nulTask
+003f23e7   _taskMgr_runBkgndTasks
+003f23f8   _taskMgr_firstSetTaskFlag
+003f242d   _taskMgr_wDogReset
+003f2443   _InitSysCtrl
+003f244b   _KickDog
+003f2455   _DisableDog
+003f245d   _InitPll
+003f247a   _InitPeripheralClocks
+003f2494   _CsmUnlock
+003f24c5   _InitAdc
+003f24d9   _adc_init
+003f24f1   _adc_example_from_main
+003f2519   _adc_test_usDelay
+003f2530   _CanDoubleRead
+003f253a   _CanDoubleWrite
+003f2545   _CanDoubleClear
+003f2558   _CanDoubleSet
+003f2569   _XmitCanTimestamp
+003f259b   _evtimer4_turn_off
+003f25a0   _evtimer4_turn_on
+003f25dd   _evtimer4_store_int_vectors_in_PIE
+003f25e6   _evtimer4_initConfig_n_Start
+003f25e7   _evtimer4_initConfig_n_Start_disabled
+003f25f5   _evtimer4_enable_int
+003f25fc   FS$$MPY
+003f2656   _main
+003f26a8   _c_int00
+003f26ec   _ts_displayBuildDateTimestamp
+003f272f   _evtimer4_isr
+003f2758   FS$$TOL
+003f2781   _InitPieCtrl
+003f27a0   _EnableInterrupts
+003f27a9   ___memcpy_ff
+003f27ca   _InitPieVectTable
+003f27ea   _timer0_isr
+003f2808   __args_main
+003f2821   C$$EXIT
+003f2821   _abort
+003f2823   _exit
+003f283a   _strU_strcpy
+003f2850   _read32
+003f2852   _write32
+003f2854   _setbits32
+003f2859   _clearbits32
+003f285f   __register_unlock
+003f2863   __register_lock
+003f2867   __nop
+003f2870   ___etext__
+003f2870   etext
+003f641e   _PieVectTableInit
+003f6752   _task_vectors
+003f67a6   ___cinit__
+003f67a6   cinit
+003f7ff8   _CsmPwl
+ffffffff   ___binit__
+ffffffff   ___c_args__
+ffffffff   ___pinit__
+ffffffff   binit
+ffffffff   pinit
+
+[472 symbols]
