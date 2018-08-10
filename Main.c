@@ -145,7 +145,7 @@ void main(void) {
    led_FpgaLedInit();   // Set default TB3IOM FPGA LEDs to slow_heartbeat
    rs232_Init();  // Initialize Tx & Rx variables and routines
 
-   frw_SetWhichFlash(1); // 1=FLASH_1, 2=FLASH_2
+   frw_SetWhichFlash(1); // 1=FLASH_1, 2=FLASH_2, 3=FLASH_3
    frw_SpiFlashInit(); //Initialize a few variables before we launch TASKNUM_SpiFlashTask
 
    // Temporary: For testing CPLD on TB3IOMB -- don't try programming FPGA from FLASH,

@@ -15,7 +15,7 @@ void GpioU_defaultInit(void);
 void GpioU_rs232Init(void);
 void GpioU_sci2Init(void);
 void GpioU_SpiInit(void);
-void GpioU_SpiDisableEEPromOnTB3CM(void);
+// void GpioU_SpiDisableEEPromOnTB3CM(void);
 void GpioU_timer0Init(void);
 void GpioU_initGpiosAllZero(void);
 void GpioU_ioTest2100(Uint16);

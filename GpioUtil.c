@@ -138,27 +138,31 @@ void GpioU_SpiInit(void){
 	// F0 SPI data out
 	// F1 SPI Data IN
 	// F2 SPI Clock Out
-	// F3 ~CS for Spi EEProm on TB3CM -- out, 1
+	// (obs) F3 ~CS for Spi EEProm on TB3CM -- out, 1
 
 	// before initializing GPIO F3 as an output line (below)
 	// initialize it's output value so as to NOT enable the EEPromOnTB3CM
-	GpioU_SpiDisableEEPromOnTB3CM();  // set ~CS, F3 => 1
+	// SPI_EEProm was used in TB3CMA, not in TB3CMB and subsequent designs
+	//GpioU_SpiDisableEEPromOnTB3CM();  // set ~CS, F3 => 1
 
     EALLOW;
     GpioMuxRegs.GPFMUX.bit.SPISIMOA_GPIOF0 = 1; //SPISIMO (O)
     GpioMuxRegs.GPFMUX.bit.SPISOMIA_GPIOF1 = 1; //SPISOMI (I)
     GpioMuxRegs.GPFMUX.bit.SPICLKA_GPIOF2 = 1;  //SPICLK (I/O)
 
-    GpioMuxRegs.GPFDIR.bit.GPIOF3 = 1;  //output
+    //Following used in TB3CMA for experimental SPI_EEProm.
+    //The SPI_EEProm was not included in TB3CMB
+    //GpioMuxRegs.GPFDIR.bit.GPIOF3 = 1;  //output
     EDIS;
 
 }
 
-void GpioU_SpiDisableEEPromOnTB3CM(void){
-    // set GPIO bit F3 HI to disable the Chip Select for the EEProm on TB3CM
-    GpioDataRegs.GPFSET.all |= 0x0008;  // set ~CS, F3 => 1
+//void GpioU_SpiDisableEEPromOnTB3CM(void){
+//    // set GPIO bit F3 HI to disable the Chip Select for the EEProm on TB3CM
+//    GpioDataRegs.GPFSET.all |= 0x0008;  // set ~CS, F3 => 1
+//
+//}
 
-}
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //  NOTES ON IO PIN USE IN TB3CMB VS TB3CMA
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

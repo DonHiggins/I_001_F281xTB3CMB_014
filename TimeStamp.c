@@ -20,14 +20,14 @@
 // Automatic edit changes the version, ts_dateStamp and ts_timeStamp values.
 // RS232 diagnostic command "C1003Cr" reads ascii version and timestamp info.
 const char *version = "V03.01.07\0";
-const char *ts_dateStamp = "07/23/2018\0";
-const char *ts_timeStamp = "10:58\0";
+const char *ts_dateStamp = "08/01/2018\0";
+const char *ts_timeStamp = "09:35\0";
 
 // Automatic edit changes this version and timestamp, in compatible format to FPGA timestamps
 // we have a CAN command to read timestamp and version information
-const Uint16 timeStamp_t1 = 0x1807; // BCD YYMM (0x1504 => 2015 April)
-const Uint16 timeStamp_t2 = 0x2310; // BCD DDHr (0x2315 => 23rd day of month, 3 pm)
-const Uint16 timeStamp_t3 = 0x58A5; // BCD MnA5 (0x25A5 => 25 min past the hour, A5 is a constant)
+const Uint16 timeStamp_t1 = 0x1808; // BCD YYMM (0x1504 => 2015 April)
+const Uint16 timeStamp_t2 = 0x0109; // BCD DDHr (0x2315 => 23rd day of month, 3 pm)
+const Uint16 timeStamp_t3 = 0x35A5; // BCD MnA5 (0x25A5 => 25 min past the hour, A5 is a constant)
 const Uint16 revision_rv1 = 0x0301; // 2 binary bytes A.B
 const Uint16 revision_rv2 = 0x0700; // 2 binary bytes C.0 (version is A.B.C, 0 indicates DSP)
 

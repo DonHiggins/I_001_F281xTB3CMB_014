@@ -117,23 +117,28 @@ void spi_disableAllSpiDevices()
 {
 	Uint16 *extData;
 
+	//  1st FLASH present on TB3IOM
 	extData = CPLD_XINTF_ADDR(TBIOM_CS_IO_FLSH_1);
 	*extData = 0;      // write sets CS_IO_FLSH line HI, data doesn't mater
 
-#if TB3IOMA
-	// EEprom present in TB3IOMA, not present in TB3IOMB
-	extData = CPLD_XINTF_ADDR(TBIOM_CS_IO_EEPRM);
-	*extData = 0;      // write sets CS_IO_EEPRM line HI, data doesn't mater
-#else
-	//  2nd FLASH present on TB3IOMB, not present on TB3IOMA
+	//  2nd FLASH present on TB3IOM
 	extData = CPLD_XINTF_ADDR(TBIOM_CS_IO_FLSH_2);
 	*extData = 0;      // write sets CS_IO_FLSH line HI, data doesn't mater
-#endif
 
+	//  3nd FLASH present on TB3PM
+	extData = CPLD_XINTF_ADDR(TBPM_CS_PM_FLSH_3);
+	*extData = 0;      // write sets CS_IO_FLSH line HI, data doesn't mater
+
+	//  on TB3IOM
 	extData = CPLD_XINTF_ADDR(TBIOM_MISO_ENA);
-	*extData = 0;      // write sets MISO_ENA line HI, data doesn't mater
+	*extData = 0;      // write sets MISO_ENA line HI, (disabled) data doesn't mater
 
-	GpioU_SpiDisableEEPromOnTB3CM(); // set ~ChipSelect HI for EEProm on TB3CM
+	//  on TBPM
+	extData = CPLD_XINTF_ADDR(TBPM_MISO_ENA);
+	*extData = 0;      // write sets MISO_ENA line HI, (disabled) data doesn't mater
+
+	// SPI_EEProm was used in TB3CMA, not in TB3CMB and subsequent designs
+	//GpioU_SpiDisableEEPromOnTB3CM(); // set ~ChipSelect HI for EEProm on TB3CM
 }
 
 //*****************************************************************************************************************
@@ -167,10 +172,12 @@ void SelectSpiFlash( void )
    SpiaRegs.SPISTS.bit.rsvd1        = 0;
 
     // drive designated select pin
-    if ((frw_GetWhichFlash()) == 1) { // 1=FLASH_1, 2=FLASH_2
+    if ((frw_GetWhichFlash()) == 1) { // 1=FLASH_1, 2=FLASH_2, 3=FLASH_3
 	   extData = CPLD_XINTF_ADDR(TBIOM_CS_IO_FLSH_1);
-    } else {
+    } else if ((frw_GetWhichFlash()) == 2){
        extData = CPLD_XINTF_ADDR(TBIOM_CS_IO_FLSH_2);
+    } else {
+       extData = CPLD_XINTF_ADDR(TBPM_CS_PM_FLSH_3);
     }
 	word = *extData;      // read sets CS_IO_FLSH line LOW, (data doesn't mater)
 	extData = CPLD_XINTF_ADDR(TBIOM_MISO_ENA);

@@ -1,4 +1,14 @@
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+I_001_F281xTB3CMB_014-- RUN ON TB3CMB/TB3IOMD & E
+
+1) 7/23/2018   -- Version 03.01.07
+                  New version to start coding for TB3PMA
+                  Starting loading FLASH3 and FPGA3 on TB3PM.
+2) 8/01/2018   -- Completed code for loading FLASH3 and FPGA3 on TB3PM.
+                  This is un-tested as yet, waiting on delivery of TB3PMA protos.
+                  Also I have not yet extended the auto FPGA load on powerup to include FPGA3.
+                  
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 I_001_F281xTB3CMB_013-- RUN ON TB3CMB/TB3IOMD & E
 
 1) 3/16/2018   -- Version 03.01.05

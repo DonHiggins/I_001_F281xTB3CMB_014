@@ -1,10 +1,10 @@
 ******************************************************************************
              TMS320C2000 Linker PC v6.1.0                      
 ******************************************************************************
->> Linked Mon Jul 23 10:41:43 2018
+>> Linked Wed Aug 01 09:36:29 2018
 
 OUTPUT FILE NAME:   <TB3CM_DSP_Code.out>
-ENTRY POINT SYMBOL: "_c_int00"  address: 003dd5d2
+ENTRY POINT SYMBOL: "_c_int00"  address: 003dd61b
 
 
 MEMORY CONFIGURATION
@@ -19,7 +19,7 @@ PAGE 0:
   ZONE6                 00100000   00080000  00000000  00080000  RWIX
   OTP                   003d7800   00000800  00000000  00000800  RWIX
   VEC_FROM_BOOT         003d8000   00000004  00000004  00000000  RWIX
-  FLASHCDEFGHIJ         003d8004   0001bffc  0000797c  00014680  RWIX
+  FLASHCDEFGHIJ         003d8004   0001bffc  000079c5  00014637  RWIX
   FLASHB                003f4000   00002000  00000000  00002000  RWIX
   FLASHA                003f6000   00001f80  00000000  00001f80  RWIX
   CSM_RSVD              003f7f80   00000076  00000000  00000076  RWIX
@@ -74,217 +74,217 @@ bootentry
 *          0    003d8000    00000004     
                   003d8000    00000004     BootLdEntry.obj (bootentry)
 
-.text      0    003d8004    0000586a     
-                  003d8004    000007f2     FlashRW.obj (.text)
-                  003d87f6    000007dc     LimitChk.obj (.text)
-                  003d8fd2    000006ec     FpgaTest.obj (.text)
-                  003d96be    00000680     I2CEE.obj (.text)
-                  003d9d3e    00000528     Comint.obj (.text)
-                  003da266    0000042d     DigIO2.obj (.text)
-                  003da693    00000415     RS232.obj (.text)
-                  003daaa8    000003ea     DigIO.obj (.text)
-                  003dae92    000003ae     CanOpen.obj (.text)
-                  003db240    000002b7     HexUtil.obj (.text)
-                  003db4f7    000002aa     CanComm.obj (.text)
-                  003db7a1    00000276     Xintf.obj (.text)
-                  003dba17    0000025c     AnlgIn.obj (.text)
-                  003dbc73    0000020d     ADC.obj (.text)
-                  003dbe80    000001d5     Resolver.obj (.text)
-                  003dc055    000001c2     F2Int.obj (.text)
-                  003dc217    000001b9     CanFile.obj (.text)
-                  003dc3d0    000001ad     LED.obj (.text)
-                  003dc57d    000001aa     GpioUtil.obj (.text)
-                  003dc727    00000185     Main.obj (.text)
-                  003dc8ac    00000180     TaskMgr.obj (.text)
-                  003dca2c    0000014f     DSP281x_DefaultIsr.obj (.text:retain)
-                  003dcb7b    00000147     SPI.obj (.text)
-                  003dccc2    00000145     SCI2.obj (.text)
-                  003dce07    00000102     Timer0.obj (.text)
-                  003dcf09    000000f5     Rs232Out.obj (.text)
-                  003dcffe    000000ea     Log.obj (.text)
-                  003dd0e8    000000da     RS232.obj (.text:retain)
-                  003dd1c2    000000bf     ExtRam.obj (.text)
-                  003dd281    000000ac     McsParse.obj (.text)
-                  003dd32d    00000086     DSP281x_ECan.obj (.text)
-                  003dd3b3    00000082     DSP281x_SysCtrl.obj (.text)
-                  003dd435    00000077     TimeStamp.obj (.text)
-                  003dd4ac    0000006b     WorkAround.obj (.text)
-                  003dd517    00000061     EVTimer4.obj (.text)
-                  003dd578    0000005a     rts2800_ml.lib : fs_mpy.obj (.text)
-                  003dd5d2    00000044                    : boot.obj (.text)
-                  003dd616    0000003e     F1Int.obj (.text)
-                  003dd654    00000034     SSEnc.obj (.text)
-                  003dd688    0000002a     rts2800_ml.lib : l_div.obj (.text)
-                  003dd6b2    00000029     EVTimer4.obj (.text:retain)
-                  003dd6db    00000029     rts2800_ml.lib : fs_tol.obj (.text)
-                  003dd704    00000028     DSP281x_PieCtrl.obj (.text)
-                  003dd72c    00000021     rts2800_ml.lib : fs_toul.obj (.text)
-                  003dd74d    00000021                    : memcpy_ff.obj (.text)
-                  003dd76e    00000020     DSP281x_PieVect.obj (.text)
-                  003dd78e    0000001f     Timer0.obj (.text:retain)
-                  003dd7ad    0000001c     F1Int.obj (.text:retain)
-                  003dd7c9    0000001a     rts2800_ml.lib : l_tofs.obj (.text)
-                  003dd7e3    00000019                    : args_main.obj (.text)
-                  003dd7fc    00000019                    : exit.obj (.text)
-                  003dd815    00000018     F2Int.obj (.text:retain)
-                  003dd82d    00000016     StrUtil.obj (.text)
-                  003dd843    0000000f     access32.obj (.text)
-                  003dd852    0000000b     rts2800_ml.lib : u_div.obj (.text)
-                  003dd85d    00000009                    : _lock.obj (.text)
-                  003dd866    00000008     DSP281x_CodeStartBranch.obj (.text)
+.text      0    003d8004    000058b3     
+                  003d8004    00000834     FlashRW.obj (.text)
+                  003d8838    000007dc     LimitChk.obj (.text)
+                  003d9014    000006ec     FpgaTest.obj (.text)
+                  003d9700    00000680     I2CEE.obj (.text)
+                  003d9d80    00000528     Comint.obj (.text)
+                  003da2a8    0000042d     DigIO2.obj (.text)
+                  003da6d5    00000415     RS232.obj (.text)
+                  003daaea    000003ea     DigIO.obj (.text)
+                  003daed4    000003ae     CanOpen.obj (.text)
+                  003db282    000002b7     HexUtil.obj (.text)
+                  003db539    000002aa     CanComm.obj (.text)
+                  003db7e3    00000276     Xintf.obj (.text)
+                  003dba59    0000025c     AnlgIn.obj (.text)
+                  003dbcb5    0000020d     ADC.obj (.text)
+                  003dbec2    000001d5     Resolver.obj (.text)
+                  003dc097    000001c2     F2Int.obj (.text)
+                  003dc259    000001b9     CanFile.obj (.text)
+                  003dc412    000001ad     LED.obj (.text)
+                  003dc5bf    000001a1     GpioUtil.obj (.text)
+                  003dc760    00000185     Main.obj (.text)
+                  003dc8e5    00000180     TaskMgr.obj (.text)
+                  003dca65    00000157     SPI.obj (.text)
+                  003dcbbc    0000014f     DSP281x_DefaultIsr.obj (.text:retain)
+                  003dcd0b    00000145     SCI2.obj (.text)
+                  003dce50    00000102     Timer0.obj (.text)
+                  003dcf52    000000f5     Rs232Out.obj (.text)
+                  003dd047    000000ea     Log.obj (.text)
+                  003dd131    000000da     RS232.obj (.text:retain)
+                  003dd20b    000000bf     ExtRam.obj (.text)
+                  003dd2ca    000000ac     McsParse.obj (.text)
+                  003dd376    00000086     DSP281x_ECan.obj (.text)
+                  003dd3fc    00000082     DSP281x_SysCtrl.obj (.text)
+                  003dd47e    00000077     TimeStamp.obj (.text)
+                  003dd4f5    0000006b     WorkAround.obj (.text)
+                  003dd560    00000061     EVTimer4.obj (.text)
+                  003dd5c1    0000005a     rts2800_ml.lib : fs_mpy.obj (.text)
+                  003dd61b    00000044                    : boot.obj (.text)
+                  003dd65f    0000003e     F1Int.obj (.text)
+                  003dd69d    00000034     SSEnc.obj (.text)
+                  003dd6d1    0000002a     rts2800_ml.lib : l_div.obj (.text)
+                  003dd6fb    00000029     EVTimer4.obj (.text:retain)
+                  003dd724    00000029     rts2800_ml.lib : fs_tol.obj (.text)
+                  003dd74d    00000028     DSP281x_PieCtrl.obj (.text)
+                  003dd775    00000021     rts2800_ml.lib : fs_toul.obj (.text)
+                  003dd796    00000021                    : memcpy_ff.obj (.text)
+                  003dd7b7    00000020     DSP281x_PieVect.obj (.text)
+                  003dd7d7    0000001f     Timer0.obj (.text:retain)
+                  003dd7f6    0000001c     F1Int.obj (.text:retain)
+                  003dd812    0000001a     rts2800_ml.lib : l_tofs.obj (.text)
+                  003dd82c    00000019                    : args_main.obj (.text)
+                  003dd845    00000019                    : exit.obj (.text)
+                  003dd85e    00000018     F2Int.obj (.text:retain)
+                  003dd876    00000016     StrUtil.obj (.text)
+                  003dd88c    0000000f     access32.obj (.text)
+                  003dd89b    0000000b     rts2800_ml.lib : u_div.obj (.text)
+                  003dd8a6    00000009                    : _lock.obj (.text)
+                  003dd8af    00000008     DSP281x_CodeStartBranch.obj (.text)
 
-.econst    0    003dd86e    00001c95     
-                  003dd86e    0000020a     FpgaTest.obj (.econst:.string)
-                  003dda78    000001e2     Comint.obj (.econst:.string)
-                  003ddc5a    00000198     LimitChk.obj (.econst:_limitCheckInputs)
-                  003dddf2    00000184     CanOpen.obj (.econst:_can_index)
-                  003ddf76    00000110     CanOpen.obj (.econst:_index_204C)
-                  003de086    00000108     CanOpen.obj (.econst:_index_2057)
-                  003de18e    00000100     DSP281x_PieVect.obj (.econst)
-                  003de28e    00000100     CanOpen.obj (.econst:_index_204E)
-                  003de38e    000000a2     FlashRW.obj (.econst:.string)
-                  003de430    0000009a     I2CEE.obj (.econst:.string)
-                  003de4ca    00000098     CanOpen.obj (.econst:_index_2058)
-                  003de562    00000090     CanOpen.obj (.econst:_index_2050)
-                  003de5f2    00000088     CanOpen.obj (.econst:_index_2053)
-                  003de67a    0000007f     RS232.obj (.econst:.string)
-                  003de6f9    00000001     --HOLE-- [fill = 0]
-                  003de6fa    0000007e     ADC.obj (.econst:.string)
-                  003de778    00000070     CanOpen.obj (.econst:_index_2023)
-                  003de7e8    00000070     CanOpen.obj (.econst:_index_2024)
-                  003de858    00000070     CanOpen.obj (.econst:_index_2025)
-                  003de8c8    00000070     CanOpen.obj (.econst:_index_2026)
-                  003de938    00000070     CanOpen.obj (.econst:_index_2027)
-                  003de9a8    00000070     CanOpen.obj (.econst:_index_2028)
-                  003dea18    00000070     CanOpen.obj (.econst:_index_2029)
-                  003dea88    00000070     CanOpen.obj (.econst:_index_202A)
-                  003deaf8    00000068     CanOpen.obj (.econst:_index_2031)
-                  003deb60    00000064     CanFile.obj (.econst:.string)
-                  003debc4    00000060     CanOpen.obj (.econst:_index_2056)
-                  003dec24    00000060     TaskMgr.obj (.econst:_task_vectors)
-                  003dec84    00000058     CanOpen.obj (.econst:_index_204D)
-                  003decdc    00000058     CanOpen.obj (.econst:_index_2055)
-                  003ded34    00000058     CanOpen.obj (.econst:_index_205F)
-                  003ded8c    00000050     CanOpen.obj (.econst:_index_2010)
-                  003deddc    00000050     CanOpen.obj (.econst:_index_2051)
-                  003dee2c    00000048     CanOpen.obj (.econst:_index_200B)
-                  003dee74    00000047     TimeStamp.obj (.econst:.string)
-                  003deebb    00000001     --HOLE-- [fill = 0]
-                  003deebc    00000040     ExtRam.obj (.econst:.string)
-                  003deefc    00000040     CanOpen.obj (.econst:_index_200C)
-                  003def3c    00000038     CanOpen.obj (.econst:_index_2001)
-                  003def74    00000038     CanOpen.obj (.econst:_index_2003)
-                  003defac    00000038     CanOpen.obj (.econst:_index_2004)
-                  003defe4    00000038     CanOpen.obj (.econst:_index_2013)
-                  003df01c    00000031     F2Int.obj (.econst:.string)
-                  003df04d    00000001     --HOLE-- [fill = 0]
-                  003df04e    00000030     CanOpen.obj (.econst:_index_204A)
-                  003df07e    00000030     CanOpen.obj (.econst:_index_204F)
-                  003df0ae    00000028     CanOpen.obj (.econst:_index_2007)
-                  003df0d6    00000028     CanOpen.obj (.econst:_index_200E)
-                  003df0fe    00000028     CanOpen.obj (.econst:_index_2014)
-                  003df126    00000028     CanOpen.obj (.econst:_index_2015)
-                  003df14e    00000028     CanOpen.obj (.econst:_index_2052)
-                  003df176    00000021     Xintf.obj (.econst:.string)
-                  003df197    00000001     --HOLE-- [fill = 0]
-                  003df198    00000020     CanOpen.obj (.econst:_index_2005)
-                  003df1b8    00000020     CanOpen.obj (.econst:_index_2008)
-                  003df1d8    00000020     CanOpen.obj (.econst:_index_2009)
-                  003df1f8    00000020     CanOpen.obj (.econst:_index_2011)
-                  003df218    00000020     CanOpen.obj (.econst:_index_2036)
-                  003df238    00000020     CanOpen.obj (.econst:_index_2049)
-                  003df258    0000001f     F1Int.obj (.econst:.string)
-                  003df277    00000001     --HOLE-- [fill = 0]
-                  003df278    0000001e     Rs232Out.obj (.econst:.string)
-                  003df296    0000001b     Main.obj (.econst:.string)
-                  003df2b1    00000001     --HOLE-- [fill = 0]
-                  003df2b2    0000001b     SCI2.obj (.econst:.string)
-                  003df2cd    00000001     --HOLE-- [fill = 0]
-                  003df2ce    00000018     CanOpen.obj (.econst:_index_2002)
-                  003df2e6    00000018     CanOpen.obj (.econst:_index_2006)
-                  003df2fe    00000018     CanOpen.obj (.econst:_index_200A)
-                  003df316    00000018     CanOpen.obj (.econst:_index_2012)
-                  003df32e    00000018     CanOpen.obj (.econst:_index_2032)
-                  003df346    00000018     CanOpen.obj (.econst:_index_2054)
-                  003df35e    00000010     CanOpen.obj (.econst:_index_204B)
-                  003df36e    00000008     CanOpen.obj (.econst:_index_2000)
-                  003df376    00000008     CanOpen.obj (.econst:_index_200D)
-                  003df37e    00000008     CanOpen.obj (.econst:_index_200F)
-                  003df386    00000008     CanOpen.obj (.econst:_index_2016)
-                  003df38e    00000008     CanOpen.obj (.econst:_index_2017)
-                  003df396    00000008     CanOpen.obj (.econst:_index_2018)
-                  003df39e    00000008     CanOpen.obj (.econst:_index_2019)
-                  003df3a6    00000008     CanOpen.obj (.econst:_index_201A)
-                  003df3ae    00000008     CanOpen.obj (.econst:_index_201B)
-                  003df3b6    00000008     CanOpen.obj (.econst:_index_201C)
-                  003df3be    00000008     CanOpen.obj (.econst:_index_201D)
-                  003df3c6    00000008     CanOpen.obj (.econst:_index_201E)
-                  003df3ce    00000008     CanOpen.obj (.econst:_index_201F)
-                  003df3d6    00000008     CanOpen.obj (.econst:_index_2020)
-                  003df3de    00000008     CanOpen.obj (.econst:_index_2021)
-                  003df3e6    00000008     CanOpen.obj (.econst:_index_2022)
-                  003df3ee    00000008     CanOpen.obj (.econst:_index_202B)
-                  003df3f6    00000008     CanOpen.obj (.econst:_index_202C)
-                  003df3fe    00000008     CanOpen.obj (.econst:_index_202D)
-                  003df406    00000008     CanOpen.obj (.econst:_index_202E)
-                  003df40e    00000008     CanOpen.obj (.econst:_index_202F)
-                  003df416    00000008     CanOpen.obj (.econst:_index_2030)
-                  003df41e    00000008     CanOpen.obj (.econst:_index_2033)
-                  003df426    00000008     CanOpen.obj (.econst:_index_2034)
-                  003df42e    00000008     CanOpen.obj (.econst:_index_2035)
-                  003df436    00000008     CanOpen.obj (.econst:_index_2037)
-                  003df43e    00000008     CanOpen.obj (.econst:_index_2038)
-                  003df446    00000008     CanOpen.obj (.econst:_index_2039)
-                  003df44e    00000008     CanOpen.obj (.econst:_index_203A)
-                  003df456    00000008     CanOpen.obj (.econst:_index_203B)
-                  003df45e    00000008     CanOpen.obj (.econst:_index_203C)
-                  003df466    00000008     CanOpen.obj (.econst:_index_203D)
-                  003df46e    00000008     CanOpen.obj (.econst:_index_203E)
-                  003df476    00000008     CanOpen.obj (.econst:_index_203F)
-                  003df47e    00000008     CanOpen.obj (.econst:_index_2040)
-                  003df486    00000008     CanOpen.obj (.econst:_index_2041)
-                  003df48e    00000008     CanOpen.obj (.econst:_index_2042)
-                  003df496    00000008     CanOpen.obj (.econst:_index_2043)
-                  003df49e    00000008     CanOpen.obj (.econst:_index_2044)
-                  003df4a6    00000008     CanOpen.obj (.econst:_index_2045)
-                  003df4ae    00000008     CanOpen.obj (.econst:_index_2046)
-                  003df4b6    00000008     CanOpen.obj (.econst:_index_2047)
-                  003df4be    00000008     CanOpen.obj (.econst:_index_2048)
-                  003df4c6    00000008     CanOpen.obj (.econst:_index_2059)
-                  003df4ce    00000008     CanOpen.obj (.econst:_index_205A)
-                  003df4d6    00000008     CanOpen.obj (.econst:_index_205B)
-                  003df4de    00000008     CanOpen.obj (.econst:_index_205C)
-                  003df4e6    00000008     CanOpen.obj (.econst:_index_205D)
-                  003df4ee    00000008     CanOpen.obj (.econst:_index_205E)
-                  003df4f6    00000008     CanOpen.obj (.econst:_index_2060)
-                  003df4fe    00000005     TimeStamp.obj (.econst)
+.econst    0    003dd8b8    00001c95     
+                  003dd8b8    0000020a     FpgaTest.obj (.econst:.string)
+                  003ddac2    000001e2     Comint.obj (.econst:.string)
+                  003ddca4    00000198     LimitChk.obj (.econst:_limitCheckInputs)
+                  003dde3c    00000184     CanOpen.obj (.econst:_can_index)
+                  003ddfc0    00000110     CanOpen.obj (.econst:_index_204C)
+                  003de0d0    00000108     CanOpen.obj (.econst:_index_2057)
+                  003de1d8    00000100     DSP281x_PieVect.obj (.econst)
+                  003de2d8    00000100     CanOpen.obj (.econst:_index_204E)
+                  003de3d8    000000a2     FlashRW.obj (.econst:.string)
+                  003de47a    0000009a     I2CEE.obj (.econst:.string)
+                  003de514    00000098     CanOpen.obj (.econst:_index_2058)
+                  003de5ac    00000090     CanOpen.obj (.econst:_index_2050)
+                  003de63c    00000088     CanOpen.obj (.econst:_index_2053)
+                  003de6c4    0000007f     RS232.obj (.econst:.string)
+                  003de743    00000001     --HOLE-- [fill = 0]
+                  003de744    0000007e     ADC.obj (.econst:.string)
+                  003de7c2    00000070     CanOpen.obj (.econst:_index_2023)
+                  003de832    00000070     CanOpen.obj (.econst:_index_2024)
+                  003de8a2    00000070     CanOpen.obj (.econst:_index_2025)
+                  003de912    00000070     CanOpen.obj (.econst:_index_2026)
+                  003de982    00000070     CanOpen.obj (.econst:_index_2027)
+                  003de9f2    00000070     CanOpen.obj (.econst:_index_2028)
+                  003dea62    00000070     CanOpen.obj (.econst:_index_2029)
+                  003dead2    00000070     CanOpen.obj (.econst:_index_202A)
+                  003deb42    00000068     CanOpen.obj (.econst:_index_2031)
+                  003debaa    00000064     CanFile.obj (.econst:.string)
+                  003dec0e    00000060     CanOpen.obj (.econst:_index_2056)
+                  003dec6e    00000060     TaskMgr.obj (.econst:_task_vectors)
+                  003decce    00000058     CanOpen.obj (.econst:_index_204D)
+                  003ded26    00000058     CanOpen.obj (.econst:_index_2055)
+                  003ded7e    00000058     CanOpen.obj (.econst:_index_205F)
+                  003dedd6    00000050     CanOpen.obj (.econst:_index_2010)
+                  003dee26    00000050     CanOpen.obj (.econst:_index_2051)
+                  003dee76    00000048     CanOpen.obj (.econst:_index_200B)
+                  003deebe    00000047     TimeStamp.obj (.econst:.string)
+                  003def05    00000001     --HOLE-- [fill = 0]
+                  003def06    00000040     ExtRam.obj (.econst:.string)
+                  003def46    00000040     CanOpen.obj (.econst:_index_200C)
+                  003def86    00000038     CanOpen.obj (.econst:_index_2001)
+                  003defbe    00000038     CanOpen.obj (.econst:_index_2003)
+                  003deff6    00000038     CanOpen.obj (.econst:_index_2004)
+                  003df02e    00000038     CanOpen.obj (.econst:_index_2013)
+                  003df066    00000031     F2Int.obj (.econst:.string)
+                  003df097    00000001     --HOLE-- [fill = 0]
+                  003df098    00000030     CanOpen.obj (.econst:_index_204A)
+                  003df0c8    00000030     CanOpen.obj (.econst:_index_204F)
+                  003df0f8    00000028     CanOpen.obj (.econst:_index_2007)
+                  003df120    00000028     CanOpen.obj (.econst:_index_200E)
+                  003df148    00000028     CanOpen.obj (.econst:_index_2014)
+                  003df170    00000028     CanOpen.obj (.econst:_index_2015)
+                  003df198    00000028     CanOpen.obj (.econst:_index_2052)
+                  003df1c0    00000021     Xintf.obj (.econst:.string)
+                  003df1e1    00000001     --HOLE-- [fill = 0]
+                  003df1e2    00000020     CanOpen.obj (.econst:_index_2005)
+                  003df202    00000020     CanOpen.obj (.econst:_index_2008)
+                  003df222    00000020     CanOpen.obj (.econst:_index_2009)
+                  003df242    00000020     CanOpen.obj (.econst:_index_2011)
+                  003df262    00000020     CanOpen.obj (.econst:_index_2036)
+                  003df282    00000020     CanOpen.obj (.econst:_index_2049)
+                  003df2a2    0000001f     F1Int.obj (.econst:.string)
+                  003df2c1    00000001     --HOLE-- [fill = 0]
+                  003df2c2    0000001e     Rs232Out.obj (.econst:.string)
+                  003df2e0    0000001b     Main.obj (.econst:.string)
+                  003df2fb    00000001     --HOLE-- [fill = 0]
+                  003df2fc    0000001b     SCI2.obj (.econst:.string)
+                  003df317    00000001     --HOLE-- [fill = 0]
+                  003df318    00000018     CanOpen.obj (.econst:_index_2002)
+                  003df330    00000018     CanOpen.obj (.econst:_index_2006)
+                  003df348    00000018     CanOpen.obj (.econst:_index_200A)
+                  003df360    00000018     CanOpen.obj (.econst:_index_2012)
+                  003df378    00000018     CanOpen.obj (.econst:_index_2032)
+                  003df390    00000018     CanOpen.obj (.econst:_index_2054)
+                  003df3a8    00000010     CanOpen.obj (.econst:_index_204B)
+                  003df3b8    00000008     CanOpen.obj (.econst:_index_2000)
+                  003df3c0    00000008     CanOpen.obj (.econst:_index_200D)
+                  003df3c8    00000008     CanOpen.obj (.econst:_index_200F)
+                  003df3d0    00000008     CanOpen.obj (.econst:_index_2016)
+                  003df3d8    00000008     CanOpen.obj (.econst:_index_2017)
+                  003df3e0    00000008     CanOpen.obj (.econst:_index_2018)
+                  003df3e8    00000008     CanOpen.obj (.econst:_index_2019)
+                  003df3f0    00000008     CanOpen.obj (.econst:_index_201A)
+                  003df3f8    00000008     CanOpen.obj (.econst:_index_201B)
+                  003df400    00000008     CanOpen.obj (.econst:_index_201C)
+                  003df408    00000008     CanOpen.obj (.econst:_index_201D)
+                  003df410    00000008     CanOpen.obj (.econst:_index_201E)
+                  003df418    00000008     CanOpen.obj (.econst:_index_201F)
+                  003df420    00000008     CanOpen.obj (.econst:_index_2020)
+                  003df428    00000008     CanOpen.obj (.econst:_index_2021)
+                  003df430    00000008     CanOpen.obj (.econst:_index_2022)
+                  003df438    00000008     CanOpen.obj (.econst:_index_202B)
+                  003df440    00000008     CanOpen.obj (.econst:_index_202C)
+                  003df448    00000008     CanOpen.obj (.econst:_index_202D)
+                  003df450    00000008     CanOpen.obj (.econst:_index_202E)
+                  003df458    00000008     CanOpen.obj (.econst:_index_202F)
+                  003df460    00000008     CanOpen.obj (.econst:_index_2030)
+                  003df468    00000008     CanOpen.obj (.econst:_index_2033)
+                  003df470    00000008     CanOpen.obj (.econst:_index_2034)
+                  003df478    00000008     CanOpen.obj (.econst:_index_2035)
+                  003df480    00000008     CanOpen.obj (.econst:_index_2037)
+                  003df488    00000008     CanOpen.obj (.econst:_index_2038)
+                  003df490    00000008     CanOpen.obj (.econst:_index_2039)
+                  003df498    00000008     CanOpen.obj (.econst:_index_203A)
+                  003df4a0    00000008     CanOpen.obj (.econst:_index_203B)
+                  003df4a8    00000008     CanOpen.obj (.econst:_index_203C)
+                  003df4b0    00000008     CanOpen.obj (.econst:_index_203D)
+                  003df4b8    00000008     CanOpen.obj (.econst:_index_203E)
+                  003df4c0    00000008     CanOpen.obj (.econst:_index_203F)
+                  003df4c8    00000008     CanOpen.obj (.econst:_index_2040)
+                  003df4d0    00000008     CanOpen.obj (.econst:_index_2041)
+                  003df4d8    00000008     CanOpen.obj (.econst:_index_2042)
+                  003df4e0    00000008     CanOpen.obj (.econst:_index_2043)
+                  003df4e8    00000008     CanOpen.obj (.econst:_index_2044)
+                  003df4f0    00000008     CanOpen.obj (.econst:_index_2045)
+                  003df4f8    00000008     CanOpen.obj (.econst:_index_2046)
+                  003df500    00000008     CanOpen.obj (.econst:_index_2047)
+                  003df508    00000008     CanOpen.obj (.econst:_index_2048)
+                  003df510    00000008     CanOpen.obj (.econst:_index_2059)
+                  003df518    00000008     CanOpen.obj (.econst:_index_205A)
+                  003df520    00000008     CanOpen.obj (.econst:_index_205B)
+                  003df528    00000008     CanOpen.obj (.econst:_index_205C)
+                  003df530    00000008     CanOpen.obj (.econst:_index_205D)
+                  003df538    00000008     CanOpen.obj (.econst:_index_205E)
+                  003df540    00000008     CanOpen.obj (.econst:_index_2060)
+                  003df548    00000005     TimeStamp.obj (.econst)
 
-.cinit     0    003df503    000003e0     
-                  003df503    00000165     RS232.obj (.cinit)
-                  003df668    00000163     Resolver.obj (.cinit)
-                  003df7cb    00000062     TaskMgr.obj (.cinit)
-                  003df82d    0000002f     Comint.obj (.cinit)
-                  003df85c    0000001d     CanOpen.obj (.cinit)
-                  003df879    00000017     AnlgIn.obj (.cinit)
-                  003df890    00000016     SCI2.obj (.cinit)
-                  003df8a6    0000000f     TimeStamp.obj (.cinit)
-                  003df8b5    0000000a     rts2800_ml.lib : _lock.obj (.cinit)
-                  003df8bf    0000000a                    : exit.obj (.cinit)
-                  003df8c9    00000008     EVTimer4.obj (.cinit)
-                  003df8d1    00000008     Rs232Out.obj (.cinit)
-                  003df8d9    00000004     F2Int.obj (.cinit)
-                  003df8dd    00000004     FlashRW.obj (.cinit)
-                  003df8e1    00000002     --HOLE-- [fill = 0]
+.cinit     0    003df54d    000003e0     
+                  003df54d    00000165     RS232.obj (.cinit)
+                  003df6b2    00000163     Resolver.obj (.cinit)
+                  003df815    00000062     TaskMgr.obj (.cinit)
+                  003df877    0000002f     Comint.obj (.cinit)
+                  003df8a6    0000001d     CanOpen.obj (.cinit)
+                  003df8c3    00000017     AnlgIn.obj (.cinit)
+                  003df8da    00000016     SCI2.obj (.cinit)
+                  003df8f0    0000000f     TimeStamp.obj (.cinit)
+                  003df8ff    0000000a     rts2800_ml.lib : _lock.obj (.cinit)
+                  003df909    0000000a                    : exit.obj (.cinit)
+                  003df913    00000008     EVTimer4.obj (.cinit)
+                  003df91b    00000008     Rs232Out.obj (.cinit)
+                  003df923    00000004     F2Int.obj (.cinit)
+                  003df927    00000004     FlashRW.obj (.cinit)
+                  003df92b    00000002     --HOLE-- [fill = 0]
 
-ramfuncs   0    003df8e3    0000001b     RUN ADDR = 00008000
-                  003df8e3    00000017     DSP281x_SysCtrl.obj (ramfuncs)
-                  003df8fa    00000004     DSP281x_usDelay.obj (ramfuncs)
+ramfuncs   0    003df92d    0000001b     RUN ADDR = 00008000
+                  003df92d    00000017     DSP281x_SysCtrl.obj (ramfuncs)
+                  003df944    00000004     DSP281x_usDelay.obj (ramfuncs)
 
-.switch    0    003df8fe    00000082     
-                  003df8fe    00000030     FlashRW.obj (.switch:_frw_test2005)
-                  003df92e    00000020     DigIO.obj (.switch:_digio_receiveNativeDacVal)
-                  003df94e    0000001a     Xintf.obj (.switch:_xintf_testUnderTimer0)
-                  003df968    00000018     Comint.obj (.switch:_comint_DisplaySpeedDialList)
+.switch    0    003df948    00000082     
+                  003df948    00000030     FlashRW.obj (.switch:_frw_test2005)
+                  003df978    00000020     DigIO.obj (.switch:_digio_receiveNativeDacVal)
+                  003df998    0000001a     Xintf.obj (.switch:_xintf_testUnderTimer0)
+                  003df9b2    00000018     Comint.obj (.switch:_comint_DisplaySpeedDialList)
 
 codestart 
 *          0    003f7ff6    00000002     
@@ -449,37 +449,37 @@ GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name
 address    name
 --------   ----
 003d8004   .text
-003dd7fc   C$$EXIT
-003dd578   FS$$MPY
-003dd6db   FS$$TOL
-003dd72c   FS$$TOUL
-003dd688   L$$DIV
-003dd697   L$$MOD
-003dd7c9   L$$TOFS
-003dd852   U$$DIV
-003dd857   U$$MOD
-003dd6a5   UL$$DIV
-003dd6ac   UL$$MOD
-003dca9f   _ADCINT_ISR
+003dd845   C$$EXIT
+003dd5c1   FS$$MPY
+003dd724   FS$$TOL
+003dd775   FS$$TOUL
+003dd6d1   L$$DIV
+003dd6e0   L$$MOD
+003dd812   L$$TOFS
+003dd89b   U$$DIV
+003dd8a0   U$$MOD
+003dd6ee   UL$$DIV
+003dd6f5   UL$$MOD
+003dcc2f   _ADCINT_ISR
 00007100   _AdcRegs
 003d8002   _BL_key
-003dcae5   _CAPINT1_ISR
-003dcaea   _CAPINT2_ISR
-003dcaef   _CAPINT3_ISR
-003dcb2b   _CAPINT4_ISR
-003dcb30   _CAPINT5_ISR
-003dcb35   _CAPINT6_ISR
-003dcaae   _CMP1INT_ISR
-003dcab3   _CMP2INT_ISR
-003dcab8   _CMP3INT_ISR
-003dcaf4   _CMP4INT_ISR
-003dcaf9   _CMP5INT_ISR
-003dcafe   _CMP6INT_ISR
-003dd4c1   _CanDoubleClear
-003dd4ac   _CanDoubleRead
-003dd4d4   _CanDoubleSet
-003dd4b6   _CanDoubleWrite
-003dce64   _ConfigCpuTimer
+003dcc75   _CAPINT1_ISR
+003dcc7a   _CAPINT2_ISR
+003dcc7f   _CAPINT3_ISR
+003dccbb   _CAPINT4_ISR
+003dccc0   _CAPINT5_ISR
+003dccc5   _CAPINT6_ISR
+003dcc3e   _CMP1INT_ISR
+003dcc43   _CMP2INT_ISR
+003dcc48   _CMP3INT_ISR
+003dcc84   _CMP4INT_ISR
+003dcc89   _CMP5INT_ISR
+003dcc8e   _CMP6INT_ISR
+003dd50a   _CanDoubleClear
+003dd4f5   _CanDoubleRead
+003dd51d   _CanDoubleSet
+003dd4ff   _CanDoubleWrite
+003dcead   _ConfigCpuTimer
 003f8962   _CpuTimer0
 00000c00   _CpuTimer0Regs
 003f895a   _CpuTimer1
@@ -488,21 +488,21 @@ address    name
 00000c10   _CpuTimer2Regs
 003f7ff8   _CsmPwl
 00000ae0   _CsmRegs
-003dd404   _CsmUnlock
-003dca36   _DATALOG_ISR
+003dd44d   _CsmUnlock
+003dcbc6   _DATALOG_ISR
 00008017   _DSP28x_usDelay
 00000880   _DevEmuRegs
-003dd3c5   _DisableDog
-003dcb62   _ECAN0INTA_ISR
-003dcb67   _ECAN1INTA_ISR
+003dd40e   _DisableDog
+003dccf2   _ECAN0INTA_ISR
+003dccf7   _ECAN1INTA_ISR
 00006040   _ECanaLAMRegs
 000060c0   _ECanaMOTORegs
 00006080   _ECanaMOTSRegs
 00006100   _ECanaMboxes
 00006000   _ECanaRegs
-003dcb6c   _EMPTY_ISR
-003dca40   _EMUINT_ISR
-003dd723   _EnableInterrupts
+003dccfc   _EMPTY_ISR
+003dcbd0   _EMUINT_ISR
+003dd76c   _EnableInterrupts
 00007400   _EvaRegs
 00007500   _EvbRegs
 0000019b   _ExtRamSize
@@ -510,157 +510,156 @@ address    name
 00000a80   _FlashRegs
 000070e0   _GpioDataRegs
 000070c0   _GpioMuxRegs
-003dc5cd   _GpioU_SpiDisableEEPromOnTB3CM
-003dc5bd   _GpioU_SpiInit
-003dc57d   _GpioU_defaultInit
-003dc599   _GpioU_f1iInit
-003dc5a1   _GpioU_f2iInit
-003dc5d2   _GpioU_i2cee_Init
-003dc5ea   _GpioU_initGpiosAllZero
-003dc5fe   _GpioU_ioTest2100
-003dc659   _GpioU_ioTest2101
-003dc6cc   _GpioU_ioTest2102
-003dc5a9   _GpioU_rs232Init
-003dc5b3   _GpioU_sci2Init
-003dc5de   _GpioU_timer0Init
-003dc5f9   _Gpio_example3C
-003dca4a   _ILLEGAL_ISR
-003dca2c   _INT13_ISR
-003dca31   _INT14_ISR
-003dce2b   _InitCpuTimers
-003dd32d   _InitECan
+003dc5ff   _GpioU_SpiInit
+003dc5bf   _GpioU_defaultInit
+003dc5db   _GpioU_f1iInit
+003dc5e3   _GpioU_f2iInit
+003dc60b   _GpioU_i2cee_Init
+003dc623   _GpioU_initGpiosAllZero
+003dc637   _GpioU_ioTest2100
+003dc692   _GpioU_ioTest2101
+003dc705   _GpioU_ioTest2102
+003dc5eb   _GpioU_rs232Init
+003dc5f5   _GpioU_sci2Init
+003dc617   _GpioU_timer0Init
+003dc632   _Gpio_example3C
+003dcbda   _ILLEGAL_ISR
+003dcbbc   _INT13_ISR
+003dcbc1   _INT14_ISR
+003dce74   _InitCpuTimers
+003dd376   _InitECan
 00008000   _InitFlash
-003dd3ea   _InitPeripheralClocks
-003dd704   _InitPieCtrl
-003dd76e   _InitPieVectTable
-003dd3cd   _InitPll
-003dcb7b   _InitSpi
-003dd3b3   _InitSysCtrl
+003dd433   _InitPeripheralClocks
+003dd74d   _InitPieCtrl
+003dd7b7   _InitPieVectTable
+003dd416   _InitPll
+003dca65   _InitSpi
+003dd3fc   _InitSysCtrl
 003f9180   _JustForDebug
-003dd3bb   _KickDog
-003dcb44   _MRINTA_ISR
-003dcb49   _MXINTA_ISR
+003dd404   _KickDog
+003dccd4   _MRINTA_ISR
+003dccd9   _MXINTA_ISR
 00007800   _McbspaRegs
-003dca45   _NMI_ISR
-003dca8b   _PDPINTA_ISR
-003dca90   _PDPINTB_ISR
-003dcb71   _PIE_RESERVED
+003dcbd5   _NMI_ISR
+003dcc1b   _PDPINTA_ISR
+003dcc20   _PDPINTB_ISR
+003dcd01   _PIE_RESERVED
 00000ce0   _PieCtrlRegs
 00000d00   _PieVectTable
-003de18e   _PieVectTableInit
-003dca3b   _RTOSINT_ISR
-003df8fe   _RamfuncsLoadEnd
-003df8e3   _RamfuncsLoadStart
+003de1d8   _PieVectTableInit
+003dcbcb   _RTOSINT_ISR
+003df948   _RamfuncsLoadEnd
+003df92d   _RamfuncsLoadStart
 00008000   _RamfuncsRunStart
 003f86c0   _Rs232Status
-003dcb4e   _SCIRXINTA_ISR
-003dcb58   _SCIRXINTB_ISR
-003dcb53   _SCITXINTA_ISR
-003dcb5d   _SCITXINTB_ISR
-003dcb3a   _SPIRXINTA_ISR
-003dcb3f   _SPITXINTA_ISR
+003dccde   _SCIRXINTA_ISR
+003dcce8   _SCIRXINTB_ISR
+003dcce3   _SCITXINTA_ISR
+003dcced   _SCITXINTB_ISR
+003dccca   _SPIRXINTA_ISR
+003dcccf   _SPITXINTA_ISR
 00007050   _SciaRegs
 00007750   _ScibRegs
-003dcbc2   _SelectSpiFlash
+003dcab4   _SelectSpiFlash
 00007040   _SpiaRegs
 00007010   _SysCtrlRegs
-003dcac2   _T1CINT_ISR
-003dcacc   _T1OFINT_ISR
-003dcabd   _T1PINT_ISR
-003dcac7   _T1UFINT_ISR
-003dcad6   _T2CINT_ISR
-003dcae0   _T2OFINT_ISR
-003dcad1   _T2PINT_ISR
-003dcadb   _T2UFINT_ISR
-003dcb08   _T3CINT_ISR
-003dcb12   _T3OFINT_ISR
-003dcb03   _T3PINT_ISR
-003dcb0d   _T3UFINT_ISR
-003dcb1c   _T4CINT_ISR
-003dcb26   _T4OFINT_ISR
-003dcb17   _T4PINT_ISR
-003dcb21   _T4UFINT_ISR
-003dcaa4   _TINT0_ISR
-003da702   _TurnOnTx
-003dca7c   _USER10_ISR
-003dca81   _USER11_ISR
-003dca86   _USER12_ISR
-003dca4f   _USER1_ISR
-003dca54   _USER2_ISR
-003dca59   _USER3_ISR
-003dca5e   _USER4_ISR
-003dca63   _USER5_ISR
-003dca68   _USER6_ISR
-003dca6d   _USER7_ISR
-003dca72   _USER8_ISR
-003dca77   _USER9_ISR
-003dcaa9   _WAKEINT_ISR
-003dca95   _XINT1_ISR
-003dca9a   _XINT2_ISR
+003dcc52   _T1CINT_ISR
+003dcc5c   _T1OFINT_ISR
+003dcc4d   _T1PINT_ISR
+003dcc57   _T1UFINT_ISR
+003dcc66   _T2CINT_ISR
+003dcc70   _T2OFINT_ISR
+003dcc61   _T2PINT_ISR
+003dcc6b   _T2UFINT_ISR
+003dcc98   _T3CINT_ISR
+003dcca2   _T3OFINT_ISR
+003dcc93   _T3PINT_ISR
+003dcc9d   _T3UFINT_ISR
+003dccac   _T4CINT_ISR
+003dccb6   _T4OFINT_ISR
+003dcca7   _T4PINT_ISR
+003dccb1   _T4UFINT_ISR
+003dcc34   _TINT0_ISR
+003da744   _TurnOnTx
+003dcc0c   _USER10_ISR
+003dcc11   _USER11_ISR
+003dcc16   _USER12_ISR
+003dcbdf   _USER1_ISR
+003dcbe4   _USER2_ISR
+003dcbe9   _USER3_ISR
+003dcbee   _USER4_ISR
+003dcbf3   _USER5_ISR
+003dcbf8   _USER6_ISR
+003dcbfd   _USER7_ISR
+003dcc02   _USER8_ISR
+003dcc07   _USER9_ISR
+003dcc39   _WAKEINT_ISR
+003dcc25   _XINT1_ISR
+003dcc2a   _XINT2_ISR
 00007070   _XIntruptRegs
-003dcbf4   _Xfr8bitSpiCmd
+003dcaee   _Xfr8bitSpiCmd
 00000b20   _XintfRegs
-003dd4e5   _XmitCanTimestamp
+003dd52e   _XmitCanTimestamp
 00000400   __STACK_END
 00000400   __STACK_SIZE
 00000001   __TI_args_main
 ffffffff   ___binit__
 ffffffff   ___c_args__
-003df503   ___cinit__
-003dd86e   ___etext__
-003dd74d   ___memcpy_ff
+003df54d   ___cinit__
+003dd8b7   ___etext__
+003dd796   ___memcpy_ff
 ffffffff   ___pinit__
 003d8004   ___text__
-003dd7e3   __args_main
+003dd82c   __args_main
 003f90b6   __cleanup_ptr
 003f90b8   __dtors_ptr
 003f90b4   __lock
-003dd865   __nop
-003dd861   __register_lock
-003dd85d   __register_unlock
+003dd8ae   __nop
+003dd8aa   __register_lock
+003dd8a6   __register_unlock
 00000000   __stack
 003f90b2   __unlock
-003dd7fc   _abort
+003dd845   _abort
 003f86b9   _adc_ChSelSeq1
 003f86b8   _adc_ChSelSeq2
 003f86bb   _adc_ChSelSeq3
 003f86ba   _adc_ChSelSeq4
-003dbdda   _adc_DisplayAdcResults
+003dbe1c   _adc_DisplayAdcResults
 003f86bd   _adc_DisplayAdcResultsIndex
-003dbd6c   _adc_addOneAdcChannelToList
-003dbcac   _adc_configureChannels
-003dbcd9   _adc_convertToMilliVolts
-003dbc73   _adc_init
+003dbdae   _adc_addOneAdcChannelToList
+003dbcee   _adc_configureChannels
+003dbd1b   _adc_convertToMilliVolts
+003dbcb5   _adc_init
 003f86bc   _adc_maxConv
-003dbe6d   _adc_readAll16Channels
-003dbcf0   _adc_readOneAdcChannelToRs232
-003dbe62   _adc_repeatPrevAdcTest
-003dbccb   _adc_runConversion
+003dbeaf   _adc_readAll16Channels
+003dbd32   _adc_readOneAdcChannelToRs232
+003dbea4   _adc_repeatPrevAdcTest
+003dbd0d   _adc_runConversion
 003f86c7   _afterBreakCounter
 003f9266   _ain_ad7175RegisterConfigValues
 003f9245   _ain_ad7175SetupError
 003f9246   _ain_ad7175SetupRegisterIndex
 003f9247   _ain_ad7175SetupTaskState
 003f9248   _ain_ad7175SetupWait
-003dbc5f   _ain_ad7175_fetch_data_read
-003dbc50   _ain_ad7175_fetch_status
-003dbc29   _ain_ad7175_request
-003dbbc0   _ain_ad7175_setup_task
-003dbbb5   _ain_ad7175_setup_task_init
+003dbca1   _ain_ad7175_fetch_data_read
+003dbc92   _ain_ad7175_fetch_status
+003dbc6b   _ain_ad7175_request
+003dbc02   _ain_ad7175_setup_task
+003dbbf7   _ain_ad7175_setup_task_init
 003f924c   _ain_ad7175_single_write_data
-003dbba7   _ain_calibratedClassicValRaw
-003dbb57   _ain_calibratedClassicValue
-003dbb26   _ain_calibratedValue
-003dba20   _ain_getAnlginCalState
-003dbbbc   _ain_get_ad7175SetupTaskState
+003dbbe9   _ain_calibratedClassicValRaw
+003dbb99   _ain_calibratedClassicValue
+003dbb68   _ain_calibratedValue
+003dba62   _ain_getAnlginCalState
+003dbbfe   _ain_get_ad7175SetupTaskState
 003f9241   _ain_ioPinSwitches
 003f9242   _ain_loopbackMux
-003dba17   _ain_offsetCalcInit
-003dba24   _ain_offsetCalcTask
+003dba59   _ain_offsetCalcInit
+003dba66   _ain_offsetCalcTask
 003f9243   _ain_offsetCount
 003f924e   _ain_offsets
-003dba1b   _ain_setSwitchDefaultsForB1
-003dbb1a   _ain_startOffsetCalc
+003dba5d   _ain_setSwitchDefaultsForB1
+003dbb5c   _ain_startOffsetCalc
 003f9256   _ain_values
 003f924a   _anlgin_cal_state
 003f90d8   _bitStreamLength
@@ -669,65 +668,65 @@ ffffffff   ___pinit__
 003f87c0   _brrToBaudTable
 003f928a   _burn32ToEEpromTaskDeadmanSwitch
 003f9283   _burn32ToEEpromToBufTaskStatus
-003dd5d2   _c_int00
-003db615   _canC_configMbxForReceive
-003db5b3   _canC_configMbxForTransmit
-003db4f7   _canC_initComm
-003db537   _canC_mailboxInitialization
-003db68e   _canC_pollRecv
-003db520   _canC_readCanAddrDipSwitches
-003db715   _canC_transmitMessage
-003dc220   _canF_appendIntoDummyFileBuf
+003dd61b   _c_int00
+003db657   _canC_configMbxForReceive
+003db5f5   _canC_configMbxForTransmit
+003db539   _canC_initComm
+003db579   _canC_mailboxInitialization
+003db6d0   _canC_pollRecv
+003db562   _canC_readCanAddrDipSwitches
+003db757   _canC_transmitMessage
+003dc262   _canF_appendIntoDummyFileBuf
 003f8e83   _canF_diagOnOff
-003dc239   _canF_readOutOfDummyFileBuf
-003dc26f   _canF_recvDummyFile
-003dc296   _canF_sendDummyFile
-003dc217   _canF_zeroDummyFileBufCounts
-003dc21c   _canF_zeroDummyFileBufOutCount
-003daf12   _canO_HandleCanOpenMessage
-003db234   _canO_doJumpToBootLoader
-003db22a   _canO_doReset
-003db20c   _canO_givesErrForTesting
-003db047   _canO_multiPktRecv2nd3rdEtc
-003db001   _canO_multiPktRecvFirst
-003db142   _canO_multiPktSend2nd3rdEtc
-003db10e   _canO_multiPktSendFirst
-003db1f0   _canO_recv16Bits
-003db1cb   _canO_recv32Bits
-003db1fd   _canO_send16Bits
-003db1de   _canO_send32Bits
-003db212   _canO_sendMaxSubIndex
+003dc27b   _canF_readOutOfDummyFileBuf
+003dc2b1   _canF_recvDummyFile
+003dc2d8   _canF_sendDummyFile
+003dc259   _canF_zeroDummyFileBufCounts
+003dc25e   _canF_zeroDummyFileBufOutCount
+003daf54   _canO_HandleCanOpenMessage
+003db276   _canO_doJumpToBootLoader
+003db26c   _canO_doReset
+003db24e   _canO_givesErrForTesting
+003db089   _canO_multiPktRecv2nd3rdEtc
+003db043   _canO_multiPktRecvFirst
+003db184   _canO_multiPktSend2nd3rdEtc
+003db150   _canO_multiPktSendFirst
+003db232   _canO_recv16Bits
+003db20d   _canO_recv32Bits
+003db23f   _canO_send16Bits
+003db220   _canO_send32Bits
+003db254   _canO_sendMaxSubIndex
 003f8fc4   _canTestData0x98765432
 003f8fc2   _canTestData16
 003f86bf   _canTestData16_01
 003f86be   _canTestData16_02
-003dddf2   _can_index
+003dde3c   _can_index
 003f8b80   _circ_buf_next_in
 003f8b81   _circ_buf_next_out
-003dd84c   _clearbits32
+003dd895   _clearbits32
 003f8fc1   _co_jump_to_bootloader
 003f8fc0   _co_reset
-003da21b   _comint_DisplayCpldAddrConfig
-003da1b4   _comint_DisplaySpeedDialList
-003d9d3e   _comint_comint
-003da25a   _comint_comintHelp
-003da059   _comint_comintSpeedDial
-003da23d   _comint_comintTextCommand
+003da25d   _comint_DisplayCpldAddrConfig
+003da1f6   _comint_DisplaySpeedDialList
+003d9d80   _comint_comint
+003da29c   _comint_comintHelp
+003da09b   _comint_comintSpeedDial
+003da27f   _comint_comintTextCommand
 003f86c2   _commandAckCommandCode
 003f86c4   _commandAckDataWord
 003f86c3   _commandAckDataWordReceived
-003daee8   _copy32BytesFromMultiPacketBufToPackedBuf
-003dae9a   _copyDataToMultiPacketBuf
-003daec0   _copyPacked32BytesToMultiPacketBuf
-003dc375   _diagRs232CanRecvMsg
-003d855d   _diagRs232FlashRWBuff
-003d991a   _diagRs232I2ceeRead
-003d9988   _diagRs232I2ceeWrite8
-003d852f   _diagRs232readFlashRDID
-003d84f3   _diagRs232readFlashStatusReg
-003dc2e3   _diagRs232recvMultiPacket
-003dc2c7   _diagRs232sendDummyFile
-003dccbf   _diag_SelectSpiFlash
+003daf2a   _copy32BytesFromMultiPacketBufToPackedBuf
+003daedc   _copyDataToMultiPacketBuf
+003daf02   _copyPacked32BytesToMultiPacketBuf
+003dc3b7   _diagRs232CanRecvMsg
+003d859f   _diagRs232FlashRWBuff
+003d995c   _diagRs232I2ceeRead
+003d99ca   _diagRs232I2ceeWrite8
+003d8571   _diagRs232readFlashRDID
+003d8535   _diagRs232readFlashStatusReg
+003dc325   _diagRs232recvMultiPacket
+003dc309   _diagRs232sendDummyFile
+003dcbb9   _diag_SelectSpiFlash
 003f8e62   _digio2_DiffOutEnable
 003f8e63   _digio2_DiffOutLevel
 003f8e66   _digio2_DiffOutSignalAssignment
@@ -738,40 +737,40 @@ ffffffff   ___pinit__
 003f8e65   _digio2_EncInMap
 003f8e60   _digio2_EncIndexDivisor
 003f8e64   _digio2_HallInMap
-003da266   _digio2_Init
-003da467   _digio2_Init_Enc_Index_Freq_Div
+003da2a8   _digio2_Init
+003da4a9   _digio2_Init_Enc_Index_Freq_Div
 003f8e61   _digio2_PwmInMap
-003da68c   _digio2_initDiffOutEnable
-003da673   _digio2_initDiffOutLevel
-003da599   _digio2_initDiffOutSignalAssignment
-003da649   _digio2_initDigOutLevel
-003da554   _digio2_initDigOutMode
-003da5f5   _digio2_initDigOutRails
-003da4ec   _digio2_initDigOutSignalAssignment
-003da67a   _digio2_recvDiffOutEnable
-003da661   _digio2_recvDiffOutLevel
-003da575   _digio2_recvDiffOutSignalAssignment
-003da61d   _digio2_recvDigOutLevel
-003da50d   _digio2_recvDigOutMode
-003da5ae   _digio2_recvDigOutRails
-003da4a5   _digio2_recvDigOutSignalAssignment
-003da273   _digio2_recvEncInMap
-003da470   _digio2_recvEncIndexDivisor
-003da285   _digio2_recvHallInMap
-003da292   _digio2_recvPwmInMap
-003da330   _digio2_sendEncAInOnTime
-003da314   _digio2_sendEncAInPeriod
-003da385   _digio2_sendEncCounts
-003da368   _digio2_sendEncIInOnTime
-003da34c   _digio2_sendEncIInPeriod
-003da36e   _digio2_sendEncInDir
-003da3f5   _digio2_sendEncReadingClassic
-003da482   _digio2_sendHallReadingClassic
-003da2c0   _digio2_sendPwmIn1OnTime
-003da2a4   _digio2_sendPwmIn1Period
-003da2f8   _digio2_sendPwmIn2OnTime
-003da2dc   _digio2_sendPwmIn2Period
-003da3a1   _digio2_sendPwmReadingClassic
+003da6ce   _digio2_initDiffOutEnable
+003da6b5   _digio2_initDiffOutLevel
+003da5db   _digio2_initDiffOutSignalAssignment
+003da68b   _digio2_initDigOutLevel
+003da596   _digio2_initDigOutMode
+003da637   _digio2_initDigOutRails
+003da52e   _digio2_initDigOutSignalAssignment
+003da6bc   _digio2_recvDiffOutEnable
+003da6a3   _digio2_recvDiffOutLevel
+003da5b7   _digio2_recvDiffOutSignalAssignment
+003da65f   _digio2_recvDigOutLevel
+003da54f   _digio2_recvDigOutMode
+003da5f0   _digio2_recvDigOutRails
+003da4e7   _digio2_recvDigOutSignalAssignment
+003da2b5   _digio2_recvEncInMap
+003da4b2   _digio2_recvEncIndexDivisor
+003da2c7   _digio2_recvHallInMap
+003da2d4   _digio2_recvPwmInMap
+003da372   _digio2_sendEncAInOnTime
+003da356   _digio2_sendEncAInPeriod
+003da3c7   _digio2_sendEncCounts
+003da3aa   _digio2_sendEncIInOnTime
+003da38e   _digio2_sendEncIInPeriod
+003da3b0   _digio2_sendEncInDir
+003da437   _digio2_sendEncReadingClassic
+003da4c4   _digio2_sendHallReadingClassic
+003da302   _digio2_sendPwmIn1OnTime
+003da2e6   _digio2_sendPwmIn1Period
+003da33a   _digio2_sendPwmIn2OnTime
+003da31e   _digio2_sendPwmIn2Period
+003da3e3   _digio2_sendPwmReadingClassic
 003f8b68   _digio_DacAnlgOutValuesClassic
 003f8b64   _digio_DacComparatorValuesClassic
 003f8b51   _digio_Enc1ClassicDir
@@ -790,33 +789,33 @@ ffffffff   ___pinit__
 003f8b54   _digio_Enc2OutFreq32
 003f8b5e   _digio_Enc2OutIndex32
 003f8b60   _digio_Enc2StopAfterN
-003dac5b   _digio_EncInit
-003dae2a   _digio_HallOutInit
+003dac9d   _digio_EncInit
+003dae6c   _digio_HallOutInit
 003f8b4f   _digio_HallOutputDirClassic16
 003f8b58   _digio_HallOutputFreq32
 003f8b4c   _digio_HallOutputFreqClassic16
 003f8b4a   _digio_HallOutputPhaseClassic16
 003f8b5a   _digio_PwmOutputDutyCycl32
 003f8b44   _digio_PwmOutputDutyCyclClassic16
-003dac17   _digio_PwmOutputFreq16Task
+003dac59   _digio_PwmOutputFreq16Task
 003f8b47   _digio_PwmOutputFreq16TaskState
 003f8b56   _digio_PwmOutputFreq32
 003f8b45   _digio_PwmOutputFreqClassic16
-003daaa8   _digio_initDacComparatorValuesClassic
+003daaea   _digio_initDacComparatorValuesClassic
 003f8b70   _digio_nativeDacVal
-003daaf3   _digio_receiveNativeDacVal
-003dab75   _digio_recvAnlgOutClassic
-003dad80   _digio_recvClassicEncOutParam
-003daab8   _digio_recvComparitorClassic
-003dacb8   _digio_recvEncOutParam
-003dae76   _digio_recvHallOutputParam32
-003dae34   _digio_recvHallOutputParamClassic16
-003dabd3   _digio_recvPwmOutputDutyCyc32
-003dac03   _digio_recvPwmOutputDutyCycClassic16
-003dabb7   _digio_recvPwmOutputFreq32
-003dabef   _digio_recvPwmOutputFreqClassic16
-003daae1   _digio_send16DigitalInputs
-003dabac   _digio_writeDacOutputValue
+003dab35   _digio_receiveNativeDacVal
+003dabb7   _digio_recvAnlgOutClassic
+003dadc2   _digio_recvClassicEncOutParam
+003daafa   _digio_recvComparitorClassic
+003dacfa   _digio_recvEncOutParam
+003daeb8   _digio_recvHallOutputParam32
+003dae76   _digio_recvHallOutputParamClassic16
+003dac15   _digio_recvPwmOutputDutyCyc32
+003dac45   _digio_recvPwmOutputDutyCycClassic16
+003dabf9   _digio_recvPwmOutputFreq32
+003dac31   _digio_recvPwmOutputFreqClassic16
+003dab23   _digio_send16DigitalInputs
+003dabee   _digio_writeDacOutputValue
 003f8689   _dsdl_index
 003f8ec0   _dummyFileBuf
 003f8e81   _dummyFileBufInCharCount
@@ -824,42 +823,42 @@ ffffffff   ___pinit__
 003f8e80   _dummyFileBufOutPacketSize
 003f9288   _eeProm1ByteRWAddr
 003f9285   _eeProm32ByteRWAddr
-003da70e   _error
-003dd571   _evtimer4_enable_int
+003da750   _error
+003dd5ba   _evtimer4_enable_int
 003f90bb   _evtimer4_ext_req_to_turn_off
-003dd562   _evtimer4_initConfig_n_Start
-003dd563   _evtimer4_initConfig_n_Start_disabled
-003dd6b2   _evtimer4_isr
+003dd5ab   _evtimer4_initConfig_n_Start
+003dd5ac   _evtimer4_initConfig_n_Start_disabled
+003dd6fb   _evtimer4_isr
 003f90ba   _evtimer4_state
-003dd559   _evtimer4_store_int_vectors_in_PIE
-003dd517   _evtimer4_turn_off
-003dd51c   _evtimer4_turn_on
-003dd7fe   _exit
+003dd5a2   _evtimer4_store_int_vectors_in_PIE
+003dd560   _evtimer4_turn_off
+003dd565   _evtimer4_turn_on
+003dd847   _exit
 003f90bc   _extRamSize
-003dd635   _f1i_BgTask
+003dd67e   _f1i_BgTask
 003f90bf   _f1i_BgTask_count
-003dd616   _f1i_enable_interrupt
-003dd626   _f1i_initialize_interrupt
-003dd7ad   _f1i_isr
+003dd65f   _f1i_enable_interrupt
+003dd66f   _f1i_initialize_interrupt
+003dd7f6   _f1i_isr
 003f90be   _f1i_state
-003dd61d   _f1i_store_int_vectors_in_PIE
-003dc087   _f2i_BgTask_SSEnc
+003dd666   _f1i_store_int_vectors_in_PIE
+003dc0c9   _f2i_BgTask_SSEnc
 003f86b3   _f2i_BgTask_count
-003dc17c   _f2i_CRC5
+003dc1be   _f2i_CRC5
 003f86b1   _f2i_SSEnc_Alarm_Bit
 003f86b2   _f2i_SSEnc_CRC_5
 003f86b4   _f2i_SSEnc_Num_Pos_Bits
 003f86ae   _f2i_SSEnc_Pos_1
 003f86af   _f2i_SSEnc_Pos_2
 003f86b6   _f2i_SSEnc_Pos_32
-003dc070   _f2i_SSEnc_init
-003dc1c7   _f2i_SSEnc_reverse_position
-003dc055   _f2i_enable_interrupt
-003dc061   _f2i_initialize_interrupt
-003dd815   _f2i_isr
-003dc1fa   _f2i_recv_Pos_32_from_Host
+003dc0b2   _f2i_SSEnc_init
+003dc209   _f2i_SSEnc_reverse_position
+003dc097   _f2i_enable_interrupt
+003dc0a3   _f2i_initialize_interrupt
+003dd85e   _f2i_isr
+003dc23c   _f2i_recv_Pos_32_from_Host
 003f86b0   _f2i_state
-003dc058   _f2i_store_int_vectors_in_PIE
+003dc09a   _f2i_store_int_vectors_in_PIE
 003f9140   _fastRWBuff
 003f90cb   _fastRWBuffCharCount
 003f90ca   _fastRWBuffInUse
@@ -882,26 +881,26 @@ ffffffff   ___pinit__
 003f908c   _fpgaT_Fpga3_sv1_write
 003f9099   _fpgaT_Fpga3_sv2_read
 003f9096   _fpgaT_Fpga3_sv2_write
-003d8fe0   _fpgaT_getledStatus
-003d8fe4   _fpgaT_initTest
-003d8ff1   _fpgaT_init_3004_5000_Test
+003d9022   _fpgaT_getledStatus
+003d9026   _fpgaT_initTest
+003d9033   _fpgaT_init_3004_5000_Test
 003f90a1   _fpgaT_ledStatus
-003d95d9   _fpgaT_send32Clk
-003d8fd2   _fpgaT_setTestData3003
-003d8fd9   _fpgaT_setTestSelection3004
+003d961b   _fpgaT_send32Clk
+003d9014   _fpgaT_setTestData3003
+003d901b   _fpgaT_setTestSelection3004
 003f9092   _fpgaT_sv_test_Control
 003f90a4   _fpgaT_sv_test_Count_Tests
 003f9095   _fpgaT_sv_test_Error
 003f9093   _fpgaT_sv_test_Per_Loop
-003d969a   _fpgaT_sv_test_Task
+003d96dc   _fpgaT_sv_test_Task
 003f9094   _fpgaT_sv_test_Throw_Error
-003d9601   _fpgaT_sv_test_ctrl
-003d9619   _fpgaT_sv_test_one_rw
+003d9643   _fpgaT_sv_test_ctrl
+003d965b   _fpgaT_sv_test_one_rw
 003f9098   _fpgaT_sv_test_which_Fpgas
-003d9243   _fpgaT_test3005
+003d9285   _fpgaT_test3005
 003f909a   _fpgaT_testData3003
 003f909c   _fpgaT_testSelection3004
-003d8ff9   _fpgaT_testUnderTimer0
+003d903b   _fpgaT_testUnderTimer0
 003f909b   _fpgaT_testUnderTimer0_count
 003f90d6   _frwDiagFlashAddr
 003f90da   _frwFlashAddr
@@ -910,280 +909,280 @@ ffffffff   ___pinit__
 003f90cc   _frwLoadMultipleFgpas
 003f90c5   _frwMcsNotFastDownload
 003f90c0   _frwWhichFlashChip
-003d8015   _frw_AssertHwWriteProtect
-003d8037   _frw_GetLoadFpgasAtStartupStatus
-003d8033   _frw_GetWhichFlash
-003d8245   _frw_MiscFlashTasks
-003d80be   _frw_ReadFpgaCtrlLines
+003d801b   _frw_AssertHwWriteProtect
+003d8043   _frw_GetLoadFpgasAtStartupStatus
+003d803f   _frw_GetWhichFlash
+003d8287   _frw_MiscFlashTasks
+003d80ec   _frw_ReadFpgaCtrlLines
 003d8004   _frw_RemoveHwWriteProtect
-003d8049   _frw_SetFpgaCtrlLines
-003d802c   _frw_SetWhichFlash
-003d8024   _frw_SpiFlashInit
-003d80f3   _frw_SpiFlashTask
-003d835f   _frw_bulkEraseFlashRecv
-003d834f   _frw_bulkEraseFlashSend
+003d8057   _frw_SetFpgaCtrlLines
+003d8038   _frw_SetWhichFlash
+003d8030   _frw_SpiFlashInit
+003d812f   _frw_SpiFlashTask
+003d83a1   _frw_bulkEraseFlashRecv
+003d8391   _frw_bulkEraseFlashSend
 003f90c2   _frw_bulkEraseToken
-003d87c8   _frw_diagDisplFlashPage
-003d8762   _frw_diagFlashTasks
-003d8483   _frw_fastFileRecvData
-003d803b   _frw_initFpgaLoadPins
-003d837a   _frw_mcsFileRecvData
-003d8316   _frw_mcsFileRecvStatus
-003d83e9   _frw_mcsFileSendData
-003d82d5   _frw_readFlashRDID
-003d82c4   _frw_readFlashStatusReg
-003d84dd   _frw_readWhichFlashChip
-003d82eb   _frw_releasePowerdownRES
-003d87ec   _frw_runTest2005
-003d84c7   _frw_startLoadFpgaFromFlash
-003d82fc   _frw_startMcsFileRecv
-003d85b6   _frw_test2005
-003d868d   _frw_test4000
-003d86f0   _frw_test4001
-003d86f7   _frw_test4002
-003d86fe   _frw_test4003
-003d871d   _frw_test4004
-003d8749   _frw_test4005
-003d875c   _frw_test4006
-003d84d5   _frw_turnOnFlashWriteProtect
-003d84e9   _frw_writeWhichFlashChip
-003db371   _hexUtil_bin32To10DecAsciiChars
-003db473   _hexUtil_bin32ToDecAsciiCharsZeroSuppress
-003db2bc   _hexUtil_binTo2HexAsciiChars
-003db29b   _hexUtil_binTo4HexAsciiChars
-003db2e0   _hexUtil_binTo5DecAsciiChars
-003db340   _hexUtil_binToDecAsciiCharsZeroSuppress
-003db4a5   _hexUtil_decCharsToBin
-003db4cc   _hexUtil_decCharsToBin32
-003db240   _hexUtil_hexCharToBin
-003db24c   _hexUtil_hexCharsToBin
-003db270   _hexUtil_isValidAsciiHexDigits
+003d880a   _frw_diagDisplFlashPage
+003d87a4   _frw_diagFlashTasks
+003d84c5   _frw_fastFileRecvData
+003d8047   _frw_initFpgaLoadPins
+003d83bc   _frw_mcsFileRecvData
+003d8358   _frw_mcsFileRecvStatus
+003d842b   _frw_mcsFileSendData
+003d8317   _frw_readFlashRDID
+003d8306   _frw_readFlashStatusReg
+003d851f   _frw_readWhichFlashChip
+003d832d   _frw_releasePowerdownRES
+003d882e   _frw_runTest2005
+003d8509   _frw_startLoadFpgaFromFlash
+003d833e   _frw_startMcsFileRecv
+003d85f8   _frw_test2005
+003d86cf   _frw_test4000
+003d8732   _frw_test4001
+003d8739   _frw_test4002
+003d8740   _frw_test4003
+003d875f   _frw_test4004
+003d878b   _frw_test4005
+003d879e   _frw_test4006
+003d8517   _frw_turnOnFlashWriteProtect
+003d852b   _frw_writeWhichFlashChip
+003db3b3   _hexUtil_bin32To10DecAsciiChars
+003db4b5   _hexUtil_bin32ToDecAsciiCharsZeroSuppress
+003db2fe   _hexUtil_binTo2HexAsciiChars
+003db2dd   _hexUtil_binTo4HexAsciiChars
+003db322   _hexUtil_binTo5DecAsciiChars
+003db382   _hexUtil_binToDecAsciiCharsZeroSuppress
+003db4e7   _hexUtil_decCharsToBin
+003db50e   _hexUtil_decCharsToBin32
+003db282   _hexUtil_hexCharToBin
+003db28e   _hexUtil_hexCharsToBin
+003db2b2   _hexUtil_isValidAsciiHexDigits
 003f9286   _i2cee32ByteStatus
 003f9287   _i2ceeCanFileIndex
 003f9289   _i2ceeCanFileStatus
 003f9282   _i2ceeDiagAddr
 003f9280   _i2ceeSelectedEeprom
-003d9c85   _i2cee_32BytesFromEEpromToBuf
-003d9cd7   _i2cee_32BytesFromPC
-003d9cc8   _i2cee_32BytesToPC
-003d96be   _i2cee_Init
-003d9ce6   _i2cee_burn32BytesToEEProm
-003d9cff   _i2cee_burn32ToEEpromTask
-003d96f4   _i2cee_delay
-003d99b5   _i2cee_diag4203Task
-003d96cf   _i2cee_disableClkToAllEEProms
-003d96db   _i2cee_enableClkToSelectedEEProm
-003d9b2a   _i2cee_getTokenForEepromProg
-003d9b3a   _i2cee_progEEPromFromCanFileData
-003d9bba   _i2cee_progEEPromFromCanFileTask
+003d9cc7   _i2cee_32BytesFromEEpromToBuf
+003d9d19   _i2cee_32BytesFromPC
+003d9d0a   _i2cee_32BytesToPC
+003d9700   _i2cee_Init
+003d9d28   _i2cee_burn32BytesToEEProm
+003d9d41   _i2cee_burn32ToEEpromTask
+003d9736   _i2cee_delay
+003d99f7   _i2cee_diag4203Task
+003d9711   _i2cee_disableClkToAllEEProms
+003d971d   _i2cee_enableClkToSelectedEEProm
+003d9b6c   _i2cee_getTokenForEepromProg
+003d9b7c   _i2cee_progEEPromFromCanFileData
+003d9bfc   _i2cee_progEEPromFromCanFileTask
 003f9281   _i2cee_programmingToken
-003d9808   _i2cee_read
-003d9794   _i2cee_read1Byte
-003d9cbb   _i2cee_read32ByteStatus
-003d9c94   _i2cee_read32FromEEpromToBufTask
-003d9c29   _i2cee_readEEProm1Byte
-003d9b56   _i2cee_readEEPromStatus
-003d9b67   _i2cee_readEEPromToCanFile
-003d9b78   _i2cee_readEEPromToCanFileTask
-003d96c5   _i2cee_selectEEProm
-003d9a08   _i2cee_test4200
-003d9a19   _i2cee_test4201
-003d9a4a   _i2cee_test4203
-003d9a67   _i2cee_test4204
-003d9aa4   _i2cee_test4205
-003d9ae7   _i2cee_test4206
-003d9879   _i2cee_write
-003d9703   _i2cee_write1Byte
-003d9c54   _i2cee_writeEEProm1Byte
-003d98f7   _i2cee_writeProtect
+003d984a   _i2cee_read
+003d97d6   _i2cee_read1Byte
+003d9cfd   _i2cee_read32ByteStatus
+003d9cd6   _i2cee_read32FromEEpromToBufTask
+003d9c6b   _i2cee_readEEProm1Byte
+003d9b98   _i2cee_readEEPromStatus
+003d9ba9   _i2cee_readEEPromToCanFile
+003d9bba   _i2cee_readEEPromToCanFileTask
+003d9707   _i2cee_selectEEProm
+003d9a4a   _i2cee_test4200
+003d9a5b   _i2cee_test4201
+003d9a8c   _i2cee_test4203
+003d9aa9   _i2cee_test4204
+003d9ae6   _i2cee_test4205
+003d9b29   _i2cee_test4206
+003d98bb   _i2cee_write
+003d9745   _i2cee_write1Byte
+003d9c96   _i2cee_writeEEProm1Byte
+003d9939   _i2cee_writeProtect
 003f8e7d   _idle_loop_count
-003df36e   _index_2000
-003def3c   _index_2001
-003df2ce   _index_2002
-003def74   _index_2003
-003defac   _index_2004
-003df198   _index_2005
-003df2e6   _index_2006
-003df0ae   _index_2007
-003df1b8   _index_2008
-003df1d8   _index_2009
-003df2fe   _index_200A
-003dee2c   _index_200B
-003deefc   _index_200C
-003df376   _index_200D
-003df0d6   _index_200E
-003df37e   _index_200F
-003ded8c   _index_2010
-003df1f8   _index_2011
-003df316   _index_2012
-003defe4   _index_2013
-003df0fe   _index_2014
-003df126   _index_2015
-003df386   _index_2016
-003df38e   _index_2017
-003df396   _index_2018
-003df39e   _index_2019
-003df3a6   _index_201A
-003df3ae   _index_201B
-003df3b6   _index_201C
-003df3be   _index_201D
-003df3c6   _index_201E
-003df3ce   _index_201F
-003df3d6   _index_2020
-003df3de   _index_2021
-003df3e6   _index_2022
-003de778   _index_2023
-003de7e8   _index_2024
-003de858   _index_2025
-003de8c8   _index_2026
-003de938   _index_2027
-003de9a8   _index_2028
-003dea18   _index_2029
-003dea88   _index_202A
-003df3ee   _index_202B
-003df3f6   _index_202C
-003df3fe   _index_202D
-003df406   _index_202E
-003df40e   _index_202F
-003df416   _index_2030
-003deaf8   _index_2031
-003df32e   _index_2032
-003df41e   _index_2033
-003df426   _index_2034
-003df42e   _index_2035
-003df218   _index_2036
-003df436   _index_2037
-003df43e   _index_2038
-003df446   _index_2039
-003df44e   _index_203A
-003df456   _index_203B
-003df45e   _index_203C
-003df466   _index_203D
-003df46e   _index_203E
-003df476   _index_203F
-003df47e   _index_2040
-003df486   _index_2041
-003df48e   _index_2042
-003df496   _index_2043
-003df49e   _index_2044
-003df4a6   _index_2045
-003df4ae   _index_2046
-003df4b6   _index_2047
-003df4be   _index_2048
-003df238   _index_2049
-003df04e   _index_204A
-003df35e   _index_204B
-003ddf76   _index_204C
-003dec84   _index_204D
-003de28e   _index_204E
-003df07e   _index_204F
-003de562   _index_2050
-003deddc   _index_2051
-003df14e   _index_2052
-003de5f2   _index_2053
-003df346   _index_2054
-003decdc   _index_2055
-003debc4   _index_2056
-003de086   _index_2057
-003de4ca   _index_2058
-003df4c6   _index_2059
-003df4ce   _index_205A
-003df4d6   _index_205B
-003df4de   _index_205C
-003df4e6   _index_205D
-003df4ee   _index_205E
-003ded34   _index_205F
-003df4f6   _index_2060
-003dae92   _init_SDO_MS_CB
+003df3b8   _index_2000
+003def86   _index_2001
+003df318   _index_2002
+003defbe   _index_2003
+003deff6   _index_2004
+003df1e2   _index_2005
+003df330   _index_2006
+003df0f8   _index_2007
+003df202   _index_2008
+003df222   _index_2009
+003df348   _index_200A
+003dee76   _index_200B
+003def46   _index_200C
+003df3c0   _index_200D
+003df120   _index_200E
+003df3c8   _index_200F
+003dedd6   _index_2010
+003df242   _index_2011
+003df360   _index_2012
+003df02e   _index_2013
+003df148   _index_2014
+003df170   _index_2015
+003df3d0   _index_2016
+003df3d8   _index_2017
+003df3e0   _index_2018
+003df3e8   _index_2019
+003df3f0   _index_201A
+003df3f8   _index_201B
+003df400   _index_201C
+003df408   _index_201D
+003df410   _index_201E
+003df418   _index_201F
+003df420   _index_2020
+003df428   _index_2021
+003df430   _index_2022
+003de7c2   _index_2023
+003de832   _index_2024
+003de8a2   _index_2025
+003de912   _index_2026
+003de982   _index_2027
+003de9f2   _index_2028
+003dea62   _index_2029
+003dead2   _index_202A
+003df438   _index_202B
+003df440   _index_202C
+003df448   _index_202D
+003df450   _index_202E
+003df458   _index_202F
+003df460   _index_2030
+003deb42   _index_2031
+003df378   _index_2032
+003df468   _index_2033
+003df470   _index_2034
+003df478   _index_2035
+003df262   _index_2036
+003df480   _index_2037
+003df488   _index_2038
+003df490   _index_2039
+003df498   _index_203A
+003df4a0   _index_203B
+003df4a8   _index_203C
+003df4b0   _index_203D
+003df4b8   _index_203E
+003df4c0   _index_203F
+003df4c8   _index_2040
+003df4d0   _index_2041
+003df4d8   _index_2042
+003df4e0   _index_2043
+003df4e8   _index_2044
+003df4f0   _index_2045
+003df4f8   _index_2046
+003df500   _index_2047
+003df508   _index_2048
+003df282   _index_2049
+003df098   _index_204A
+003df3a8   _index_204B
+003ddfc0   _index_204C
+003decce   _index_204D
+003de2d8   _index_204E
+003df0c8   _index_204F
+003de5ac   _index_2050
+003dee26   _index_2051
+003df198   _index_2052
+003de63c   _index_2053
+003df390   _index_2054
+003ded26   _index_2055
+003dec0e   _index_2056
+003de0d0   _index_2057
+003de514   _index_2058
+003df510   _index_2059
+003df518   _index_205A
+003df520   _index_205B
+003df528   _index_205C
+003df530   _index_205D
+003df538   _index_205E
+003ded7e   _index_205F
+003df540   _index_2060
+003daed4   _init_SDO_MS_CB
 003f868a   _ledCpldPattern
-003dc4fb   _led_DspLedInit
-003dc51a   _led_FpgaLedInit
+003dc53d   _led_DspLedInit
+003dc55c   _led_FpgaLedInit
 003f8979   _led_cpldIoPattern
-003dc3f4   _led_cpldLedIoInit
+003dc436   _led_cpldLedIoInit
 003f897b   _led_cpldPmPattern
 003f8974   _led_dspLedCount
 003f8972   _led_dspLedErrCount
-003dc462   _led_dspLedErrMsg
+003dc4a4   _led_dspLedErrMsg
 003f8973   _led_dspLedPattern
 003f8976   _led_fpga1Pattern
 003f8975   _led_fpga2Pattern
 003f8977   _led_fpga3Pattern
 003f8978   _led_fpgaCount
-003dc3f0   _led_getCpldIoLedPattern
-003dc45e   _led_getDspLedPattern
-003dc471   _led_init4DspLeds
-003dc3fd   _led_manageCpldIoLEDsUnderTimer0
-003dc47c   _led_manageDspLEDsUnderTimer0
-003dc523   _led_manageFpgaLedsUnderTimer0
-003dc457   _led_setDspLedPattern
-003dc3d6   _led_setLedCpldIoPattern
-003dc3e3   _led_setLedCpldPmPattern
-003dc501   _led_setLedFpga1Pattern
-003dc50a   _led_setLedFpga2Pattern
-003dc513   _led_setLedFpga3Pattern
+003dc432   _led_getCpldIoLedPattern
+003dc4a0   _led_getDspLedPattern
+003dc4b3   _led_init4DspLeds
+003dc43f   _led_manageCpldIoLEDsUnderTimer0
+003dc4be   _led_manageDspLEDsUnderTimer0
+003dc565   _led_manageFpgaLedsUnderTimer0
+003dc499   _led_setDspLedPattern
+003dc418   _led_setLedCpldIoPattern
+003dc425   _led_setLedCpldPmPattern
+003dc543   _led_setLedFpga1Pattern
+003dc54c   _led_setLedFpga2Pattern
+003dc555   _led_setLedFpga3Pattern
 003f897a   _led_synchronizedHeartbeatCounter
-003dc3d0   _led_synchronizedSlowHeartbeat
-003dc46c   _led_toggle4DspLeds
-003d893d   _limChkAnlgIn1234
-003d8975   _limChkAnlgIn5678
+003dc412   _led_synchronizedSlowHeartbeat
+003dc4ae   _led_toggle4DspLeds
+003d897f   _limChkAnlgIn1234
+003d89b7   _limChkAnlgIn5678
 003f8d00   _limChkAnlgInChannel
-003d8f2c   _limChkAnlgInClassic
-003d8f95   _limChkAnlgInComparison
+003d8f6e   _limChkAnlgInClassic
+003d8fd7   _limChkAnlgInComparison
 003f8d02   _limChkAnlgInLimits
 003f8d0a   _limChkAnlgInLimitsClassic
-003d8ee4   _limChkBackgroundComputeAvg
-003d8dd1   _limChkBackgroundMeasurements
-003d8e4e   _limChkBackgroundMinMaxAvg
-003d8eaf   _limChkBackgroundMinMaxAvgInit
-003d89c1   _limChkDiffIn8
-003d89ad   _limChkDigIn16
-003d89d6   _limChkFreqTest
-003d8cee   _limChkHvPsShutdown
-003d89f3   _limChkLevelTest
-003d8ced   _limChkOpenHvPsRelay
+003d8f26   _limChkBackgroundComputeAvg
+003d8e13   _limChkBackgroundMeasurements
+003d8e90   _limChkBackgroundMinMaxAvg
+003d8ef1   _limChkBackgroundMinMaxAvgInit
+003d8a03   _limChkDiffIn8
+003d89ef   _limChkDigIn16
+003d8a18   _limChkFreqTest
+003d8d30   _limChkHvPsShutdown
+003d8a35   _limChkLevelTest
+003d8d2f   _limChkOpenHvPsRelay
 003f8d01   _limChkOpenHvPsRelayTimer
-003d8cf3   _limChkStateMachine
-003d8d09   _limChkStateMachineChannel
-003d8dae   _limChkStateMachineOnTestFail
-003d8dbe   _limChkStateMachineResetOneChannel
-003d8a08   _limChkUndefinedTest
-003d88a6   _limchkConvertClassicToNative
-003d88fc   _limchkConvertNativeToClassic
-003d87f6   _limchkInit
-003d8803   _limchkInitOneChannel
-003d8880   _limchkPreTestInit
-003d8c82   _limchkRecvEnable
-003d8a6b   _limchkRecvLimits
-003d8cb0   _limchkRecvSync
-003d8bb2   _limchkRecvTimeStartEnd
-003d8af1   _limchkRecvWhichInput
-003d8cd7   _limchkResetOneChannel
-003d8c43   _limchkSendAvgValue
-003d8bd8   _limchkSendFails
-003d8a0e   _limchkSendLimits
-003d8b29   _limchkSendMeasValueClassic
-003d8bfe   _limchkSendMinMaxValue
-003d8b56   _limchkSendTestStatus
-003d8b8c   _limchkSendTimeStartEnd
-003d8acb   _limchkSendWhichInput
-003ddc5a   _limitCheckInputs
+003d8d35   _limChkStateMachine
+003d8d4b   _limChkStateMachineChannel
+003d8df0   _limChkStateMachineOnTestFail
+003d8e00   _limChkStateMachineResetOneChannel
+003d8a4a   _limChkUndefinedTest
+003d88e8   _limchkConvertClassicToNative
+003d893e   _limchkConvertNativeToClassic
+003d8838   _limchkInit
+003d8845   _limchkInitOneChannel
+003d88c2   _limchkPreTestInit
+003d8cc4   _limchkRecvEnable
+003d8aad   _limchkRecvLimits
+003d8cf2   _limchkRecvSync
+003d8bf4   _limchkRecvTimeStartEnd
+003d8b33   _limchkRecvWhichInput
+003d8d19   _limchkResetOneChannel
+003d8c85   _limchkSendAvgValue
+003d8c1a   _limchkSendFails
+003d8a50   _limchkSendLimits
+003d8b6b   _limchkSendMeasValueClassic
+003d8c40   _limchkSendMinMaxValue
+003d8b98   _limchkSendTestStatus
+003d8bce   _limchkSendTimeStartEnd
+003d8b0d   _limchkSendWhichInput
+003ddca4   _limitCheckInputs
 003f8d40   _limitCheckParams
-003dd04d   _log_addToLog
-003dd003   _log_addToLogWith3Params
-003dd0d5   _log_clear
+003dd096   _log_addToLog
+003dd04c   _log_addToLogWith3Params
+003dd11e   _log_clear
 003f897c   _log_eventIndex
 003f897e   _log_eventRecCount
 00100000   _log_events
-003dcffe   _log_init
-003dd093   _log_readLog
+003dd047   _log_init
+003dd0dc   _log_readLog
 003f897d   _log_readLogOffsetInRec
 003f897f   _log_readLogRecNum
-003dd0c0   _log_startReadingLog
-003dd0dd   _log_t0Period
-003dc727   _main
-003dc7f6   _main_DisplayPgLoopCount
-003dc7ed   _main_readPowerGoodSignals
-003dc819   _main_startupTask
+003dd109   _log_startReadingLog
+003dd126   _log_t0Period
+003dc760   _main
+003dc82f   _main_DisplayPgLoopCount
+003dc826   _main_readPowerGoodSignals
+003dc852   _main_startupTask
 003f8e7f   _main_startupTaskState
 003f90cf   _mcsFileRecvAddrExtension
 003f90ce   _mcsFileRecvError
@@ -1192,7 +1191,7 @@ ffffffff   ___pinit__
 003f90d1   _mcsFileRecvStatus
 003f90c9   _mcsFileSendByteAddr
 003f90d2   _mcsFileSendByteCount
-003dd281   _mcsParseReceivedData
+003dd2ca   _mcsParseReceivedData
 003f90c3   _miscFlashTaskOperation
 003f90c8   _miscFlashTaskState
 003f868e   _msg1
@@ -1218,63 +1217,63 @@ ffffffff   ___pinit__
 003f8e7e   _pg_loopCount
 003f9182   _prevTaskNumber
 003f86b5   _previousMode
-003dcfac   _r232Out_Command_Ack
-003dcfde   _r232Out_Command_Nak
+003dcff5   _r232Out_Command_Ack
+003dd027   _r232Out_Command_Nak
 003f8b82   _r232Out_Tx_buf
-003dcf66   _r232Out_circBufOutput
+003dcfaf   _r232Out_circBufOutput
 003f8c00   _r232Out_circular_buf
-003dcf09   _r232Out_outChars
-003dcf55   _r232Out_outCharsNT
-003dcf9d   _r232Out_transmit_status_busy
+003dcf52   _r232Out_outChars
+003dcf9e   _r232Out_outCharsNT
+003dcfe6   _r232Out_transmit_status_busy
 003f8bc0   _r232Out_util_buf
 003f8880   _rdata
 003f86c1   _rdataIndex
-003dd843   _read32
+003dd88c   _read32
 003f9284   _read32FromEEpromToBufTaskStatus
 003f8985   _res_AmpRefInOut
-003dc04b   _res_ConstVelocityTimerRoutine
+003dc08d   _res_ConstVelocityTimerRoutine
 003f8986   _res_FixedShaftAngle
 003f8984   _res_HiPrecisShaftAngle
 003f8983   _res_RefDacValue
 003f8982   _res_RefFreq
-003dc037   _res_ShaftAngleOutTask
+003dc079   _res_ShaftAngleOutTask
 003f8981   _res_attenuation
-003dbe8a   _res_calcSinCosFromHiPrecisShaftAngle
-003dbe80   _res_init
-003dbfdc   _res_recvAmpRef
-003dc008   _res_recvRefDacValue
-003dbffb   _res_recvRefFreq
-003dc015   _res_recvShaftAngle
-003dc026   _res_recvShaftAngleIincreasedPrecision
+003dbecc   _res_calcSinCosFromHiPrecisShaftAngle
+003dbec2   _res_init
+003dc01e   _res_recvAmpRef
+003dc04a   _res_recvRefDacValue
+003dc03d   _res_recvRefFreq
+003dc057   _res_recvShaftAngle
+003dc068   _res_recvShaftAngleIincreasedPrecision
 003f8980   _res_velocity
-003df4ff   _revision_rv1
-003df502   _revision_rv2
+003df549   _revision_rv1
+003df54c   _revision_rv2
 003f86c8   _rs232AckAutobaudCounter
 003f86c5   _rs232BaudChangeCounter
-003da716   _rs232_BgTaskInit
-003daa70   _rs232_BgTask_AckAutobaud
-003daa42   _rs232_BgTask_Rs232BaudChange
-003daa58   _rs232_BgTask_Rs232BreakOrError
-003da84c   _rs232_BgTask_TxDone
-003da820   _rs232_BgTask_ooad
-003da836   _rs232_BgTask_ts3StartUp
-003daa9b   _rs232_DiagPortalMsg
-003da710   _rs232_Init
-003da8f4   _rs232_changeBaudParityEtc
-003da717   _rs232_commandDecode
-003da6c1   _rs232_enable_PIE_int
-003daa15   _rs232_getBaudRateFromBrrValue
-003da9a8   _rs232_getBrrValueFromBaudRate
-003da851   _rs232_reportBaudParityEtc
-003da6cd   _rs232_scia_fifo_init
-003da6fb   _rs232_setBaudRateDefault
-003da813   _rs232_setCommandAck
-003da6f1   _rs232_start_autobaud_detect
-003da6b5   _rs232_store_int_vectors_in_PIE
-003da6a8   _rs232_transmit_characters
-003da693   _rs232_transmit_status_busy
-003da69d   _rs232_txFifo_Busy
-003dcb76   _rsvd_ISR
+003da758   _rs232_BgTaskInit
+003daab2   _rs232_BgTask_AckAutobaud
+003daa84   _rs232_BgTask_Rs232BaudChange
+003daa9a   _rs232_BgTask_Rs232BreakOrError
+003da88e   _rs232_BgTask_TxDone
+003da862   _rs232_BgTask_ooad
+003da878   _rs232_BgTask_ts3StartUp
+003daadd   _rs232_DiagPortalMsg
+003da752   _rs232_Init
+003da936   _rs232_changeBaudParityEtc
+003da759   _rs232_commandDecode
+003da703   _rs232_enable_PIE_int
+003daa57   _rs232_getBaudRateFromBrrValue
+003da9ea   _rs232_getBrrValueFromBaudRate
+003da893   _rs232_reportBaudParityEtc
+003da70f   _rs232_scia_fifo_init
+003da73d   _rs232_setBaudRateDefault
+003da855   _rs232_setCommandAck
+003da733   _rs232_start_autobaud_detect
+003da6f7   _rs232_store_int_vectors_in_PIE
+003da6ea   _rs232_transmit_characters
+003da6d5   _rs232_transmit_status_busy
+003da6df   _rs232_txFifo_Busy
+003dcd06   _rsvd_ISR
 003f9244   _savedAin
 003f9249   _savedAinCal
 003f9240   _saved_ioPinSwitches
@@ -1282,113 +1281,113 @@ ffffffff   ___pinit__
 003f8000   _sci2
 003f8040   _sci2_Rx_Buf
 003f8380   _sci2_Tx_Buf
-003dccc2   _sci2_init
-003dcd72   _sci2_recvTxBuf
-003dcd97   _sci2_recvTxBufAppend
-003dcd05   _sci2_rx_tx
-003dcdbb   _sci2_sendRxBuf
-003dcdf7   _sci2_xmit_test
+003dcd0b   _sci2_init
+003dcdbb   _sci2_recvTxBuf
+003dcde0   _sci2_recvTxBufAppend
+003dcd4e   _sci2_rx_tx
+003dce04   _sci2_sendRxBuf
+003dce40   _sci2_xmit_test
 003f86c6   _sci_brr
 003f86ca   _sci_ccr
-003dd130   _sciaRxFifoIsr
-003dd0e8   _sciaTxFifoIsr
+003dd179   _sciaRxFifoIsr
+003dd131   _sciaTxFifoIsr
 003f86cc   _sdata
 003f86c9   _sdataCount
 003f86cb   _sdataIndex
 003f8fc6   _sdo_multi_segment_control_block
-003dd847   _setbits32
-003dcc4c   _spi_BulkEraseFlash
-003dcc8c   _spi_ClockFlashToFpga
-003dcc7b   _spi_ClockFlashToFpgaStart
-003dcc55   _spi_ReadFlash
-003dcc2f   _spi_ReadSpiFlashRDID
-003dcc0f   _spi_ReadSpiFlashStatus
-003dcc1c   _spi_ReleasePowerdownRES
-003dcc43   _spi_SetFlashWriteEnable
-003dcc9c   _spi_WriteFlash
-003dcbae   _spi_disableAllSpiDevices
-003dd67e   _ssEnc_ConstVelocityTimerRoutine
+003dd890   _setbits32
+003dcb46   _spi_BulkEraseFlash
+003dcb86   _spi_ClockFlashToFpga
+003dcb75   _spi_ClockFlashToFpgaStart
+003dcb4f   _spi_ReadFlash
+003dcb29   _spi_ReadSpiFlashRDID
+003dcb09   _spi_ReadSpiFlashStatus
+003dcb16   _spi_ReleasePowerdownRES
+003dcb3d   _spi_SetFlashWriteEnable
+003dcb96   _spi_WriteFlash
+003dca98   _spi_disableAllSpiDevices
+003dd6c7   _ssEnc_ConstVelocityTimerRoutine
 003f9230   _ssEnc_HiPrecisShaftAngle
-003dd66a   _ssEnc_ShaftAngleOutTask
-003dd654   _ssEnc_init
-003dd659   _ssEnc_recvShaftAngleIincreasedPrecision
+003dd6b3   _ssEnc_ShaftAngleOutTask
+003dd69d   _ssEnc_init
+003dd6a2   _ssEnc_recvShaftAngleIincreasedPrecision
 003f9231   _ssEnc_velocity
-003dd82d   _strU_strcpy
+003dd876   _strU_strcpy
 003f9200   _taskDelays
 003f9184   _taskFlags
-003dc96f   _taskMgr_ageTaskDelays
-003dc923   _taskMgr_firstSetTaskFlag
-003dc8ac   _taskMgr_init
-003dc90a   _taskMgr_nulTask
-003dc90e   _taskMgr_runBkgndTasks
-003dc8d2   _taskMgr_setTask
-003dc8f2   _taskMgr_setTaskRoundRobin
-003dc8e6   _taskMgr_setTaskWithDelay
-003dc9e6   _taskMgr_testSchedAlgorithms
-003dc99e   _taskMgr_testTask_1
-003dc9ac   _taskMgr_testTask_2
-003dc9bb   _taskMgr_testTask_3
-003dc9c9   _taskMgr_testTask_4
-003dc9d8   _taskMgr_testTask_5
-003dc988   _taskMgr_wDogReset
+003dc9a8   _taskMgr_ageTaskDelays
+003dc95c   _taskMgr_firstSetTaskFlag
+003dc8e5   _taskMgr_init
+003dc943   _taskMgr_nulTask
+003dc947   _taskMgr_runBkgndTasks
+003dc90b   _taskMgr_setTask
+003dc92b   _taskMgr_setTaskRoundRobin
+003dc91f   _taskMgr_setTaskWithDelay
+003dca1f   _taskMgr_testSchedAlgorithms
+003dc9d7   _taskMgr_testTask_1
+003dc9e5   _taskMgr_testTask_2
+003dc9f4   _taskMgr_testTask_3
+003dca02   _taskMgr_testTask_4
+003dca11   _taskMgr_testTask_5
+003dc9c1   _taskMgr_wDogReset
 003f9187   _taskRoundRobinFlags
-003dec24   _task_vectors
+003dec6e   _task_vectors
 003f9181   _testTaskCount
-003df501   _timeStamp_t1
-003df500   _timeStamp_t2
-003df4fe   _timeStamp_t3
+003df54b   _timeStamp_t1
+003df54a   _timeStamp_t2
+003df548   _timeStamp_t3
 003f8956   _timer0_SystemMiliSecCount
 003f8950   _timer0_count_T0_periods_to_1_MiliSec
 003f8952   _timer0_count_T0_periods_to_1_Tenth
 003f8951   _timer0_count_Tenths
-003dcf05   _timer0_count_reg_value
-003dcee5   _timer0_fetchSystemMiliSecCount
-003dce10   _timer0_initConfig_n_Start
-003dce24   _timer0_init_03
-003dcee9   _timer0_interrupt_count_value
-003dd78e   _timer0_isr
-003dcecd   _timer0_miliSecTask
-003dce07   _timer0_store_int_vectors_in_PIE
+003dcf4e   _timer0_count_reg_value
+003dcf2e   _timer0_fetchSystemMiliSecCount
+003dce59   _timer0_initConfig_n_Start
+003dce6d   _timer0_init_03
+003dcf32   _timer0_interrupt_count_value
+003dd7d7   _timer0_isr
+003dcf16   _timer0_miliSecTask
+003dce50   _timer0_store_int_vectors_in_PIE
 003f8954   _timer0_synchronized_count_value
 003f8958   _timer0_synchronized_reg_value
-003dce98   _timer0_task
-003dced5   _timer0_task_init
-003dceb7   _timer0_tenthOfSecTask
+003dcee1   _timer0_task
+003dcf1e   _timer0_task_init
+003dcf00   _timer0_tenthOfSecTask
 003f90aa   _ts_dateStamp
-003dd435   _ts_displayBuildDateTimestamp
-003dd48f   _ts_sendDateStampClassic
-003dd478   _ts_sendTimeStampClassic
+003dd47e   _ts_displayBuildDateTimestamp
+003dd4d8   _ts_sendDateStampClassic
+003dd4c1   _ts_sendTimeStampClassic
 003f90a8   _ts_timeStamp
 003f8900   _txBuf
 003d8000   _vector_from_bootloader
 003f90a6   _version
-003dd845   _write32
-003dbf78   _write_RES_Shaft_Angle
-003dcbe9   _xfer_16
-003db7a1   _xintf_InitXintf
-003db83b   _xintf_getTestSelection2004
-003db83f   _xintf_initTest
-003db819   _xintf_setTestData2001
-003db820   _xintf_setTestData2002
-003db827   _xintf_setTestData2003
-003db82e   _xintf_setTestSelection2004
-003db9be   _xintf_test2010
-003db9cf   _xintf_test2011
+003dd88e   _write32
+003dbfba   _write_RES_Shaft_Angle
+003dcae3   _xfer_16
+003db7e3   _xintf_InitXintf
+003db87d   _xintf_getTestSelection2004
+003db881   _xintf_initTest
+003db85b   _xintf_setTestData2001
+003db862   _xintf_setTestData2002
+003db869   _xintf_setTestData2003
+003db870   _xintf_setTestSelection2004
+003dba00   _xintf_test2010
+003dba11   _xintf_test2011
 003f90af   _xintf_testData2001
 003f90ad   _xintf_testData2002
 003f90ac   _xintf_testData2003
 003f90ae   _xintf_testSelection2004
-003db84b   _xintf_testUnderTimer0
+003db88d   _xintf_testUnderTimer0
 003f90b0   _xintf_testUnderTimer0_count
 00100198   _xramData1
 00100199   _xramData2
 0010019a   _xramData3
-003dd21a   _xram_ExtRamRWTest
-003dd23f   _xram_RWPassThruWholeChip
-003dd1c2   _xram_testExternalRam
+003dd263   _xram_ExtRamRWTest
+003dd288   _xram_RWPassThruWholeChip
+003dd20b   _xram_testExternalRam
 ffffffff   binit
-003df503   cinit
-003dd86e   etext
+003df54d   cinit
+003dd8b7   etext
 ffffffff   pinit
 
 
@@ -1439,645 +1438,644 @@ address    name
 003d8004   .text
 003d8004   ___text__
 003d8004   _frw_RemoveHwWriteProtect
-003d8015   _frw_AssertHwWriteProtect
-003d8024   _frw_SpiFlashInit
-003d802c   _frw_SetWhichFlash
-003d8033   _frw_GetWhichFlash
-003d8037   _frw_GetLoadFpgasAtStartupStatus
-003d803b   _frw_initFpgaLoadPins
-003d8049   _frw_SetFpgaCtrlLines
-003d80be   _frw_ReadFpgaCtrlLines
-003d80f3   _frw_SpiFlashTask
-003d8245   _frw_MiscFlashTasks
-003d82c4   _frw_readFlashStatusReg
-003d82d5   _frw_readFlashRDID
-003d82eb   _frw_releasePowerdownRES
-003d82fc   _frw_startMcsFileRecv
-003d8316   _frw_mcsFileRecvStatus
-003d834f   _frw_bulkEraseFlashSend
-003d835f   _frw_bulkEraseFlashRecv
-003d837a   _frw_mcsFileRecvData
-003d83e9   _frw_mcsFileSendData
-003d8483   _frw_fastFileRecvData
-003d84c7   _frw_startLoadFpgaFromFlash
-003d84d5   _frw_turnOnFlashWriteProtect
-003d84dd   _frw_readWhichFlashChip
-003d84e9   _frw_writeWhichFlashChip
-003d84f3   _diagRs232readFlashStatusReg
-003d852f   _diagRs232readFlashRDID
-003d855d   _diagRs232FlashRWBuff
-003d85b6   _frw_test2005
-003d868d   _frw_test4000
-003d86f0   _frw_test4001
-003d86f7   _frw_test4002
-003d86fe   _frw_test4003
-003d871d   _frw_test4004
-003d8749   _frw_test4005
-003d875c   _frw_test4006
-003d8762   _frw_diagFlashTasks
-003d87c8   _frw_diagDisplFlashPage
-003d87ec   _frw_runTest2005
-003d87f6   _limchkInit
-003d8803   _limchkInitOneChannel
-003d8880   _limchkPreTestInit
-003d88a6   _limchkConvertClassicToNative
-003d88fc   _limchkConvertNativeToClassic
-003d893d   _limChkAnlgIn1234
-003d8975   _limChkAnlgIn5678
-003d89ad   _limChkDigIn16
-003d89c1   _limChkDiffIn8
-003d89d6   _limChkFreqTest
-003d89f3   _limChkLevelTest
-003d8a08   _limChkUndefinedTest
-003d8a0e   _limchkSendLimits
-003d8a6b   _limchkRecvLimits
-003d8acb   _limchkSendWhichInput
-003d8af1   _limchkRecvWhichInput
-003d8b29   _limchkSendMeasValueClassic
-003d8b56   _limchkSendTestStatus
-003d8b8c   _limchkSendTimeStartEnd
-003d8bb2   _limchkRecvTimeStartEnd
-003d8bd8   _limchkSendFails
-003d8bfe   _limchkSendMinMaxValue
-003d8c43   _limchkSendAvgValue
-003d8c82   _limchkRecvEnable
-003d8cb0   _limchkRecvSync
-003d8cd7   _limchkResetOneChannel
-003d8ced   _limChkOpenHvPsRelay
-003d8cee   _limChkHvPsShutdown
-003d8cf3   _limChkStateMachine
-003d8d09   _limChkStateMachineChannel
-003d8dae   _limChkStateMachineOnTestFail
-003d8dbe   _limChkStateMachineResetOneChannel
-003d8dd1   _limChkBackgroundMeasurements
-003d8e4e   _limChkBackgroundMinMaxAvg
-003d8eaf   _limChkBackgroundMinMaxAvgInit
-003d8ee4   _limChkBackgroundComputeAvg
-003d8f2c   _limChkAnlgInClassic
-003d8f95   _limChkAnlgInComparison
-003d8fd2   _fpgaT_setTestData3003
-003d8fd9   _fpgaT_setTestSelection3004
-003d8fe0   _fpgaT_getledStatus
-003d8fe4   _fpgaT_initTest
-003d8ff1   _fpgaT_init_3004_5000_Test
-003d8ff9   _fpgaT_testUnderTimer0
-003d9243   _fpgaT_test3005
-003d95d9   _fpgaT_send32Clk
-003d9601   _fpgaT_sv_test_ctrl
-003d9619   _fpgaT_sv_test_one_rw
-003d969a   _fpgaT_sv_test_Task
-003d96be   _i2cee_Init
-003d96c5   _i2cee_selectEEProm
-003d96cf   _i2cee_disableClkToAllEEProms
-003d96db   _i2cee_enableClkToSelectedEEProm
-003d96f4   _i2cee_delay
-003d9703   _i2cee_write1Byte
-003d9794   _i2cee_read1Byte
-003d9808   _i2cee_read
-003d9879   _i2cee_write
-003d98f7   _i2cee_writeProtect
-003d991a   _diagRs232I2ceeRead
-003d9988   _diagRs232I2ceeWrite8
-003d99b5   _i2cee_diag4203Task
-003d9a08   _i2cee_test4200
-003d9a19   _i2cee_test4201
-003d9a4a   _i2cee_test4203
-003d9a67   _i2cee_test4204
-003d9aa4   _i2cee_test4205
-003d9ae7   _i2cee_test4206
-003d9b2a   _i2cee_getTokenForEepromProg
-003d9b3a   _i2cee_progEEPromFromCanFileData
-003d9b56   _i2cee_readEEPromStatus
-003d9b67   _i2cee_readEEPromToCanFile
-003d9b78   _i2cee_readEEPromToCanFileTask
-003d9bba   _i2cee_progEEPromFromCanFileTask
-003d9c29   _i2cee_readEEProm1Byte
-003d9c54   _i2cee_writeEEProm1Byte
-003d9c85   _i2cee_32BytesFromEEpromToBuf
-003d9c94   _i2cee_read32FromEEpromToBufTask
-003d9cbb   _i2cee_read32ByteStatus
-003d9cc8   _i2cee_32BytesToPC
-003d9cd7   _i2cee_32BytesFromPC
-003d9ce6   _i2cee_burn32BytesToEEProm
-003d9cff   _i2cee_burn32ToEEpromTask
-003d9d3e   _comint_comint
-003da059   _comint_comintSpeedDial
-003da1b4   _comint_DisplaySpeedDialList
-003da21b   _comint_DisplayCpldAddrConfig
-003da23d   _comint_comintTextCommand
-003da25a   _comint_comintHelp
-003da266   _digio2_Init
-003da273   _digio2_recvEncInMap
-003da285   _digio2_recvHallInMap
-003da292   _digio2_recvPwmInMap
-003da2a4   _digio2_sendPwmIn1Period
-003da2c0   _digio2_sendPwmIn1OnTime
-003da2dc   _digio2_sendPwmIn2Period
-003da2f8   _digio2_sendPwmIn2OnTime
-003da314   _digio2_sendEncAInPeriod
-003da330   _digio2_sendEncAInOnTime
-003da34c   _digio2_sendEncIInPeriod
-003da368   _digio2_sendEncIInOnTime
-003da36e   _digio2_sendEncInDir
-003da385   _digio2_sendEncCounts
-003da3a1   _digio2_sendPwmReadingClassic
-003da3f5   _digio2_sendEncReadingClassic
-003da467   _digio2_Init_Enc_Index_Freq_Div
-003da470   _digio2_recvEncIndexDivisor
-003da482   _digio2_sendHallReadingClassic
-003da4a5   _digio2_recvDigOutSignalAssignment
-003da4ec   _digio2_initDigOutSignalAssignment
-003da50d   _digio2_recvDigOutMode
-003da554   _digio2_initDigOutMode
-003da575   _digio2_recvDiffOutSignalAssignment
-003da599   _digio2_initDiffOutSignalAssignment
-003da5ae   _digio2_recvDigOutRails
-003da5f5   _digio2_initDigOutRails
-003da61d   _digio2_recvDigOutLevel
-003da649   _digio2_initDigOutLevel
-003da661   _digio2_recvDiffOutLevel
-003da673   _digio2_initDiffOutLevel
-003da67a   _digio2_recvDiffOutEnable
-003da68c   _digio2_initDiffOutEnable
-003da693   _rs232_transmit_status_busy
-003da69d   _rs232_txFifo_Busy
-003da6a8   _rs232_transmit_characters
-003da6b5   _rs232_store_int_vectors_in_PIE
-003da6c1   _rs232_enable_PIE_int
-003da6cd   _rs232_scia_fifo_init
-003da6f1   _rs232_start_autobaud_detect
-003da6fb   _rs232_setBaudRateDefault
-003da702   _TurnOnTx
-003da70e   _error
-003da710   _rs232_Init
-003da716   _rs232_BgTaskInit
-003da717   _rs232_commandDecode
-003da813   _rs232_setCommandAck
-003da820   _rs232_BgTask_ooad
-003da836   _rs232_BgTask_ts3StartUp
-003da84c   _rs232_BgTask_TxDone
-003da851   _rs232_reportBaudParityEtc
-003da8f4   _rs232_changeBaudParityEtc
-003da9a8   _rs232_getBrrValueFromBaudRate
-003daa15   _rs232_getBaudRateFromBrrValue
-003daa42   _rs232_BgTask_Rs232BaudChange
-003daa58   _rs232_BgTask_Rs232BreakOrError
-003daa70   _rs232_BgTask_AckAutobaud
-003daa9b   _rs232_DiagPortalMsg
-003daaa8   _digio_initDacComparatorValuesClassic
-003daab8   _digio_recvComparitorClassic
-003daae1   _digio_send16DigitalInputs
-003daaf3   _digio_receiveNativeDacVal
-003dab75   _digio_recvAnlgOutClassic
-003dabac   _digio_writeDacOutputValue
-003dabb7   _digio_recvPwmOutputFreq32
-003dabd3   _digio_recvPwmOutputDutyCyc32
-003dabef   _digio_recvPwmOutputFreqClassic16
-003dac03   _digio_recvPwmOutputDutyCycClassic16
-003dac17   _digio_PwmOutputFreq16Task
-003dac5b   _digio_EncInit
-003dacb8   _digio_recvEncOutParam
-003dad80   _digio_recvClassicEncOutParam
-003dae2a   _digio_HallOutInit
-003dae34   _digio_recvHallOutputParamClassic16
-003dae76   _digio_recvHallOutputParam32
-003dae92   _init_SDO_MS_CB
-003dae9a   _copyDataToMultiPacketBuf
-003daec0   _copyPacked32BytesToMultiPacketBuf
-003daee8   _copy32BytesFromMultiPacketBufToPackedBuf
-003daf12   _canO_HandleCanOpenMessage
-003db001   _canO_multiPktRecvFirst
-003db047   _canO_multiPktRecv2nd3rdEtc
-003db10e   _canO_multiPktSendFirst
-003db142   _canO_multiPktSend2nd3rdEtc
-003db1cb   _canO_recv32Bits
-003db1de   _canO_send32Bits
-003db1f0   _canO_recv16Bits
-003db1fd   _canO_send16Bits
-003db20c   _canO_givesErrForTesting
-003db212   _canO_sendMaxSubIndex
-003db22a   _canO_doReset
-003db234   _canO_doJumpToBootLoader
-003db240   _hexUtil_hexCharToBin
-003db24c   _hexUtil_hexCharsToBin
-003db270   _hexUtil_isValidAsciiHexDigits
-003db29b   _hexUtil_binTo4HexAsciiChars
-003db2bc   _hexUtil_binTo2HexAsciiChars
-003db2e0   _hexUtil_binTo5DecAsciiChars
-003db340   _hexUtil_binToDecAsciiCharsZeroSuppress
-003db371   _hexUtil_bin32To10DecAsciiChars
-003db473   _hexUtil_bin32ToDecAsciiCharsZeroSuppress
-003db4a5   _hexUtil_decCharsToBin
-003db4cc   _hexUtil_decCharsToBin32
-003db4f7   _canC_initComm
-003db520   _canC_readCanAddrDipSwitches
-003db537   _canC_mailboxInitialization
-003db5b3   _canC_configMbxForTransmit
-003db615   _canC_configMbxForReceive
-003db68e   _canC_pollRecv
-003db715   _canC_transmitMessage
-003db7a1   _xintf_InitXintf
-003db819   _xintf_setTestData2001
-003db820   _xintf_setTestData2002
-003db827   _xintf_setTestData2003
-003db82e   _xintf_setTestSelection2004
-003db83b   _xintf_getTestSelection2004
-003db83f   _xintf_initTest
-003db84b   _xintf_testUnderTimer0
-003db9be   _xintf_test2010
-003db9cf   _xintf_test2011
-003dba17   _ain_offsetCalcInit
-003dba1b   _ain_setSwitchDefaultsForB1
-003dba20   _ain_getAnlginCalState
-003dba24   _ain_offsetCalcTask
-003dbb1a   _ain_startOffsetCalc
-003dbb26   _ain_calibratedValue
-003dbb57   _ain_calibratedClassicValue
-003dbba7   _ain_calibratedClassicValRaw
-003dbbb5   _ain_ad7175_setup_task_init
-003dbbbc   _ain_get_ad7175SetupTaskState
-003dbbc0   _ain_ad7175_setup_task
-003dbc29   _ain_ad7175_request
-003dbc50   _ain_ad7175_fetch_status
-003dbc5f   _ain_ad7175_fetch_data_read
-003dbc73   _adc_init
-003dbcac   _adc_configureChannels
-003dbccb   _adc_runConversion
-003dbcd9   _adc_convertToMilliVolts
-003dbcf0   _adc_readOneAdcChannelToRs232
-003dbd6c   _adc_addOneAdcChannelToList
-003dbdda   _adc_DisplayAdcResults
-003dbe62   _adc_repeatPrevAdcTest
-003dbe6d   _adc_readAll16Channels
-003dbe80   _res_init
-003dbe8a   _res_calcSinCosFromHiPrecisShaftAngle
-003dbf78   _write_RES_Shaft_Angle
-003dbfdc   _res_recvAmpRef
-003dbffb   _res_recvRefFreq
-003dc008   _res_recvRefDacValue
-003dc015   _res_recvShaftAngle
-003dc026   _res_recvShaftAngleIincreasedPrecision
-003dc037   _res_ShaftAngleOutTask
-003dc04b   _res_ConstVelocityTimerRoutine
-003dc055   _f2i_enable_interrupt
-003dc058   _f2i_store_int_vectors_in_PIE
-003dc061   _f2i_initialize_interrupt
-003dc070   _f2i_SSEnc_init
-003dc087   _f2i_BgTask_SSEnc
-003dc17c   _f2i_CRC5
-003dc1c7   _f2i_SSEnc_reverse_position
-003dc1fa   _f2i_recv_Pos_32_from_Host
-003dc217   _canF_zeroDummyFileBufCounts
-003dc21c   _canF_zeroDummyFileBufOutCount
-003dc220   _canF_appendIntoDummyFileBuf
-003dc239   _canF_readOutOfDummyFileBuf
-003dc26f   _canF_recvDummyFile
-003dc296   _canF_sendDummyFile
-003dc2c7   _diagRs232sendDummyFile
-003dc2e3   _diagRs232recvMultiPacket
-003dc375   _diagRs232CanRecvMsg
-003dc3d0   _led_synchronizedSlowHeartbeat
-003dc3d6   _led_setLedCpldIoPattern
-003dc3e3   _led_setLedCpldPmPattern
-003dc3f0   _led_getCpldIoLedPattern
-003dc3f4   _led_cpldLedIoInit
-003dc3fd   _led_manageCpldIoLEDsUnderTimer0
-003dc457   _led_setDspLedPattern
-003dc45e   _led_getDspLedPattern
-003dc462   _led_dspLedErrMsg
-003dc46c   _led_toggle4DspLeds
-003dc471   _led_init4DspLeds
-003dc47c   _led_manageDspLEDsUnderTimer0
-003dc4fb   _led_DspLedInit
-003dc501   _led_setLedFpga1Pattern
-003dc50a   _led_setLedFpga2Pattern
-003dc513   _led_setLedFpga3Pattern
-003dc51a   _led_FpgaLedInit
-003dc523   _led_manageFpgaLedsUnderTimer0
-003dc57d   _GpioU_defaultInit
-003dc599   _GpioU_f1iInit
-003dc5a1   _GpioU_f2iInit
-003dc5a9   _GpioU_rs232Init
-003dc5b3   _GpioU_sci2Init
-003dc5bd   _GpioU_SpiInit
-003dc5cd   _GpioU_SpiDisableEEPromOnTB3CM
-003dc5d2   _GpioU_i2cee_Init
-003dc5de   _GpioU_timer0Init
-003dc5ea   _GpioU_initGpiosAllZero
-003dc5f9   _Gpio_example3C
-003dc5fe   _GpioU_ioTest2100
-003dc659   _GpioU_ioTest2101
-003dc6cc   _GpioU_ioTest2102
-003dc727   _main
-003dc7ed   _main_readPowerGoodSignals
-003dc7f6   _main_DisplayPgLoopCount
-003dc819   _main_startupTask
-003dc8ac   _taskMgr_init
-003dc8d2   _taskMgr_setTask
-003dc8e6   _taskMgr_setTaskWithDelay
-003dc8f2   _taskMgr_setTaskRoundRobin
-003dc90a   _taskMgr_nulTask
-003dc90e   _taskMgr_runBkgndTasks
-003dc923   _taskMgr_firstSetTaskFlag
-003dc96f   _taskMgr_ageTaskDelays
-003dc988   _taskMgr_wDogReset
-003dc99e   _taskMgr_testTask_1
-003dc9ac   _taskMgr_testTask_2
-003dc9bb   _taskMgr_testTask_3
-003dc9c9   _taskMgr_testTask_4
-003dc9d8   _taskMgr_testTask_5
-003dc9e6   _taskMgr_testSchedAlgorithms
-003dca2c   _INT13_ISR
-003dca31   _INT14_ISR
-003dca36   _DATALOG_ISR
-003dca3b   _RTOSINT_ISR
-003dca40   _EMUINT_ISR
-003dca45   _NMI_ISR
-003dca4a   _ILLEGAL_ISR
-003dca4f   _USER1_ISR
-003dca54   _USER2_ISR
-003dca59   _USER3_ISR
-003dca5e   _USER4_ISR
-003dca63   _USER5_ISR
-003dca68   _USER6_ISR
-003dca6d   _USER7_ISR
-003dca72   _USER8_ISR
-003dca77   _USER9_ISR
-003dca7c   _USER10_ISR
-003dca81   _USER11_ISR
-003dca86   _USER12_ISR
-003dca8b   _PDPINTA_ISR
-003dca90   _PDPINTB_ISR
-003dca95   _XINT1_ISR
-003dca9a   _XINT2_ISR
-003dca9f   _ADCINT_ISR
-003dcaa4   _TINT0_ISR
-003dcaa9   _WAKEINT_ISR
-003dcaae   _CMP1INT_ISR
-003dcab3   _CMP2INT_ISR
-003dcab8   _CMP3INT_ISR
-003dcabd   _T1PINT_ISR
-003dcac2   _T1CINT_ISR
-003dcac7   _T1UFINT_ISR
-003dcacc   _T1OFINT_ISR
-003dcad1   _T2PINT_ISR
-003dcad6   _T2CINT_ISR
-003dcadb   _T2UFINT_ISR
-003dcae0   _T2OFINT_ISR
-003dcae5   _CAPINT1_ISR
-003dcaea   _CAPINT2_ISR
-003dcaef   _CAPINT3_ISR
-003dcaf4   _CMP4INT_ISR
-003dcaf9   _CMP5INT_ISR
-003dcafe   _CMP6INT_ISR
-003dcb03   _T3PINT_ISR
-003dcb08   _T3CINT_ISR
-003dcb0d   _T3UFINT_ISR
-003dcb12   _T3OFINT_ISR
-003dcb17   _T4PINT_ISR
-003dcb1c   _T4CINT_ISR
-003dcb21   _T4UFINT_ISR
-003dcb26   _T4OFINT_ISR
-003dcb2b   _CAPINT4_ISR
-003dcb30   _CAPINT5_ISR
-003dcb35   _CAPINT6_ISR
-003dcb3a   _SPIRXINTA_ISR
-003dcb3f   _SPITXINTA_ISR
-003dcb44   _MRINTA_ISR
-003dcb49   _MXINTA_ISR
-003dcb4e   _SCIRXINTA_ISR
-003dcb53   _SCITXINTA_ISR
-003dcb58   _SCIRXINTB_ISR
-003dcb5d   _SCITXINTB_ISR
-003dcb62   _ECAN0INTA_ISR
-003dcb67   _ECAN1INTA_ISR
-003dcb6c   _EMPTY_ISR
-003dcb71   _PIE_RESERVED
-003dcb76   _rsvd_ISR
-003dcb7b   _InitSpi
-003dcbae   _spi_disableAllSpiDevices
-003dcbc2   _SelectSpiFlash
-003dcbe9   _xfer_16
-003dcbf4   _Xfr8bitSpiCmd
-003dcc0f   _spi_ReadSpiFlashStatus
-003dcc1c   _spi_ReleasePowerdownRES
-003dcc2f   _spi_ReadSpiFlashRDID
-003dcc43   _spi_SetFlashWriteEnable
-003dcc4c   _spi_BulkEraseFlash
-003dcc55   _spi_ReadFlash
-003dcc7b   _spi_ClockFlashToFpgaStart
-003dcc8c   _spi_ClockFlashToFpga
-003dcc9c   _spi_WriteFlash
-003dccbf   _diag_SelectSpiFlash
-003dccc2   _sci2_init
-003dcd05   _sci2_rx_tx
-003dcd72   _sci2_recvTxBuf
-003dcd97   _sci2_recvTxBufAppend
-003dcdbb   _sci2_sendRxBuf
-003dcdf7   _sci2_xmit_test
-003dce07   _timer0_store_int_vectors_in_PIE
-003dce10   _timer0_initConfig_n_Start
-003dce24   _timer0_init_03
-003dce2b   _InitCpuTimers
-003dce64   _ConfigCpuTimer
-003dce98   _timer0_task
-003dceb7   _timer0_tenthOfSecTask
-003dcecd   _timer0_miliSecTask
-003dced5   _timer0_task_init
-003dcee5   _timer0_fetchSystemMiliSecCount
-003dcee9   _timer0_interrupt_count_value
-003dcf05   _timer0_count_reg_value
-003dcf09   _r232Out_outChars
-003dcf55   _r232Out_outCharsNT
-003dcf66   _r232Out_circBufOutput
-003dcf9d   _r232Out_transmit_status_busy
-003dcfac   _r232Out_Command_Ack
-003dcfde   _r232Out_Command_Nak
-003dcffe   _log_init
-003dd003   _log_addToLogWith3Params
-003dd04d   _log_addToLog
-003dd093   _log_readLog
-003dd0c0   _log_startReadingLog
-003dd0d5   _log_clear
-003dd0dd   _log_t0Period
-003dd0e8   _sciaTxFifoIsr
-003dd130   _sciaRxFifoIsr
-003dd1c2   _xram_testExternalRam
-003dd21a   _xram_ExtRamRWTest
-003dd23f   _xram_RWPassThruWholeChip
-003dd281   _mcsParseReceivedData
-003dd32d   _InitECan
-003dd3b3   _InitSysCtrl
-003dd3bb   _KickDog
-003dd3c5   _DisableDog
-003dd3cd   _InitPll
-003dd3ea   _InitPeripheralClocks
-003dd404   _CsmUnlock
-003dd435   _ts_displayBuildDateTimestamp
-003dd478   _ts_sendTimeStampClassic
-003dd48f   _ts_sendDateStampClassic
-003dd4ac   _CanDoubleRead
-003dd4b6   _CanDoubleWrite
-003dd4c1   _CanDoubleClear
-003dd4d4   _CanDoubleSet
-003dd4e5   _XmitCanTimestamp
-003dd517   _evtimer4_turn_off
-003dd51c   _evtimer4_turn_on
-003dd559   _evtimer4_store_int_vectors_in_PIE
-003dd562   _evtimer4_initConfig_n_Start
-003dd563   _evtimer4_initConfig_n_Start_disabled
-003dd571   _evtimer4_enable_int
-003dd578   FS$$MPY
-003dd5d2   _c_int00
-003dd616   _f1i_enable_interrupt
-003dd61d   _f1i_store_int_vectors_in_PIE
-003dd626   _f1i_initialize_interrupt
-003dd635   _f1i_BgTask
-003dd654   _ssEnc_init
-003dd659   _ssEnc_recvShaftAngleIincreasedPrecision
-003dd66a   _ssEnc_ShaftAngleOutTask
-003dd67e   _ssEnc_ConstVelocityTimerRoutine
-003dd688   L$$DIV
-003dd697   L$$MOD
-003dd6a5   UL$$DIV
-003dd6ac   UL$$MOD
-003dd6b2   _evtimer4_isr
-003dd6db   FS$$TOL
-003dd704   _InitPieCtrl
-003dd723   _EnableInterrupts
-003dd72c   FS$$TOUL
-003dd74d   ___memcpy_ff
-003dd76e   _InitPieVectTable
-003dd78e   _timer0_isr
-003dd7ad   _f1i_isr
-003dd7c9   L$$TOFS
-003dd7e3   __args_main
-003dd7fc   C$$EXIT
-003dd7fc   _abort
-003dd7fe   _exit
-003dd815   _f2i_isr
-003dd82d   _strU_strcpy
-003dd843   _read32
-003dd845   _write32
-003dd847   _setbits32
-003dd84c   _clearbits32
-003dd852   U$$DIV
-003dd857   U$$MOD
-003dd85d   __register_unlock
-003dd861   __register_lock
-003dd865   __nop
-003dd86e   ___etext__
-003dd86e   etext
-003ddc5a   _limitCheckInputs
-003dddf2   _can_index
-003ddf76   _index_204C
-003de086   _index_2057
-003de18e   _PieVectTableInit
-003de28e   _index_204E
-003de4ca   _index_2058
-003de562   _index_2050
-003de5f2   _index_2053
-003de778   _index_2023
-003de7e8   _index_2024
-003de858   _index_2025
-003de8c8   _index_2026
-003de938   _index_2027
-003de9a8   _index_2028
-003dea18   _index_2029
-003dea88   _index_202A
-003deaf8   _index_2031
-003debc4   _index_2056
-003dec24   _task_vectors
-003dec84   _index_204D
-003decdc   _index_2055
-003ded34   _index_205F
-003ded8c   _index_2010
-003deddc   _index_2051
-003dee2c   _index_200B
-003deefc   _index_200C
-003def3c   _index_2001
-003def74   _index_2003
-003defac   _index_2004
-003defe4   _index_2013
-003df04e   _index_204A
-003df07e   _index_204F
-003df0ae   _index_2007
-003df0d6   _index_200E
-003df0fe   _index_2014
-003df126   _index_2015
-003df14e   _index_2052
-003df198   _index_2005
-003df1b8   _index_2008
-003df1d8   _index_2009
-003df1f8   _index_2011
-003df218   _index_2036
-003df238   _index_2049
-003df2ce   _index_2002
-003df2e6   _index_2006
-003df2fe   _index_200A
-003df316   _index_2012
-003df32e   _index_2032
-003df346   _index_2054
-003df35e   _index_204B
-003df36e   _index_2000
-003df376   _index_200D
-003df37e   _index_200F
-003df386   _index_2016
-003df38e   _index_2017
-003df396   _index_2018
-003df39e   _index_2019
-003df3a6   _index_201A
-003df3ae   _index_201B
-003df3b6   _index_201C
-003df3be   _index_201D
-003df3c6   _index_201E
-003df3ce   _index_201F
-003df3d6   _index_2020
-003df3de   _index_2021
-003df3e6   _index_2022
-003df3ee   _index_202B
-003df3f6   _index_202C
-003df3fe   _index_202D
-003df406   _index_202E
-003df40e   _index_202F
-003df416   _index_2030
-003df41e   _index_2033
-003df426   _index_2034
-003df42e   _index_2035
-003df436   _index_2037
-003df43e   _index_2038
-003df446   _index_2039
-003df44e   _index_203A
-003df456   _index_203B
-003df45e   _index_203C
-003df466   _index_203D
-003df46e   _index_203E
-003df476   _index_203F
-003df47e   _index_2040
-003df486   _index_2041
-003df48e   _index_2042
-003df496   _index_2043
-003df49e   _index_2044
-003df4a6   _index_2045
-003df4ae   _index_2046
-003df4b6   _index_2047
-003df4be   _index_2048
-003df4c6   _index_2059
-003df4ce   _index_205A
-003df4d6   _index_205B
-003df4de   _index_205C
-003df4e6   _index_205D
-003df4ee   _index_205E
-003df4f6   _index_2060
-003df4fe   _timeStamp_t3
-003df4ff   _revision_rv1
-003df500   _timeStamp_t2
-003df501   _timeStamp_t1
-003df502   _revision_rv2
-003df503   ___cinit__
-003df503   cinit
-003df8e3   _RamfuncsLoadStart
-003df8fe   _RamfuncsLoadEnd
+003d801b   _frw_AssertHwWriteProtect
+003d8030   _frw_SpiFlashInit
+003d8038   _frw_SetWhichFlash
+003d803f   _frw_GetWhichFlash
+003d8043   _frw_GetLoadFpgasAtStartupStatus
+003d8047   _frw_initFpgaLoadPins
+003d8057   _frw_SetFpgaCtrlLines
+003d80ec   _frw_ReadFpgaCtrlLines
+003d812f   _frw_SpiFlashTask
+003d8287   _frw_MiscFlashTasks
+003d8306   _frw_readFlashStatusReg
+003d8317   _frw_readFlashRDID
+003d832d   _frw_releasePowerdownRES
+003d833e   _frw_startMcsFileRecv
+003d8358   _frw_mcsFileRecvStatus
+003d8391   _frw_bulkEraseFlashSend
+003d83a1   _frw_bulkEraseFlashRecv
+003d83bc   _frw_mcsFileRecvData
+003d842b   _frw_mcsFileSendData
+003d84c5   _frw_fastFileRecvData
+003d8509   _frw_startLoadFpgaFromFlash
+003d8517   _frw_turnOnFlashWriteProtect
+003d851f   _frw_readWhichFlashChip
+003d852b   _frw_writeWhichFlashChip
+003d8535   _diagRs232readFlashStatusReg
+003d8571   _diagRs232readFlashRDID
+003d859f   _diagRs232FlashRWBuff
+003d85f8   _frw_test2005
+003d86cf   _frw_test4000
+003d8732   _frw_test4001
+003d8739   _frw_test4002
+003d8740   _frw_test4003
+003d875f   _frw_test4004
+003d878b   _frw_test4005
+003d879e   _frw_test4006
+003d87a4   _frw_diagFlashTasks
+003d880a   _frw_diagDisplFlashPage
+003d882e   _frw_runTest2005
+003d8838   _limchkInit
+003d8845   _limchkInitOneChannel
+003d88c2   _limchkPreTestInit
+003d88e8   _limchkConvertClassicToNative
+003d893e   _limchkConvertNativeToClassic
+003d897f   _limChkAnlgIn1234
+003d89b7   _limChkAnlgIn5678
+003d89ef   _limChkDigIn16
+003d8a03   _limChkDiffIn8
+003d8a18   _limChkFreqTest
+003d8a35   _limChkLevelTest
+003d8a4a   _limChkUndefinedTest
+003d8a50   _limchkSendLimits
+003d8aad   _limchkRecvLimits
+003d8b0d   _limchkSendWhichInput
+003d8b33   _limchkRecvWhichInput
+003d8b6b   _limchkSendMeasValueClassic
+003d8b98   _limchkSendTestStatus
+003d8bce   _limchkSendTimeStartEnd
+003d8bf4   _limchkRecvTimeStartEnd
+003d8c1a   _limchkSendFails
+003d8c40   _limchkSendMinMaxValue
+003d8c85   _limchkSendAvgValue
+003d8cc4   _limchkRecvEnable
+003d8cf2   _limchkRecvSync
+003d8d19   _limchkResetOneChannel
+003d8d2f   _limChkOpenHvPsRelay
+003d8d30   _limChkHvPsShutdown
+003d8d35   _limChkStateMachine
+003d8d4b   _limChkStateMachineChannel
+003d8df0   _limChkStateMachineOnTestFail
+003d8e00   _limChkStateMachineResetOneChannel
+003d8e13   _limChkBackgroundMeasurements
+003d8e90   _limChkBackgroundMinMaxAvg
+003d8ef1   _limChkBackgroundMinMaxAvgInit
+003d8f26   _limChkBackgroundComputeAvg
+003d8f6e   _limChkAnlgInClassic
+003d8fd7   _limChkAnlgInComparison
+003d9014   _fpgaT_setTestData3003
+003d901b   _fpgaT_setTestSelection3004
+003d9022   _fpgaT_getledStatus
+003d9026   _fpgaT_initTest
+003d9033   _fpgaT_init_3004_5000_Test
+003d903b   _fpgaT_testUnderTimer0
+003d9285   _fpgaT_test3005
+003d961b   _fpgaT_send32Clk
+003d9643   _fpgaT_sv_test_ctrl
+003d965b   _fpgaT_sv_test_one_rw
+003d96dc   _fpgaT_sv_test_Task
+003d9700   _i2cee_Init
+003d9707   _i2cee_selectEEProm
+003d9711   _i2cee_disableClkToAllEEProms
+003d971d   _i2cee_enableClkToSelectedEEProm
+003d9736   _i2cee_delay
+003d9745   _i2cee_write1Byte
+003d97d6   _i2cee_read1Byte
+003d984a   _i2cee_read
+003d98bb   _i2cee_write
+003d9939   _i2cee_writeProtect
+003d995c   _diagRs232I2ceeRead
+003d99ca   _diagRs232I2ceeWrite8
+003d99f7   _i2cee_diag4203Task
+003d9a4a   _i2cee_test4200
+003d9a5b   _i2cee_test4201
+003d9a8c   _i2cee_test4203
+003d9aa9   _i2cee_test4204
+003d9ae6   _i2cee_test4205
+003d9b29   _i2cee_test4206
+003d9b6c   _i2cee_getTokenForEepromProg
+003d9b7c   _i2cee_progEEPromFromCanFileData
+003d9b98   _i2cee_readEEPromStatus
+003d9ba9   _i2cee_readEEPromToCanFile
+003d9bba   _i2cee_readEEPromToCanFileTask
+003d9bfc   _i2cee_progEEPromFromCanFileTask
+003d9c6b   _i2cee_readEEProm1Byte
+003d9c96   _i2cee_writeEEProm1Byte
+003d9cc7   _i2cee_32BytesFromEEpromToBuf
+003d9cd6   _i2cee_read32FromEEpromToBufTask
+003d9cfd   _i2cee_read32ByteStatus
+003d9d0a   _i2cee_32BytesToPC
+003d9d19   _i2cee_32BytesFromPC
+003d9d28   _i2cee_burn32BytesToEEProm
+003d9d41   _i2cee_burn32ToEEpromTask
+003d9d80   _comint_comint
+003da09b   _comint_comintSpeedDial
+003da1f6   _comint_DisplaySpeedDialList
+003da25d   _comint_DisplayCpldAddrConfig
+003da27f   _comint_comintTextCommand
+003da29c   _comint_comintHelp
+003da2a8   _digio2_Init
+003da2b5   _digio2_recvEncInMap
+003da2c7   _digio2_recvHallInMap
+003da2d4   _digio2_recvPwmInMap
+003da2e6   _digio2_sendPwmIn1Period
+003da302   _digio2_sendPwmIn1OnTime
+003da31e   _digio2_sendPwmIn2Period
+003da33a   _digio2_sendPwmIn2OnTime
+003da356   _digio2_sendEncAInPeriod
+003da372   _digio2_sendEncAInOnTime
+003da38e   _digio2_sendEncIInPeriod
+003da3aa   _digio2_sendEncIInOnTime
+003da3b0   _digio2_sendEncInDir
+003da3c7   _digio2_sendEncCounts
+003da3e3   _digio2_sendPwmReadingClassic
+003da437   _digio2_sendEncReadingClassic
+003da4a9   _digio2_Init_Enc_Index_Freq_Div
+003da4b2   _digio2_recvEncIndexDivisor
+003da4c4   _digio2_sendHallReadingClassic
+003da4e7   _digio2_recvDigOutSignalAssignment
+003da52e   _digio2_initDigOutSignalAssignment
+003da54f   _digio2_recvDigOutMode
+003da596   _digio2_initDigOutMode
+003da5b7   _digio2_recvDiffOutSignalAssignment
+003da5db   _digio2_initDiffOutSignalAssignment
+003da5f0   _digio2_recvDigOutRails
+003da637   _digio2_initDigOutRails
+003da65f   _digio2_recvDigOutLevel
+003da68b   _digio2_initDigOutLevel
+003da6a3   _digio2_recvDiffOutLevel
+003da6b5   _digio2_initDiffOutLevel
+003da6bc   _digio2_recvDiffOutEnable
+003da6ce   _digio2_initDiffOutEnable
+003da6d5   _rs232_transmit_status_busy
+003da6df   _rs232_txFifo_Busy
+003da6ea   _rs232_transmit_characters
+003da6f7   _rs232_store_int_vectors_in_PIE
+003da703   _rs232_enable_PIE_int
+003da70f   _rs232_scia_fifo_init
+003da733   _rs232_start_autobaud_detect
+003da73d   _rs232_setBaudRateDefault
+003da744   _TurnOnTx
+003da750   _error
+003da752   _rs232_Init
+003da758   _rs232_BgTaskInit
+003da759   _rs232_commandDecode
+003da855   _rs232_setCommandAck
+003da862   _rs232_BgTask_ooad
+003da878   _rs232_BgTask_ts3StartUp
+003da88e   _rs232_BgTask_TxDone
+003da893   _rs232_reportBaudParityEtc
+003da936   _rs232_changeBaudParityEtc
+003da9ea   _rs232_getBrrValueFromBaudRate
+003daa57   _rs232_getBaudRateFromBrrValue
+003daa84   _rs232_BgTask_Rs232BaudChange
+003daa9a   _rs232_BgTask_Rs232BreakOrError
+003daab2   _rs232_BgTask_AckAutobaud
+003daadd   _rs232_DiagPortalMsg
+003daaea   _digio_initDacComparatorValuesClassic
+003daafa   _digio_recvComparitorClassic
+003dab23   _digio_send16DigitalInputs
+003dab35   _digio_receiveNativeDacVal
+003dabb7   _digio_recvAnlgOutClassic
+003dabee   _digio_writeDacOutputValue
+003dabf9   _digio_recvPwmOutputFreq32
+003dac15   _digio_recvPwmOutputDutyCyc32
+003dac31   _digio_recvPwmOutputFreqClassic16
+003dac45   _digio_recvPwmOutputDutyCycClassic16
+003dac59   _digio_PwmOutputFreq16Task
+003dac9d   _digio_EncInit
+003dacfa   _digio_recvEncOutParam
+003dadc2   _digio_recvClassicEncOutParam
+003dae6c   _digio_HallOutInit
+003dae76   _digio_recvHallOutputParamClassic16
+003daeb8   _digio_recvHallOutputParam32
+003daed4   _init_SDO_MS_CB
+003daedc   _copyDataToMultiPacketBuf
+003daf02   _copyPacked32BytesToMultiPacketBuf
+003daf2a   _copy32BytesFromMultiPacketBufToPackedBuf
+003daf54   _canO_HandleCanOpenMessage
+003db043   _canO_multiPktRecvFirst
+003db089   _canO_multiPktRecv2nd3rdEtc
+003db150   _canO_multiPktSendFirst
+003db184   _canO_multiPktSend2nd3rdEtc
+003db20d   _canO_recv32Bits
+003db220   _canO_send32Bits
+003db232   _canO_recv16Bits
+003db23f   _canO_send16Bits
+003db24e   _canO_givesErrForTesting
+003db254   _canO_sendMaxSubIndex
+003db26c   _canO_doReset
+003db276   _canO_doJumpToBootLoader
+003db282   _hexUtil_hexCharToBin
+003db28e   _hexUtil_hexCharsToBin
+003db2b2   _hexUtil_isValidAsciiHexDigits
+003db2dd   _hexUtil_binTo4HexAsciiChars
+003db2fe   _hexUtil_binTo2HexAsciiChars
+003db322   _hexUtil_binTo5DecAsciiChars
+003db382   _hexUtil_binToDecAsciiCharsZeroSuppress
+003db3b3   _hexUtil_bin32To10DecAsciiChars
+003db4b5   _hexUtil_bin32ToDecAsciiCharsZeroSuppress
+003db4e7   _hexUtil_decCharsToBin
+003db50e   _hexUtil_decCharsToBin32
+003db539   _canC_initComm
+003db562   _canC_readCanAddrDipSwitches
+003db579   _canC_mailboxInitialization
+003db5f5   _canC_configMbxForTransmit
+003db657   _canC_configMbxForReceive
+003db6d0   _canC_pollRecv
+003db757   _canC_transmitMessage
+003db7e3   _xintf_InitXintf
+003db85b   _xintf_setTestData2001
+003db862   _xintf_setTestData2002
+003db869   _xintf_setTestData2003
+003db870   _xintf_setTestSelection2004
+003db87d   _xintf_getTestSelection2004
+003db881   _xintf_initTest
+003db88d   _xintf_testUnderTimer0
+003dba00   _xintf_test2010
+003dba11   _xintf_test2011
+003dba59   _ain_offsetCalcInit
+003dba5d   _ain_setSwitchDefaultsForB1
+003dba62   _ain_getAnlginCalState
+003dba66   _ain_offsetCalcTask
+003dbb5c   _ain_startOffsetCalc
+003dbb68   _ain_calibratedValue
+003dbb99   _ain_calibratedClassicValue
+003dbbe9   _ain_calibratedClassicValRaw
+003dbbf7   _ain_ad7175_setup_task_init
+003dbbfe   _ain_get_ad7175SetupTaskState
+003dbc02   _ain_ad7175_setup_task
+003dbc6b   _ain_ad7175_request
+003dbc92   _ain_ad7175_fetch_status
+003dbca1   _ain_ad7175_fetch_data_read
+003dbcb5   _adc_init
+003dbcee   _adc_configureChannels
+003dbd0d   _adc_runConversion
+003dbd1b   _adc_convertToMilliVolts
+003dbd32   _adc_readOneAdcChannelToRs232
+003dbdae   _adc_addOneAdcChannelToList
+003dbe1c   _adc_DisplayAdcResults
+003dbea4   _adc_repeatPrevAdcTest
+003dbeaf   _adc_readAll16Channels
+003dbec2   _res_init
+003dbecc   _res_calcSinCosFromHiPrecisShaftAngle
+003dbfba   _write_RES_Shaft_Angle
+003dc01e   _res_recvAmpRef
+003dc03d   _res_recvRefFreq
+003dc04a   _res_recvRefDacValue
+003dc057   _res_recvShaftAngle
+003dc068   _res_recvShaftAngleIincreasedPrecision
+003dc079   _res_ShaftAngleOutTask
+003dc08d   _res_ConstVelocityTimerRoutine
+003dc097   _f2i_enable_interrupt
+003dc09a   _f2i_store_int_vectors_in_PIE
+003dc0a3   _f2i_initialize_interrupt
+003dc0b2   _f2i_SSEnc_init
+003dc0c9   _f2i_BgTask_SSEnc
+003dc1be   _f2i_CRC5
+003dc209   _f2i_SSEnc_reverse_position
+003dc23c   _f2i_recv_Pos_32_from_Host
+003dc259   _canF_zeroDummyFileBufCounts
+003dc25e   _canF_zeroDummyFileBufOutCount
+003dc262   _canF_appendIntoDummyFileBuf
+003dc27b   _canF_readOutOfDummyFileBuf
+003dc2b1   _canF_recvDummyFile
+003dc2d8   _canF_sendDummyFile
+003dc309   _diagRs232sendDummyFile
+003dc325   _diagRs232recvMultiPacket
+003dc3b7   _diagRs232CanRecvMsg
+003dc412   _led_synchronizedSlowHeartbeat
+003dc418   _led_setLedCpldIoPattern
+003dc425   _led_setLedCpldPmPattern
+003dc432   _led_getCpldIoLedPattern
+003dc436   _led_cpldLedIoInit
+003dc43f   _led_manageCpldIoLEDsUnderTimer0
+003dc499   _led_setDspLedPattern
+003dc4a0   _led_getDspLedPattern
+003dc4a4   _led_dspLedErrMsg
+003dc4ae   _led_toggle4DspLeds
+003dc4b3   _led_init4DspLeds
+003dc4be   _led_manageDspLEDsUnderTimer0
+003dc53d   _led_DspLedInit
+003dc543   _led_setLedFpga1Pattern
+003dc54c   _led_setLedFpga2Pattern
+003dc555   _led_setLedFpga3Pattern
+003dc55c   _led_FpgaLedInit
+003dc565   _led_manageFpgaLedsUnderTimer0
+003dc5bf   _GpioU_defaultInit
+003dc5db   _GpioU_f1iInit
+003dc5e3   _GpioU_f2iInit
+003dc5eb   _GpioU_rs232Init
+003dc5f5   _GpioU_sci2Init
+003dc5ff   _GpioU_SpiInit
+003dc60b   _GpioU_i2cee_Init
+003dc617   _GpioU_timer0Init
+003dc623   _GpioU_initGpiosAllZero
+003dc632   _Gpio_example3C
+003dc637   _GpioU_ioTest2100
+003dc692   _GpioU_ioTest2101
+003dc705   _GpioU_ioTest2102
+003dc760   _main
+003dc826   _main_readPowerGoodSignals
+003dc82f   _main_DisplayPgLoopCount
+003dc852   _main_startupTask
+003dc8e5   _taskMgr_init
+003dc90b   _taskMgr_setTask
+003dc91f   _taskMgr_setTaskWithDelay
+003dc92b   _taskMgr_setTaskRoundRobin
+003dc943   _taskMgr_nulTask
+003dc947   _taskMgr_runBkgndTasks
+003dc95c   _taskMgr_firstSetTaskFlag
+003dc9a8   _taskMgr_ageTaskDelays
+003dc9c1   _taskMgr_wDogReset
+003dc9d7   _taskMgr_testTask_1
+003dc9e5   _taskMgr_testTask_2
+003dc9f4   _taskMgr_testTask_3
+003dca02   _taskMgr_testTask_4
+003dca11   _taskMgr_testTask_5
+003dca1f   _taskMgr_testSchedAlgorithms
+003dca65   _InitSpi
+003dca98   _spi_disableAllSpiDevices
+003dcab4   _SelectSpiFlash
+003dcae3   _xfer_16
+003dcaee   _Xfr8bitSpiCmd
+003dcb09   _spi_ReadSpiFlashStatus
+003dcb16   _spi_ReleasePowerdownRES
+003dcb29   _spi_ReadSpiFlashRDID
+003dcb3d   _spi_SetFlashWriteEnable
+003dcb46   _spi_BulkEraseFlash
+003dcb4f   _spi_ReadFlash
+003dcb75   _spi_ClockFlashToFpgaStart
+003dcb86   _spi_ClockFlashToFpga
+003dcb96   _spi_WriteFlash
+003dcbb9   _diag_SelectSpiFlash
+003dcbbc   _INT13_ISR
+003dcbc1   _INT14_ISR
+003dcbc6   _DATALOG_ISR
+003dcbcb   _RTOSINT_ISR
+003dcbd0   _EMUINT_ISR
+003dcbd5   _NMI_ISR
+003dcbda   _ILLEGAL_ISR
+003dcbdf   _USER1_ISR
+003dcbe4   _USER2_ISR
+003dcbe9   _USER3_ISR
+003dcbee   _USER4_ISR
+003dcbf3   _USER5_ISR
+003dcbf8   _USER6_ISR
+003dcbfd   _USER7_ISR
+003dcc02   _USER8_ISR
+003dcc07   _USER9_ISR
+003dcc0c   _USER10_ISR
+003dcc11   _USER11_ISR
+003dcc16   _USER12_ISR
+003dcc1b   _PDPINTA_ISR
+003dcc20   _PDPINTB_ISR
+003dcc25   _XINT1_ISR
+003dcc2a   _XINT2_ISR
+003dcc2f   _ADCINT_ISR
+003dcc34   _TINT0_ISR
+003dcc39   _WAKEINT_ISR
+003dcc3e   _CMP1INT_ISR
+003dcc43   _CMP2INT_ISR
+003dcc48   _CMP3INT_ISR
+003dcc4d   _T1PINT_ISR
+003dcc52   _T1CINT_ISR
+003dcc57   _T1UFINT_ISR
+003dcc5c   _T1OFINT_ISR
+003dcc61   _T2PINT_ISR
+003dcc66   _T2CINT_ISR
+003dcc6b   _T2UFINT_ISR
+003dcc70   _T2OFINT_ISR
+003dcc75   _CAPINT1_ISR
+003dcc7a   _CAPINT2_ISR
+003dcc7f   _CAPINT3_ISR
+003dcc84   _CMP4INT_ISR
+003dcc89   _CMP5INT_ISR
+003dcc8e   _CMP6INT_ISR
+003dcc93   _T3PINT_ISR
+003dcc98   _T3CINT_ISR
+003dcc9d   _T3UFINT_ISR
+003dcca2   _T3OFINT_ISR
+003dcca7   _T4PINT_ISR
+003dccac   _T4CINT_ISR
+003dccb1   _T4UFINT_ISR
+003dccb6   _T4OFINT_ISR
+003dccbb   _CAPINT4_ISR
+003dccc0   _CAPINT5_ISR
+003dccc5   _CAPINT6_ISR
+003dccca   _SPIRXINTA_ISR
+003dcccf   _SPITXINTA_ISR
+003dccd4   _MRINTA_ISR
+003dccd9   _MXINTA_ISR
+003dccde   _SCIRXINTA_ISR
+003dcce3   _SCITXINTA_ISR
+003dcce8   _SCIRXINTB_ISR
+003dcced   _SCITXINTB_ISR
+003dccf2   _ECAN0INTA_ISR
+003dccf7   _ECAN1INTA_ISR
+003dccfc   _EMPTY_ISR
+003dcd01   _PIE_RESERVED
+003dcd06   _rsvd_ISR
+003dcd0b   _sci2_init
+003dcd4e   _sci2_rx_tx
+003dcdbb   _sci2_recvTxBuf
+003dcde0   _sci2_recvTxBufAppend
+003dce04   _sci2_sendRxBuf
+003dce40   _sci2_xmit_test
+003dce50   _timer0_store_int_vectors_in_PIE
+003dce59   _timer0_initConfig_n_Start
+003dce6d   _timer0_init_03
+003dce74   _InitCpuTimers
+003dcead   _ConfigCpuTimer
+003dcee1   _timer0_task
+003dcf00   _timer0_tenthOfSecTask
+003dcf16   _timer0_miliSecTask
+003dcf1e   _timer0_task_init
+003dcf2e   _timer0_fetchSystemMiliSecCount
+003dcf32   _timer0_interrupt_count_value
+003dcf4e   _timer0_count_reg_value
+003dcf52   _r232Out_outChars
+003dcf9e   _r232Out_outCharsNT
+003dcfaf   _r232Out_circBufOutput
+003dcfe6   _r232Out_transmit_status_busy
+003dcff5   _r232Out_Command_Ack
+003dd027   _r232Out_Command_Nak
+003dd047   _log_init
+003dd04c   _log_addToLogWith3Params
+003dd096   _log_addToLog
+003dd0dc   _log_readLog
+003dd109   _log_startReadingLog
+003dd11e   _log_clear
+003dd126   _log_t0Period
+003dd131   _sciaTxFifoIsr
+003dd179   _sciaRxFifoIsr
+003dd20b   _xram_testExternalRam
+003dd263   _xram_ExtRamRWTest
+003dd288   _xram_RWPassThruWholeChip
+003dd2ca   _mcsParseReceivedData
+003dd376   _InitECan
+003dd3fc   _InitSysCtrl
+003dd404   _KickDog
+003dd40e   _DisableDog
+003dd416   _InitPll
+003dd433   _InitPeripheralClocks
+003dd44d   _CsmUnlock
+003dd47e   _ts_displayBuildDateTimestamp
+003dd4c1   _ts_sendTimeStampClassic
+003dd4d8   _ts_sendDateStampClassic
+003dd4f5   _CanDoubleRead
+003dd4ff   _CanDoubleWrite
+003dd50a   _CanDoubleClear
+003dd51d   _CanDoubleSet
+003dd52e   _XmitCanTimestamp
+003dd560   _evtimer4_turn_off
+003dd565   _evtimer4_turn_on
+003dd5a2   _evtimer4_store_int_vectors_in_PIE
+003dd5ab   _evtimer4_initConfig_n_Start
+003dd5ac   _evtimer4_initConfig_n_Start_disabled
+003dd5ba   _evtimer4_enable_int
+003dd5c1   FS$$MPY
+003dd61b   _c_int00
+003dd65f   _f1i_enable_interrupt
+003dd666   _f1i_store_int_vectors_in_PIE
+003dd66f   _f1i_initialize_interrupt
+003dd67e   _f1i_BgTask
+003dd69d   _ssEnc_init
+003dd6a2   _ssEnc_recvShaftAngleIincreasedPrecision
+003dd6b3   _ssEnc_ShaftAngleOutTask
+003dd6c7   _ssEnc_ConstVelocityTimerRoutine
+003dd6d1   L$$DIV
+003dd6e0   L$$MOD
+003dd6ee   UL$$DIV
+003dd6f5   UL$$MOD
+003dd6fb   _evtimer4_isr
+003dd724   FS$$TOL
+003dd74d   _InitPieCtrl
+003dd76c   _EnableInterrupts
+003dd775   FS$$TOUL
+003dd796   ___memcpy_ff
+003dd7b7   _InitPieVectTable
+003dd7d7   _timer0_isr
+003dd7f6   _f1i_isr
+003dd812   L$$TOFS
+003dd82c   __args_main
+003dd845   C$$EXIT
+003dd845   _abort
+003dd847   _exit
+003dd85e   _f2i_isr
+003dd876   _strU_strcpy
+003dd88c   _read32
+003dd88e   _write32
+003dd890   _setbits32
+003dd895   _clearbits32
+003dd89b   U$$DIV
+003dd8a0   U$$MOD
+003dd8a6   __register_unlock
+003dd8aa   __register_lock
+003dd8ae   __nop
+003dd8b7   ___etext__
+003dd8b7   etext
+003ddca4   _limitCheckInputs
+003dde3c   _can_index
+003ddfc0   _index_204C
+003de0d0   _index_2057
+003de1d8   _PieVectTableInit
+003de2d8   _index_204E
+003de514   _index_2058
+003de5ac   _index_2050
+003de63c   _index_2053
+003de7c2   _index_2023
+003de832   _index_2024
+003de8a2   _index_2025
+003de912   _index_2026
+003de982   _index_2027
+003de9f2   _index_2028
+003dea62   _index_2029
+003dead2   _index_202A
+003deb42   _index_2031
+003dec0e   _index_2056
+003dec6e   _task_vectors
+003decce   _index_204D
+003ded26   _index_2055
+003ded7e   _index_205F
+003dedd6   _index_2010
+003dee26   _index_2051
+003dee76   _index_200B
+003def46   _index_200C
+003def86   _index_2001
+003defbe   _index_2003
+003deff6   _index_2004
+003df02e   _index_2013
+003df098   _index_204A
+003df0c8   _index_204F
+003df0f8   _index_2007
+003df120   _index_200E
+003df148   _index_2014
+003df170   _index_2015
+003df198   _index_2052
+003df1e2   _index_2005
+003df202   _index_2008
+003df222   _index_2009
+003df242   _index_2011
+003df262   _index_2036
+003df282   _index_2049
+003df318   _index_2002
+003df330   _index_2006
+003df348   _index_200A
+003df360   _index_2012
+003df378   _index_2032
+003df390   _index_2054
+003df3a8   _index_204B
+003df3b8   _index_2000
+003df3c0   _index_200D
+003df3c8   _index_200F
+003df3d0   _index_2016
+003df3d8   _index_2017
+003df3e0   _index_2018
+003df3e8   _index_2019
+003df3f0   _index_201A
+003df3f8   _index_201B
+003df400   _index_201C
+003df408   _index_201D
+003df410   _index_201E
+003df418   _index_201F
+003df420   _index_2020
+003df428   _index_2021
+003df430   _index_2022
+003df438   _index_202B
+003df440   _index_202C
+003df448   _index_202D
+003df450   _index_202E
+003df458   _index_202F
+003df460   _index_2030
+003df468   _index_2033
+003df470   _index_2034
+003df478   _index_2035
+003df480   _index_2037
+003df488   _index_2038
+003df490   _index_2039
+003df498   _index_203A
+003df4a0   _index_203B
+003df4a8   _index_203C
+003df4b0   _index_203D
+003df4b8   _index_203E
+003df4c0   _index_203F
+003df4c8   _index_2040
+003df4d0   _index_2041
+003df4d8   _index_2042
+003df4e0   _index_2043
+003df4e8   _index_2044
+003df4f0   _index_2045
+003df4f8   _index_2046
+003df500   _index_2047
+003df508   _index_2048
+003df510   _index_2059
+003df518   _index_205A
+003df520   _index_205B
+003df528   _index_205C
+003df530   _index_205D
+003df538   _index_205E
+003df540   _index_2060
+003df548   _timeStamp_t3
+003df549   _revision_rv1
+003df54a   _timeStamp_t2
+003df54b   _timeStamp_t1
+003df54c   _revision_rv2
+003df54d   ___cinit__
+003df54d   cinit
+003df92d   _RamfuncsLoadStart
+003df948   _RamfuncsLoadEnd
 003f7ff8   _CsmPwl
 003f8000   _sci2
 003f8040   _sci2_Rx_Buf
@@ -2339,4 +2337,4 @@ ffffffff   ___pinit__
 ffffffff   binit
 ffffffff   pinit
 
-[942 symbols]
+[941 symbols]

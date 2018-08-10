@@ -27,11 +27,15 @@
 #include "LED.H"
 
 #define BITSTREAM_BLOCKSIZE 1024
+
 #define MAX_FPGAS_TO_LOAD 2
+// Don't bump this from 2 to 3 until after we get Flash3 & Fpga3 working
+// Otherwise it will error out every time we power up.
+// #define MAX_FPGAS_TO_LOAD 3
 
 extern struct MULTI_PACKET_BUF multi_packet_buf;
 
-Uint16 frwWhichFlashChip; //1=FLASH_1, 2=FLASH_2
+Uint16 frwWhichFlashChip; //1=FLASH_1, 2=FLASH_2, 3=FLASH_3
 enum LOAD_FPGAS_AT_STARTUP_STATUS frwLoadFpgasAtStartupStatus;
 bool frwLoadMultipleFgpas;
 union CANOPEN16_32 frwFlashAddr;
@@ -70,22 +74,26 @@ void frw_RemoveHwWriteProtect(){
 // tell CPLD to raise the hardware ~WriteProtect line
 	Uint16 *extData; // pointer for external bus address to access CPLD
 
-	if (frwWhichFlashChip == 1){    //1=FLASH_1, 2=FLASH_2
+	if (frwWhichFlashChip == 1){    //1=FLASH_1, 2=FLASH_2, 3=FLASH_3
 		extData = CPLD_XINTF_ADDR(TBIOM_WP_FLASH_1);
-	} else {
+	} else if (frwWhichFlashChip == 2){
 		extData = CPLD_XINTF_ADDR(TBIOM_WP_FLASH_2);
+	} else {
+		extData = CPLD_XINTF_ADDR(TBPM_WP_FLASH_3);
 	}
 	*extData = 0; // write, de-assert ~WP, data value not important
 }
 
 void frw_AssertHwWriteProtect(){
-// tell CPLD to lower the hardware ~WriteProtect lines for both FLASH chips
+// tell CPLD to lower the hardware ~WriteProtect lines for all 3 FLASH chips
 	Uint16 *extData; // pointer for external bus address to access CPLD
 	volatile Uint16 dummyDdataIn;
 
 	extData = CPLD_XINTF_ADDR(TBIOM_WP_FLASH_1);
 	dummyDdataIn = *extData; // read, assert ~WP, not interested in value read in
 	extData = CPLD_XINTF_ADDR(TBIOM_WP_FLASH_2);
+	dummyDdataIn = *extData; // read, assert ~WP, not interested in value read in
+	extData = CPLD_XINTF_ADDR(TBPM_WP_FLASH_3);
 	dummyDdataIn = *extData; // read, assert ~WP, not interested in value read in
 }
 
@@ -123,7 +131,7 @@ void frw_SpiFlashInit(){
 // Select between 2 FLASH chips, store selection in globals
 // All subsequent flash operations are direcrted against selected flash chip
 void frw_SetWhichFlash(Uint16 whichFlash){
-   frwWhichFlashChip = whichFlash; // 1=FLASH_1, 2=FLASH_2, others illegal
+   frwWhichFlashChip = whichFlash; // 1=FLASH_1, 2=FLASH_2, 3=FLASH_3, others illegal
 }
 Uint16 frw_GetWhichFlash(void){
 	return frwWhichFlashChip;
@@ -160,6 +168,13 @@ enum LOAD_FPGAS_AT_STARTUP_STATUS frw_GetLoadFpgasAtStartupStatus(void){
 //   done    GPIOA1     (cpld)
 //   init    GPIOB13    (cpld)
 //   reset   (cpld)     (cpld)
+//
+// FPGA3     TB3CMB
+//   -----   -------
+//   prog    GPIOF10
+//   done    GPIOA2
+//   init    GPIOB14
+//   reset   (cpld)
 
 void frw_initFpgaLoadPins(void){
     // Setup the PROG pins to the FPGAs as output, and set it HI
@@ -174,8 +189,9 @@ void frw_initFpgaLoadPins(void){
     EALLOW;
     GpioMuxRegs.GPFDIR.bit.GPIOF8 = 1;   // GPIOF8, PROG output for FPGA1, TB3CMB
     GpioMuxRegs.GPFDIR.bit.GPIOF9 = 1;   // GPIOF9, PROG output for FPGA2, TB3CMB
+    GpioMuxRegs.GPFDIR.bit.GPIOF10 = 1;   // GPIOF10, PROG output for FPGA3, TB3CMB
     EDIS;
-    GpioDataRegs.GPFSET.all |= 0x0300;   // set PROG, GPIOF8 & 9, HI
+    GpioDataRegs.GPFSET.all |= 0x0700;   // set PROG, GPIOF8 & 9 & 10, HI
 #endif
 }
 
@@ -198,8 +214,8 @@ void frw_SetFpgaCtrlLines(enum F_LOAD_CTRL_OPS ctrlLineOp){
 //		F_LOAD_READ_DONE	= 5,  read the HI/LOW value of the DONE input
 //		F_LOAD_RESET_HI		= 6   set the RESET line HI to the FPGA
 
-	Uint16 whichFlash;
-	volatile Uint16 *extData; // pointer for ernal bus address to access CPLD
+	Uint16 whichFlash;		// This tells which FPGA & Flash we are working with: 1, 2, or 3
+	volatile Uint16 *extData; // pointer for external bus address to access CPLD
     volatile Uint16 data_in;
 
     whichFlash = frw_GetWhichFlash(); // Flash # 1 == FPGA # 1, etc.
@@ -261,10 +277,11 @@ void frw_SetFpgaCtrlLines(enum F_LOAD_CTRL_OPS ctrlLineOp){
     	} else if (whichFlash == 2) {
      	   extData = CPLD_XINTF_ADDR(TBIOM_FPGA2_RESET);
     	} else {
-    		// TB3PMA Flash/Fpga # 3 -- TBD
+      	   extData = CPLD_XINTF_ADDR(TBPM_FPGA3_RESET);
     	}
     	data_in = *extData; // data not important, read sets ~RESET LOW,
         break;
+
     case F_LOAD_PROG_OUT_HI: // config the PROG line as an output with a HI out value
     	if (whichFlash == 1) {
     	    EALLOW;
@@ -277,16 +294,20 @@ void frw_SetFpgaCtrlLines(enum F_LOAD_CTRL_OPS ctrlLineOp){
     	    EDIS;
     	    GpioDataRegs.GPFSET.all |= 0x0200;   // set PROG, GPIOF9, HI
     	} else {
-    		// TB3PMA Flash/Fpga # 3 -- TBD
+    	    EALLOW;
+    	    GpioMuxRegs.GPFDIR.bit.GPIOF10 = 1;   // GPIOF10, PROG output for FPGA3, TB3CMB
+    	    EDIS;
+    	    GpioDataRegs.GPFSET.all |= 0x0400;   // set PROG, GPIOF10, HI
     	}
         break;
+
     case F_LOAD_PROG_LOW: // set the PROG line LOW
     	if (whichFlash == 1) {
         	GpioDataRegs.GPFCLEAR.all |= 0x0100;  // set PROG, GPIOF8, LOW
     	} else if (whichFlash == 2) {
         	GpioDataRegs.GPFCLEAR.all |= 0x0200;  // set PROG, GPIOF9, LOW
     	} else {
-    		// TB3PMA Flash/Fpga # 3 -- TBD
+        	GpioDataRegs.GPFCLEAR.all |= 0x0400;  // set PROG, GPIOF10, LOW
     	}
         break;
 
@@ -302,7 +323,9 @@ void frw_SetFpgaCtrlLines(enum F_LOAD_CTRL_OPS ctrlLineOp){
 	    	GpioMuxRegs.GPFDIR.bit.GPIOF9 = 0;   // GPIOF9, PROG input for FPGA2, TB3CMB
 	    	EDIS;
 	    } else {
-    		// TB3PMA Flash/Fpga # 3 -- TBD
+	    	EALLOW;
+	    	GpioMuxRegs.GPFDIR.bit.GPIOF10 = 0;   // GPIOF10, PROG input for FPGA3, TB3CMB
+	    	EDIS;
 	    }
         break;
 
@@ -314,7 +337,7 @@ void frw_SetFpgaCtrlLines(enum F_LOAD_CTRL_OPS ctrlLineOp){
     	} else if (whichFlash == 2) {
      	   extData = CPLD_XINTF_ADDR(TBIOM_FPGA2_RESET);
     	} else {
-    		// TB3PMA Flash/Fpga # 3 -- TBD
+      	   extData = CPLD_XINTF_ADDR(TBPM_FPGA3_RESET);
     	}
     	*extData = 1; // data not important, write sets ~RESET HI,
         break;
@@ -373,17 +396,18 @@ Uint16 frw_ReadFpgaCtrlLines(enum F_LOAD_CTRL_OPS ctrlLineOp){
     	} else if (whichFlash == 2) {
     		data_in = (GpioDataRegs.GPBDAT.all >> 13) & 0x1; // GPIOB13 INIT FPGA2 TB3CMB
     	} else {
-    		// TB3PMA Flash/Fpga # 3 -- TBD
+    		data_in = (GpioDataRegs.GPBDAT.all >> 14) & 0x1; // GPIOB14 INIT FPGA3 TB3CMB
     	}
         return data_in;
     	// --break;--
+
     case F_LOAD_READ_DONE: // read the HI/LOW value of the DONE input
     	if (whichFlash == 1) {
         	data_in = (GpioDataRegs.GPADAT.all >> 0) & 0x1; // GPIOA0 DONE FPGA1 TB3CMB
     	} else if (whichFlash == 2) {
-        	data_in = (GpioDataRegs.GPADAT.all >> 1) & 0x1; // GPIOA1 DONE FPGA1 TB3CMB
+        	data_in = (GpioDataRegs.GPADAT.all >> 1) & 0x1; // GPIOA1 DONE FPGA2 TB3CMB
     	} else {
-    		// TB3PMA Flash/Fpga # 3 -- TBD
+        	data_in = (GpioDataRegs.GPADAT.all >> 2) & 0x1; // GPIOA2 DONE FPGA3 TB3CMB
     	}
         return data_in;
         // --break;--
@@ -673,6 +697,8 @@ void frw_SpiFlashTask(){
     	extData = CPLD_F1_XA(FPGA1_WRITE_RESET_COUNT_CLK);
     	*extData = 1; // data not important, write resets FPGA's internal counter,
     	extData = CPLD_F2_XA(FPGA2_WRITE_RESET_COUNT_CLK);
+    	*extData = 1; // data not important, write resets FPGA's internal counter,
+    	extData = CPLD_F3_XA(FPGA3_WRITE_RESET_COUNT_CLK);
     	*extData = 1; // data not important, write resets FPGA's internal counter,
 
     	frwFlashTaskState = LOAD_FPGA_NO_OP; // we are done
@@ -1261,8 +1287,8 @@ enum CANOPEN_STATUS frw_readWhichFlashChip(const struct CAN_COMMAND* can_command
 
 enum CANOPEN_STATUS frw_writeWhichFlashChip(const struct CAN_COMMAND* can_command, Uint16* data){
 	// *can_command is Table entry (struct) of parameters for CANOpen Index.Subindex
-    // PC tells us which of our 2 (IO Board) FLASH chips is selected as target
-	// for subsequent activity -- 1=FLASH_1, 2=FLASH_2
+    // PC tells us which of our 2 (IO Board) FLASH chips (+ 1 Pwr Board) is selected as target
+	// for subsequent activity -- 1=FLASH_1, 2=FLASH_2, 3=FLASH_3
 
 	frw_SetWhichFlash(*(data+2));    // MboxC
 
@@ -1646,8 +1672,8 @@ void frw_test4005(Uint16 seedValue){
 	}
 }
 void frw_test4006(Uint16 whichFlashChip){
-//Store value in Globals, telling which of 2 FLASH chips is target of subsequent operations
-// -- Select which FLASH: 1=FLASH_1, 2=FLASH_2
+//Store value in Globals, telling which of 3 FLASH chips is target of subsequent operations
+// -- Select which FLASH: 1=FLASH_1, 2=FLASH_2, 3=FLASH_2
 	frw_SetWhichFlash(whichFlashChip);
 }
 //===========================================================================
